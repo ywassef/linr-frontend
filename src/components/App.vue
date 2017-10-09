@@ -1,3 +1,4 @@
+<!--
 <template>
   <section id="app" class="">
     <navigation></navigation>
@@ -40,3 +41,36 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }
 </style>
+-->
+
+<template>
+  <section id="app">
+    <navigation></navigation>
+    <section class="container is-fluid has-text-centered">
+      <!--<router-link :to="{ name: 'Entrarnafila' }">Entrar na fila</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/coins/ethereum">Ethereum</router-link>
+      <router-link to="/coins/bitcoin">Bitcoin</router-link>-->
+      <router-view></router-view>
+    </section>
+
+  </section>
+</template>
+
+<script>
+
+  import Navigation from "./Navigation.vue"
+
+  export default {
+    name: 'app',
+      components: {
+        "navigation": Navigation
+      },
+      methods: {
+        entrar_na_fila: function(event) {
+          alert('Entrou na fila!')
+          console.log(event)
+        }
+      }
+  }
+</script>
