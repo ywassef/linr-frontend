@@ -10,19 +10,9 @@
     <section class="nav-right nav-menu">
       <span class="nav-item">
           <router-link to="/cadastro">Cadastro</router-link>
-        <!--
-          <a class="button is-primary">
-            <span>Cadastro</span>
-          </a>
-          -->
       </span>
       <span class="nav-item">
-            <router-link to="/login">Login</router-link>
-        <!--
-        <a class="button is-primary">
-          <span>Login</span>
-        </a>
-        -->
+          <router-link to="/login">Login</router-link>
       </span>
     </section>
 
