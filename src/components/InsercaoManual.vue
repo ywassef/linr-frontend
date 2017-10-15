@@ -15,21 +15,25 @@
               <div class="field">
                 <label class="label">Nome</label>
                 <div class="control">
-                  <input class="input" id="NameField" type="text" placeholder="Ex: Ivan Alves">
+                  <input class="input" id="NameField" type="text"
+                         placeholder="Ex: Ivan Alves">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Telefone</label>
                 <div class="control">
-                  <input class="input" id="TelephoneField" type="tel" placeholder="(11) 11111-1111">
+                  <input class="input" id="TelephoneField" type="tel"
+                         placeholder="(11) 11111-1111">
                 </div>
               </div>
             </div>
           </div>
           <div class="hero-foot">
             <div class="container has-text-centered">
-              <button class="button is-large is-primary" v-on:click="insertmanual">Inserir</button>
+              <button class="button is-large is-primary"
+                      v-on:click="insertmanual">Inserir
+              </button>
             </div>
           </div>
 
@@ -46,15 +50,15 @@
   export default {
     name: 'InsercaoManual',
     methods: {
-      insertmanual: function(event) {
-        var cljs = new ClientJS();
-        alert(document.getElementById('NameField').value +'\n'
-          + document.getElementById('TelephoneField').value +'\n'
-          + 'ID do usuário: ' + cljs.getFingerprint());
+      insertmanual: function (event) {
+        var cljs = new ClientJS()
+        alert(document.getElementById('NameField').value + '\n'
+          + document.getElementById('TelephoneField').value + '\n'
+          + 'ID do usuário: ' + cljs.getFingerprint())
         console.log(event)
-      }
+      },
     },
-    data() {
+    data () {
       return {}
     },
   }

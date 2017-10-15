@@ -12,22 +12,22 @@ export default new Router({
     {
       path: '/',
       name: 'Entrarnafila',
-      component: Entrarnafila
+      component: Entrarnafila,
     },
     {
       path: '/cadastro',
       name: 'Cadastro',
-      component: Cadastro
+      component: Cadastro,
     },
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: Login,
     },
     {
       path: '/admin',
       name: 'InsercaoManual',
-      component: InsercaoManual
-    }
-  ]
+      component: InsercaoManual,
+    },
+  ],
 })

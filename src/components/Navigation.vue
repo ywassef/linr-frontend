@@ -20,13 +20,13 @@
 </template>
 
 <script>
-  import Logo from "../img/logo.png"
+  import Logo from '../img/logo.png'
 
   export default {
-    name: "navbar",
-    data() {
+    name: 'navbar',
+    data () {
       return {
-        "logo": Logo,
+        'logo': Logo,
       }
     },
   }
