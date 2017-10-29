@@ -1,7 +1,7 @@
 <template>
     <div class="about">
         <div class="content">
-            <button class="button is-large is-primary" v-on:click="entrar_na_fila">ENTRAR NA FILA</button>
+            <button class="button is-primary is-outlined" v-on:click="entrar_na_fila">ENTRAR NA FILA</button>
         </div>
     </div>
 </template>

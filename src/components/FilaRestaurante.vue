@@ -1,8 +1,6 @@
 <template>
     <section>
         <div class="content">
-            <h1>{{Restaurante.nome}}</h1>
-            <p></p>
             <div class="columns">
                 <div class="column">
                     <abbr title="Posição">Pos</abbr>
@@ -65,7 +63,7 @@
                     {{user.obs}}
                 </div>
                 <div class="column">
-                    <a class="button is-danger" v-on:click="remover_da_fila(user.nome, user.posicao)" >Remover</a>
+                    <a class="button is-danger is-outlined" v-on:click="remover_da_fila(user.nome, user.posicao)" >Remover</a>
                 </div>
             </div>
         </div>
