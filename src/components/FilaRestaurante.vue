@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="content">
-            <h1>Lista Restaurante 1</h1>
+            <h1>{{Restaurante.nome}}</h1>
             <p></p>
             <div class="columns">
                 <div class="column">
@@ -65,7 +65,7 @@
                     {{user.obs}}
                 </div>
                 <div class="column">
-                    <a class="button is-danger">Danger</a>
+                    <a class="button is-danger" v-on:click="remover_da_fila(user.nome, user.posicao)" >Remover</a>
                 </div>
             </div>
         </div>
@@ -77,7 +77,13 @@
 
     export default {
         name: 'FilaRestaurante',
-        methods: {},
+        methods: {
+            remover_da_fila(nome, posicao) {
+                alert(nome + ' removido da fila! ');
+
+                this.Usuarios.splice(posicao-1,1);
+            }
+        },
         data() {
             return {
                 Usuarios: [
@@ -86,7 +92,9 @@
                     {posicao: 3, nome: 'Ivan', telefone: '12982054061', hef: '14:30', hsf: '14:50', hpa: '14:40', qp: 2, r:'N', obs:'-'},
                     {posicao: 4, nome: 'Yasmin', telefone: '12982054061', hef: '14:30', hsf: '14:50', hpa: '14:40', qp: 2, r:'N', obs:'-'},
                     {posicao: 5, nome: 'Alex', telefone: '12982054061', hef: '14:30', hsf: '14:50', hpa: '14:40', qp: 2, r:'N', obs:'-'}
-                ]
+                ],
+
+                Restaurante: {nome: 'Outback'}
             }
         },
     }

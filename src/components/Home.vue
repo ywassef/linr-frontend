@@ -23,7 +23,7 @@
                             </p>
                             <p class="card-footer-item">
                           <span>
-                            <a href="#">Entrar na Fila</a>
+                              <BEntrar></BEntrar>
                           </span>
                             </p>
                         </footer>
@@ -36,9 +36,13 @@
 
 <script>
     import MaskedInput from 'vue-masked-input'
+    import EntrarFila from './Entrarnafila.vue'
 
     export default {
         name: 'Home',
+        components: {
+            "BEntrar": EntrarFila
+        },
         methods: {},
         data() {
             return {
