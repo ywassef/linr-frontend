@@ -1,14 +1,10 @@
 <template>
-
   <section class="section">
-
-
     <label class="label">Nome</label>
     <div class="control">
       <input class="input" id="NameField" type="text"
              placeholder="Ex: Ivan Alves">
     </div>
-
     <div class="field">
       <label class="label">Telefone</label>
       <div class="control">
@@ -26,7 +22,6 @@
     <button class="button is-primary is-outlined" v-on:click="insertmanual">
       Inserir
     </button>
-
   </section>
 </template>
 
@@ -52,6 +47,12 @@
 
 <style lang="scss">
   @import "../scss/style";
+
+  html, body, #app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
 
   html {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
