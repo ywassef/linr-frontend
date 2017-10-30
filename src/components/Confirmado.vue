@@ -21,11 +21,7 @@
         <div class="tile is-child">
           <div class="tile is-parent is-mobile">
             <div class="tile is-child notification is-">
-              <!--<span class="icon">
-                <figure class="image is-48x48">
-                <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/17392-200.png">
-              </figure>
-              </span>-->
+
 
               <h3 class="title">30 min</h3>
             </div>
