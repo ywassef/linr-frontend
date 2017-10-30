@@ -3,7 +3,7 @@
     <section class="section">
 
         <div class="container has-text-centered">
-            <h1 class="title">Cadastro de Usuário</h1>
+            <h1 class="title">Cadastro Empresa</h1>
         </div>
 
         <div class="content">
@@ -20,18 +20,41 @@
                             </div>
 
                             <div class="field">
-                                <label class="label">Telefone</label>
+                                <label class="label">Telefone 1</label>
                                 <div class="control">
-                                    <input class="input" id="TelephoneField" type="tel" placeholder="(11) 11111-1111">
+                                    <input class="input" id="TelephoneField1" type="tel" placeholder="(11) 11111-1111">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Telefone 2</label>
+                                <div class="control">
+                                    <input class="input" id="TelephoneField2" type="tel" placeholder="(11) 11111-1111">
                                 </div>
                             </div>
 
 
                             <div class="field">
-                                <label class="label">Email</label>
+                                <label class="label">Site</label>
                                 <div class="control">
-                                    <input class="input" id="EmailField" type="email"
-                                           placeholder="Ex: ivanalves@gmail.com">
+                                    <input class="input" id="SiteField" type="text"
+                                           placeholder="Ex: www.google.com">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Endereço</label>
+                                <div class="control">
+                                    <input class="input" id="EnderecoField" type="text"
+                                           placeholder="Ex: Rua 21 de Abril, 154 - SJC - SP">
+                                </div>
+                            </div>
+
+
+                            <div class="field">
+                                <label class="label">Descrição</label>
+                                <div class="control">
+                                    <textarea class="textarea" placeholder="e.g. Hello world"></textarea>
                                 </div>
                             </div>
 
@@ -56,7 +79,7 @@
                     </div>
                     <div class="hero-foot">
                         <div class="container has-text-centered">
-                            <a class="button is-large is-primary" v-on:click="cadastrar" href="#/login">Cadastrar</a>
+                            <a class="button is-large is-primary" v-on:click="cadastrar" href="#/loginAdmin">Cadastrar</a>
                         </div>
                     </div>
 
@@ -105,9 +128,5 @@
 
     html {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    }
-
-    #navbar {
-        background-color: $primary;
     }
 </style>

@@ -5,7 +5,7 @@
                 <div class="column">
                     <abbr title="Posição">Pos</abbr>
                 </div>
-                <div class="column">
+                <div class="column is-one-quarter">
                     Nome
                 </div>
                 <div class="column">
@@ -38,7 +38,7 @@
                 <div class="column">
                     {{user.posicao}}
                 </div>
-                <div class="column">
+                <div class="column is-one-quarter">
                     {{user.nome}}
                 </div>
                 <div class="column">
@@ -85,7 +85,7 @@
         data() {
             return {
                 Usuarios: [
-                    {posicao: 1, nome: 'Denis Taveira', telefone: '12982054061', hef: '14:30', hsf: '14:50', hpa: '14:40', qp: 2, r:'N', obs:'-'},
+                    {posicao: 1, nome: 'Denis Taveira Laurentino de Lima', telefone: '12982054061', hef: '14:30', hsf: '14:50', hpa: '14:40', qp: 2, r:'N', obs:'-'},
                     {posicao: 2, nome: 'Igor', telefone: '12982054061', hef: '14:30', hsf: '14:50', hpa: '14:40', qp: 2, r:'N', obs:'-'},
                     {posicao: 3, nome: 'Ivan', telefone: '12982054061', hef: '14:30', hsf: '14:50', hpa: '14:40', qp: 2, r:'N', obs:'-'},
                     {posicao: 4, nome: 'Yasmin', telefone: '12982054061', hef: '14:30', hsf: '14:50', hpa: '14:40', qp: 2, r:'N', obs:'-'},
