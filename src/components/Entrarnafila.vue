@@ -8,9 +8,7 @@
           </button>
           <br/>
         </div>
-      </section>
     </div>
-  </div>
 </template>
 
 <script>

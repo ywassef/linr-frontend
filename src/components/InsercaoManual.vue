@@ -1,16 +1,12 @@
 <template>
 
-  <section class="section">
+    <section class="section">
 
-    <div class="container has-text-centered">
-      <h1 class="title">Inserção Manual</h1>
-    </div>
 
-    <div class="content">
-      <section class="hero">
-        <div class="hero-body">
-          <div class="columns is-mobile is-centered">
-            <div class="column is-one-third has-text-centered">
+        <label class="label">Nome</label>
+        <div class="control">
+            <input class="input" id="NameField" type="text" placeholder="Ex: Ivan Alves">
+        </div>
 
               <div class="field">
                 <label class="label">Nome</label>
@@ -38,14 +34,14 @@
           </div>
 
         </div>
-      </section>
-    </div>
+        <br>
+        <button class="button is-primary is-outlined" v-on:click="insertmanual">Inserir</button>
 
-  </section>
+    </section>
 </template>
 
 <script>
-  import MaskedInput from 'vue-masked-input'
+    import MaskedInput from 'vue-masked-input'
 
   export default {
     name: 'InsercaoManual',
@@ -65,15 +61,9 @@
 </script>
 
 <style lang="scss">
-  @import "../scss/style";
+    @import "../scss/style";
 
-  html, body, #app {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
+    html {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    }
 </style>
