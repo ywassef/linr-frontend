@@ -1,85 +1,45 @@
 <template>
   <section class="section">
-    <div class="columns is-multiline is-mobile is-centered">
-      <div v-for="rest in restaurantes">
-        <div class="column">
-          <div class="card">
-            <div class="card-content">
-              <p class="title">
-                {{rest.nome}}
-              </p>
-              <p class="subtitle">
-                {{rest.descricao}}
-              </p>
-              <p class="subtitle">
-                {{rest.local}}
-              </p>
+    <div class="content">
+      <section class="hero">
+        <div class="hero-body">
+          <div class="columns is-mobile is-centered">
+            <div class="column has-text-centered">
+              <div class="field">
+                <label class="label">Código do Restaurante</label>
+                <div class="control">
+                  <input class="input" id="RestID" type="email" placeholder="Ex: outback12">
+                </div>
+              </div>
+
             </div>
-            <footer class="card-footer">
-              <p class="card-footer-item">
-                          <span>
-                            <a href="#">Informações</a>
-                          </span>
-              </p>
-              <p class="card-footer-item">
-                          <span>
-                              <BEntrar></BEntrar>
-                          </span>
-              </p>
-            </footer>
+          </div>
+          <div class="hero-foot">
+            <div class="container has-text-centered">
+              <button class="button is-large is-primary" v-on:click="entrar_na_fila">ENTRAR NA FILA</button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </section>
 </template>
 
 <script>
-  import MaskedInput from 'vue-masked-input'
-  import EntrarFila from './Entrarnafila.vue'
-
   export default {
     name: 'Home',
-    components: {
-      'BEntrar': EntrarFila,
-    },
-    methods: {},
-    data () {
-      return {
-        restaurantes: [
-          {
-            nome: 'Restaurante 1',
-            descricao: 'Pizzaria',
-            local: 'Rua 21 de Abril',
-          },
-          {
-            nome: 'Restaurante 2',
-            descricao: 'Pizzaria',
-            local: 'Rua 21 de Abril',
-          },
-          {
-            nome: 'Restaurante 3',
-            descricao: 'Pizzaria',
-            local: 'Rua 21 de Abril',
-          },
-          {
-            nome: 'Restaurante 4',
-            descricao: 'Pizzaria',
-            local: 'Rua 21 de Abril',
-          },
-          {
-            nome: 'Restaurante 5',
-            descricao: 'Pizzaria',
-            local: 'Rua 21 de Abril',
-          },
-          {
-            nome: 'Restaurante 6',
-            descricao: 'Pizzaria',
-            local: 'Rua 21 de Abril',
-          },
-        ],
-      }
-    },
+    methods: {
+      entrar_na_fila: function(event) {
+        if (document.getElementById('RestID').value === 'outback12') {
+          this.$router.push({ path: 'outback12' });
+          console.log(event)
+        }
+        else {
+          alert('Código inválido');
+          console.log(event)
+        }
+      },
+    }
   }
 </script>
 
