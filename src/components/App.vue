@@ -4,6 +4,7 @@
     <section class="container is-fluid has-text-centered">
       <router-view></router-view>
     </section>
+
   </section>
 </template>
 
