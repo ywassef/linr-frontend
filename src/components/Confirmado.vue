@@ -27,7 +27,7 @@
             </div>
 
             <div class="tile is-child notification">
-              <h3 class="title">15</h3>
+              <h3 class="title">15 pessoas na fila</h3>
             </div>
           </div>
         </div>
