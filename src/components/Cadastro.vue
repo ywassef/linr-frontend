@@ -66,11 +66,17 @@
   import MaskedInput from 'vue-masked-input'
   import ClientJS from 'clientjs'
 
+  function getRandomInt (min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min)) + min
+  }
+
   export default {
     name: 'Cadastro',
     methods: {
       cadastrar: function () {
-        const cljs = new ClientJS()
+        var cljs = new ClientJS()
         const form = document.getElementsByTagName('form')[0]
         console.log(`Form: ${form}`)
         if (!form.termos.checked) {
@@ -80,6 +86,7 @@
         console.log(this.$http)
         this.$http.post('http://localhost:8080/auth/new', {
           id: cljs.getFingerprint(),
+          id: getRandomInt(0, 10000000),
           nome: form.name.value,
           telefone: form.telefone.value,
           email: form.email.value,
@@ -94,19 +101,19 @@
 </script>
 
 <style lang="scss">
-    @import "../scss/style";
+  @import "../scss/style";
 
-    html, body, #app {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-    }
+  html, body, #app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
 
-    html {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    }
+  html {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
 
-    #navbar {
-        background-color: $primary;
-    }
+  #navbar {
+    background-color: $primary;
+  }
 </style>
