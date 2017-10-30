@@ -10,7 +10,7 @@
       <section class="hero">
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
-            <div class="column is-one-third has-text-centered">
+            <div class="column has-text-centered">
 
               <div class="field">
                 <label class="label">Nome</label>
@@ -20,9 +20,9 @@
               </div>
 
               <div class="field">
-                <label class="label">Telefone</label>
+                <label class="label">Celular</label>
                 <div class="control">
-                  <input class="input" id="TelephoneField" type="tel" placeholder="(11) 11111-1111">
+                  <input class="input" id="MobileField" type="tel" placeholder="(11) 11111-1111">
                 </div>
               </div>
 
@@ -72,11 +72,12 @@
     name: 'Cadastro',
     methods: {
       cadastrar: function(event) {
+
         if (document.getElementById('Termos').checked) {
           alert(document.getElementById('NameField').value +'\n'
             + document.getElementById('EmailField').value +'\n'
             + document.getElementById('PasswordField').value +'\n'
-            + document.getElementById('TelephoneField').value +'\n'
+            + document.getElementById('MobileField').value +'\n'
             + 'Cadastro realizado com sucesso!');
           console.log(event)
         }

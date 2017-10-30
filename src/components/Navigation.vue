@@ -7,7 +7,13 @@
       </a>
     </section>
 
-    <section class="nav-right nav-menu">
+    <span id="nav-toggle" class="nav-toggle"  onclick="document.getElementById('menu_not_logged').classList.toggle('is-active');">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+    <section id='menu_not_logged' class="nav-right nav-menu is-active">
       <span class="nav-item">
           <router-link to="/cadastro">Cadastro</router-link>
       </span>
