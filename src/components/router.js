@@ -6,6 +6,10 @@ import Login from './Login.vue'
 import InsercaoManual from './InsercaoManual.vue'
 import Home from './Home.vue'
 import FilaRestaurante from './FilaRestaurante.vue'
+import MeuRestaurante from './MeuRestaurante.vue'
+import CadastroAdmin from './CadastroAdmin.vue'
+import LoginAdmin from './LoginAdmin.vue'
+import Admin from './Admin.vue'
 
 Vue.use(Router)
 
@@ -28,8 +32,8 @@ export default new Router({
         },
         {
             path: '/admin',
-            name: 'InsercaoManual',
-            component: InsercaoManual
+            name: 'Admin',
+            component: Admin
         },
         {
             path: '/home',
@@ -40,6 +44,21 @@ export default new Router({
             path: '/filaRestaurante',
             name: 'FilaRestaurante',
             component: FilaRestaurante
-        }
+        },
+        {
+            path: '/meuRestaurante',
+            name: 'MeuRestaurante',
+            component: MeuRestaurante
+        },
+        {
+            path: '/cadastroAdmin',
+            name: 'CadastroAdmin',
+            component: CadastroAdmin
+        },
+        {
+            path: '/loginAdmin',
+            name: 'LoginAdmin',
+            component: LoginAdmin
+        },
     ]
 })
