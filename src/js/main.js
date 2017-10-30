@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from '../components/App.vue'
+import Axios from 'axios'
 import router from '../components/router'
 
 new Vue({
@@ -10,3 +11,5 @@ new Vue({
     App,
   },
 })
+
+Vue.prototype.$http = Axios

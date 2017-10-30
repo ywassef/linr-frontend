@@ -51,7 +51,7 @@
     name: 'InsercaoManual',
     methods: {
       insertmanual: function (event) {
-        var cljs = new ClientJS()
+        const cljs = new ClientJS()
         alert(document.getElementById('NameField').value + '\n'
           + document.getElementById('TelephoneField').value + '\n'
           + 'ID do usuário: ' + cljs.getFingerprint())

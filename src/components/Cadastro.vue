@@ -5,55 +5,58 @@
     </div>
     <div class="content">
       <section class="hero">
-        <div class="hero-body">
-          <div class="columns is-mobile is-centered">
-            <div class="column is-one-third has-text-centered">
-              <div class="field">
-                <label class="label">Nome</label>
-                <div class="control">
-                  <input class="input" id="NameField" type="text"
-                         placeholder="Ex: Ivan Alves">
+        <form>
+          <div class="hero-body">
+            <div class="columns is-mobile is-centered">
+              <div class="column is-one-third has-text-centered">
+                <div class="field">
+                  <label class="label">Nome</label>
+                  <div class="control">
+                    <input class="input" name="nome" type="text"
+                           placeholder="Ex: Ivan Alves">
+                  </div>
                 </div>
-              </div>
-              <div class="field">
-                <label class="label">Telefone</label>
-                <div class="control">
-                  <input class="input" id="TelephoneField" type="tel"
-                         placeholder="(11) 11111-1111">
+                <div class="field">
+                  <label class="label">Telefone</label>
+                  <div class="control">
+                    <input class="input" name="telefone" type="tel"
+                           placeholder="(11) 11111-1111">
+                  </div>
                 </div>
-              </div>
-              <div class="field">
-                <label class="label">Email</label>
-                <div class="control">
-                  <input class="input" id="EmailField" type="email"
-                         placeholder="Ex: ivanalves@gmail.com">
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control">
+                    <input class="input" name="email" type="email"
+                           placeholder="Ex: ivanalves@gmail.com">
+                  </div>
                 </div>
-              </div>
-              <div class="field">
-                <label class="label">Senha</label>
-                <div class="control">
-                  <input class="input" id="PasswordField" type="password"
-                         placeholder="Deve conter pelo menos 6 caracteres">
+                <div class="field">
+                  <label class="label">Senha</label>
+                  <div class="control">
+                    <input class="input" name="senha" type="password"
+                           placeholder="Deve conter pelo menos 6 caracteres">
+                  </div>
                 </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox" id="Termos">
-                    Concordo com os  <a href="#">Termos e Condições de Uso</a>
-                  </label>
+                <div class="field">
+                  <div class="control">
+                    <label class="checkbox">
+                      <input type="checkbox" name="termos">
+                      Concordo com os  <a href="#">Termos e Condições de Uso</a>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="hero-foot">
-            <div class="container has-text-centered">
-              <button class="button is-large is-primary" v-on:click="cadastrar">
-                Cadastrar
-              </button>
+            <div class="hero-foot">
+              <div class="container has-text-centered">
+                <button type="submit" class="button is-large is-primary"
+                        v-on:click="cadastrar">
+                  Cadastrar
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </section>
     </div>
   </section>
@@ -61,22 +64,27 @@
 
 <script>
   import MaskedInput from 'vue-masked-input'
+  import ClientJS from 'clientjs'
 
   export default {
     name: 'Cadastro',
     methods: {
-      cadastrar: function (event) {
-        if (document.getElementById('Termos').checked) {
-          alert(document.getElementById('NameField').value + '\n'
-            + document.getElementById('EmailField').value + '\n'
-            + document.getElementById('PasswordField').value + '\n'
-            + document.getElementById('TelephoneField').value + '\n'
-            + 'Cadastro realizado com sucesso!')
+      cadastrar: function () {
+        const cljs = new ClientJS()
+        const form = document.getElementsByTagName('form')[0]
+        console.log(`Form: ${form}`)
+        if (!form.termos.checked) {
+          alert('Nao aceitou os termos e condicoes.')
+          return
         }
-        else {
-          alert('Você deve aceitar os Termos e Condições de Uso para fazer o cadastro!')
-        }
-        console.log(event)
+        console.log(this.$http)
+        this.$http.post('http://localhost:8080/auth/new', {
+          id: cljs.getFingerprint(),
+          nome: form.name.value,
+          telefone: form.telefone.value,
+          email: form.email.value,
+          senha: form.senha.value,
+        })
       },
     },
     data () {
