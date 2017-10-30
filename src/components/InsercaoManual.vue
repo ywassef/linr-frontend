@@ -10,21 +10,11 @@
     </div>
 
     <div class="field">
-      <label class="label">Nome</label>
-      <div class="control">
-        <input class="input" id="NameField" type="text"
-               placeholder="Ex: Ivan Alves">
-      </div>
-    </div>
-
-    <div class="field">
       <label class="label">Telefone</label>
       <div class="control">
         <input class="input" id="TelephoneField" type="tel"
                placeholder="(11) 11111-1111">
       </div>
-    </div>
-    </div>
     </div>
     <div class="hero-foot">
       <div class="container has-text-centered">
@@ -33,9 +23,6 @@
         </button>
       </div>
     </div>
-
-    </div>
-    <br>
     <button class="button is-primary is-outlined" v-on:click="insertmanual">
       Inserir
     </button>
@@ -68,5 +55,9 @@
 
   html {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
+  button{
+    position: relative;
   }
 </style>

@@ -1,14 +1,10 @@
 <template>
   <div class="about">
     <div class="content">
-      <section class="hero">
-        <div class="hero-body">
-          <button class="button is-large is-primary"
-                  v-on:click="entrar_na_fila">ENTRAR NA FILA
-          </button>
-          <br/>
-        </div>
-      </section>
+      <button class="button is-outlined is-primary"
+              v-on:click="entrar_na_fila">ENTRAR NA FILA
+      </button>
+      <br/>
     </div>
   </div>
 </template>
