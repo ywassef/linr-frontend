@@ -59,9 +59,12 @@
 </script>
 
 </style lang="scss">
-=======
+==
+==
+==
+=
 
-  #navbar {
-    background-color: $primary;
-  }
+#navbar {
+  background-color: $primary;
+}
 </style>

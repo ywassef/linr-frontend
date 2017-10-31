@@ -58,7 +58,7 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }
 
-  button{
+  button {
     position: relative;
   }
 </style>
