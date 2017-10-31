@@ -1,68 +1,68 @@
 <template>
   <section>
     <div class="content">
-      <div class="columns">
+      <div class="columns is-centered">
         <div class="column">
           <abbr title="Posição">Pos</abbr>
         </div>
-        <div class="column is-one-quarter">
+        <div class="column is-one-quarter has-text-centered">
           Nome
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           Telefone
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           <abbr title="Hora Entrada Fila">HEF</abbr>
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           <abbr title="Hora Saida Fila">HSF</abbr>
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           <abbr title="Hora Prevista Atendimento">HPA</abbr>
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           <abbr title="Quantidade Pessoas">QP</abbr>
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           <abbr title="Tem Reserva">R</abbr>
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           Obs
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           <abbr title="Retirar da Fila">RF</abbr>
         </div>
       </div>
 
-      <div class="columns" v-for="user in Usuarios">
-        <div class="column">
+      <div class="columns is-centered" v-for="user in Usuarios">
+        <div class="column has-text-centered">
           {{user.posicao}}
         </div>
-        <div class="column is-one-quarter">
+        <div class="column is-one-quarter has-text-centered">
           {{user.nome}}
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           {{user.telefone}}
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           {{user.hef}}
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           {{user.hsf}}
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           {{user.hpa}}
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           {{user.qp}}
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           {{user.r}}
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           {{user.obs}}
         </div>
-        <div class="column">
+        <div class="column has-text-centered">
           <a class="button is-danger is-outlined"
              v-on:click="remover_da_fila(user.nome, user.posicao)">Remover</a>
         </div>
@@ -166,4 +166,6 @@
     position: relative;
     top: 40px;
   }
+
+
 </style>
