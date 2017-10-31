@@ -1,12 +1,10 @@
 <template>
-
   <section class="section">
     <div class="content">
       <section class="hero">
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
             <div class="column has-text-centered">
-
               <div class="field">
                 <label class="label">Código do Restaurante</label>
                 <div class="control">
@@ -21,11 +19,9 @@
               <button class="button is-large is-primary" v-on:click="entrar_na_fila">ENTRAR NA FILA</button>
             </div>
           </div>
-
         </div>
       </section>
     </div>
-
   </section>
 </template>
 
@@ -46,3 +42,21 @@
     }
   }
 </script>
+
+<style lang="scss">
+  @import "../scss/style";
+
+  html, body, #app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  html {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
+  #navbar {
+    background-color: $primary;
+  }
+</style>

@@ -88,5 +88,4 @@
       document.getElementById('SMS').disabled = true;
     }
   };
-
 </script>

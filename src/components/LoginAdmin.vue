@@ -1,13 +1,17 @@
 <template>
+
   <section class="section">
+
     <div class="container has-text-centered">
-      <h1 class="title">Login</h1>
+      <h1 class="title">Login Admin</h1>
     </div>
+
     <div class="content">
       <section class="hero">
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
-            <div class="column has-text-centered">
+            <div class="column is-one-third has-text-centered">
+
               <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
@@ -28,14 +32,16 @@
           </div>
           <div class="hero-foot">
             <div class="container has-text-centered">
-              <button class="button is-large is-primary" v-on:click="logar">
-                Entrar
-              </button>
+              <a class="button is-large is-primary" v-on:click="logar"
+                 href="#/admin">Entrar</a>
+              <a class="button is-large is-primary" href="#/cadastroAdmin">Cadastrar</a>
             </div>
           </div>
+
         </div>
       </section>
     </div>
+
   </section>
 </template>
 
@@ -58,16 +64,20 @@
   }
 </script>
 
-</style lang="scss">
+<style lang="scss">
   @import "../scss/style";
-  
+
   html, body, #app {
     height: 100%;
     width: 100%;
     margin: 0;
   }
-  
+
   html {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
+  #navbar {
+    background-color: black;
   }
 </style>

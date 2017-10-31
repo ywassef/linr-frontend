@@ -1,19 +1,16 @@
 <template>
   <nav id="navbar" class="navbar">
     <section class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <a class="navbar-item" href="#/home">
         <h1 class="is-size-4">Linr </h1>
         <img :src="logo" alt="Logo"/>
       </a>
     </section>
 
-    <span id="nav-toggle" class="nav-toggle"  onclick="document.getElementById('menu_not_logged').classList.toggle('is-active');">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-
-    <section id='menu_not_logged' class="nav-right nav-menu is-active">
+    <section class="nav-right nav-menu">
+      <span class="nav-item">
+          <router-link to="/loginAdmin">Admin</router-link>
+      </span>
       <span class="nav-item">
           <router-link to="/cadastro">Cadastro</router-link>
       </span>
@@ -25,66 +22,16 @@
   </nav>
 </template>
 
-<script>
-  import Logo from "../img/logo.png"
-
-  export default {
-    name: "navbar",
-    data() {
-      return {
-        "logo": Logo,
-      }
-    },
-  }
-</script>
-
-<style lang="scss">
-  @import "../scss/style";
-
-  #navbar {
-    background-color: $primary;
-  }
-</style>
-
-<!--
-
-<template>
-  <nav id="navbar" class="navbar">
-
-    <section class="navbar-brand">
-      <a class="navbar-item" href="/">
-        <h1 class="is-size-4">Linr</h1>
-        <img :src="logo" alt="Logo"/>
-      </a>
-    </section>
-
-
-    <section class="nav-right nav-menu">
-      <span class="nav-item">
-            <a class="button is-primary">
-              <span>Cadastro</span>
-            </a>
-          </span>
-      <span class="nav-item">
-            <a class="button is-primary">
-              <span>Login</span>
-            </a>
-          </span>
-    </section>
-
-  </nav>
-</template>
-
 
 
 <script>
-  import Logo from "../img/logo.png"
+  import Logo from '../img/logo.png'
 
   export default {
-    name: "navbar",
-    data() {
+    name: 'navbar',
+    data () {
       return {
-        "logo": Logo,
+        'logo': Logo,
       }
     },
   }
