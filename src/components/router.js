@@ -3,15 +3,15 @@ import Router from 'vue-router'
 import Cadastro from './Cadastro.vue'
 import Entrarnafila from './Entrarnafila.vue'
 import Login from './Login.vue'
-import InsercaoManual from './InsercaoManual.vue'
 import Outback12 from './Outback12.vue'
 import Confirmado from './Confirmado.vue'
 import Home from './Home.vue'
 import FilaRestaurante from './FilaRestaurante.vue'
 import MeuRestaurante from './MeuRestaurante.vue'
-import CadastroAdmin from './CadastroAdmin.vue'
+import CadastroRestaurante from './CadastroRestaurante.vue'
 import LoginAdmin from './LoginAdmin.vue'
 import Admin from './Admin.vue'
+import EditarConta from './EditarConta.vue'
 
 Vue.use(Router)
 
@@ -63,14 +63,19 @@ export default new Router({
       component: MeuRestaurante,
     },
     {
-      path: '/cadastroAdmin',
-      name: 'CadastroAdmin',
-      component: CadastroAdmin,
+      path: '/cadastroRestaurante',
+      name: 'CadastroRestaurante',
+      component: CadastroRestaurante,
     },
     {
       path: '/loginAdmin',
       name: 'LoginAdmin',
       component: LoginAdmin,
+    },
+    {
+      path: '/editarConta',
+      name: 'EditarConta',
+      component: EditarConta,
     },
   ],
 })
