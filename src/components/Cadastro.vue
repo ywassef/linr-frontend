@@ -63,9 +63,6 @@
 </template>
 
 <script>
-  import MaskedInput from 'vue-masked-input'
-  import ClientJS from 'clientjs'
-
   function getRandomInt (min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
@@ -76,21 +73,23 @@
     name: 'Cadastro',
     methods: {
       cadastrar: function () {
-        var cljs = new ClientJS()
         const form = document.getElementsByTagName('form')[0]
-        console.log(`Form: ${form}`)
         if (!form.termos.checked) {
           alert('Você deve aceitar os Termos e Condições para fazer o cadastro!')
           return
         }
-        console.log(this.$http)
-        this.$http.post('http://localhost:8080/auth/new', {
-          id: cljs.getFingerprint(),
+        console.log(this.axios)
+        this.axios.post('http://localhost:8080/api/auth/new', {
           id: getRandomInt(0, 10000000),
           nome: form.name.value,
           telefone: form.telefone.value,
           email: form.email.value,
           senha: form.senha.value,
+        }).then(response => {
+          console.log(`Response: ${response}`)
+        })
+        .catch(err => {
+          console.log(`Error: ${err}`)
         })
       },
     },

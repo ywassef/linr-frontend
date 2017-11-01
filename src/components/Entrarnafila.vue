@@ -10,7 +10,8 @@
               <div class="field">
                 <label class="label">Nome</label>
                 <div class="control">
-                  <input class="input" id="NameField" type="text" placeholder="Ex: Ivan Alves">
+                  <input class="input" id="NameField" type="text"
+                         placeholder="Ex: Ivan Alves">
                 </div>
               </div>
 
@@ -24,7 +25,8 @@
               <div class="field">
                 <label class="label">Celular</label>
                 <div class="control">
-                  <input class="input" id="MobileField" type="tel" placeholder="(11) 11111-1111">
+                  <input class="input" id="MobileField" type="tel"
+                         placeholder="(11) 11111-1111">
                 </div>
               </div>
 
@@ -41,7 +43,9 @@
           </div>
           <div class="hero-foot">
             <div class="container has-text-centered">
-              <button class="button is-large is-primary" v-on:click="entrar_na_fila">ENTRAR</button>
+              <button class="button is-large is-primary"
+                      v-on:click="entrar_na_fila">ENTRAR NA FILA
+              </button>
             </div>
           </div>
 
@@ -56,7 +60,7 @@
 
   var data = {
     smscheckbox: 'Quero receber alertas da fila via SMS',
-  };
+  }
 
   import Vue from 'vue'
 
@@ -101,20 +105,20 @@
         }
       }
     },
-    data() {
-      return data;
-    }
-  };
+    data () {
+      return data
+    },
+  }
 
-  window.onload = function() {
-    const client = new ClientJS();
-    const OS = client.getOS();
-    if(OS === 'iOS' || OS === 'Mac OS') {
-      data.smscheckbox = 'É necessário o uso de alertas via SMS para iOS';
-      document.getElementById('SMS').checked = true;
-      document.getElementById('SMS').disabled = true;
+  window.onload = function () {
+    const client = new ClientJS()
+    const OS = client.getOS()
+    if (OS === 'iOS' || OS === 'Mac OS') {
+      data.smscheckbox = 'É necessário o uso de alertas via SMS para iOS'
+      document.getElementById('SMS').checked = true
+      document.getElementById('SMS').disabled = true
     }
-  };
+  }
 </script>
 
 <style>
