@@ -8,7 +8,7 @@
         <form>
           <div class="hero-body">
             <div class="columns is-mobile is-centered">
-              <div class="column is-one-third has-text-centered">
+              <div class="column has-text-centered is-one-third-desktop">
                 <div class="field">
                   <label class="label">Nome</label>
                   <div class="control">
@@ -80,7 +80,7 @@
         const form = document.getElementsByTagName('form')[0]
         console.log(`Form: ${form}`)
         if (!form.termos.checked) {
-          alert('Nao aceitou os termos e condicoes.')
+          alert('Você deve aceitar os Termos e Condições para fazer o cadastro!')
           return
         }
         console.log(this.$http)
