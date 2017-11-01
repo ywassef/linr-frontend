@@ -55,7 +55,7 @@
 <script>
 
   var data = {
-    smscheckbox: 'Quero receber alertas da fila via SMS'
+    smscheckbox: 'Quero receber alertas da fila via SMS',
   };
 
   import Vue from 'vue'
@@ -89,6 +89,9 @@
           Vue.prototype.$name = document.getElementById('NameField').value;
           Vue.prototype.$num_people = document.getElementById('NumPeopleField').value;
           Vue.prototype.$rest_id = document.getElementById('restaurantID').textContent;
+          Vue.prototype.$line = '15';
+          Vue.prototype.$time = '30';
+
 
           this.$router.push({
             path: 'confirmado',
@@ -113,3 +116,9 @@
     }
   };
 </script>
+
+<style>
+  #navbar {
+    background-color: #c40000;
+  }
+</style>

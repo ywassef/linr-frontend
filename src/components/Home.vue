@@ -58,6 +58,6 @@
   }
 
   #navbar {
-    background-color: $primary;
+    background-color: #c40000;
   }
 </style>

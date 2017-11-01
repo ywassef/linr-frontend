@@ -14,6 +14,8 @@ import LoginAdmin from './LoginAdmin.vue'
 import Admin from './Admin.vue'
 import UserSpace from './UserSpace.vue'
 import AlterarDados from './AlterarDados.vue'
+import Historico from './Historico.vue'
+import Restaurantes from './Restaurantes.vue'
 
 Vue.use(Router);
 
@@ -78,6 +80,16 @@ export default new Router({
       path: '/alterar_dados',
       name: 'AlterarDados',
       component: AlterarDados,
+    },
+    {
+      path: '/historico',
+      name: 'Historico',
+      component: Historico,
+    },
+    {
+      path: '/restaurantes',
+      name: 'Restaurantes',
+      component: Restaurantes,
     },
     {
       path: '/loginAdmin',

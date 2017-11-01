@@ -63,6 +63,7 @@
     methods: {
       salvar: function(event) {
         alert('Dados alterados com sucesso!')
+        this.$router.push({ path: '/espaco_usuario'});
       }
     },
     data () {
@@ -97,5 +98,8 @@
     margin-bottom: 20px;
   }
 
+  #navbar {
+    background-color: #c40000;
+  }
 
 </style>
