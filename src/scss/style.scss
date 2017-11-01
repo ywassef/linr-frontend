@@ -1,5 +1,10 @@
 @import "../../node_modules/bulma/sass/utilities/initial-variables";
 
-$primary: $red;
+$primary: $orange;
+$info: #fb9062;
+$warning: #e5e5e5;
+$danger: $grey;
+$success: #c40000;
+
 
 @import "~bulma";

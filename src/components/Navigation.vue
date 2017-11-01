@@ -1,13 +1,18 @@
 <template>
   <nav id="navbar" class="navbar">
     <section class="navbar-brand">
-      <a class="navbar-item" href="#/home">
-        <h1 class="is-size-4">Linr </h1>
+      <a class="navbar-item" href="/">
         <img :src="logo" alt="Logo"/>
       </a>
     </section>
 
-    <section class="nav-right nav-menu">
+    <div id="nav-toggle" class="nav-toggle"  onclick="document.getElementById('menu').classList.toggle('is-active');">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <section class="nav-right nav-menu" id="menu">
       <span class="nav-item">
           <router-link to="/loginAdmin">Admin</router-link>
       </span>
@@ -21,6 +26,8 @@
 
   </nav>
 </template>
+
+
 
 <script>
   import Logo from '../img/logo.png'
@@ -39,6 +46,8 @@
   @import "../scss/style";
 
   #navbar {
-    background-color: $primary;
+    background-color: #c40000;
   }
 </style>
+
+-->
