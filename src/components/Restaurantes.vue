@@ -1,30 +1,28 @@
 <template>
   <section class="section">
-    <div class="columns is-multiline is-mobile is-centered">
+    <div class="columns is-multiline is-mobile is-centered has-text-centered">
       <div v-for="rest in restaurantes">
-        <div class="column">
+        <div class="column is-one-third-desktop is-centered has-text-centered">
           <div class="card">
             <div class="card-content">
-              <p class="title">
-                {{rest.nome}}
-              </p>
-              <p class="subtitle">
-                {{rest.descricao}}
-              </p>
-              <p class="subtitle">
-                {{rest.local}}
-              </p>
+              <div class="content">
+                <p class="title">
+                  {{rest.nome}}
+                </p>
+                <p class="subtitle">
+                  {{rest.descricao}}
+                </p>
+                <p class="subtitle">
+                  {{rest.local}}
+                </p>
+              </div>
             </div>
             <footer class="card-footer">
               <p class="card-footer-item">
-                          <span>
-                            <a href="#">Informações</a>
-                          </span>
+                  <a href="#">Informações</a>
               </p>
               <p class="card-footer-item">
-                          <span>
-                              <BEntrar></BEntrar>
-                          </span>
+                <BEntrar></BEntrar>
               </p>
             </footer>
           </div>
@@ -74,5 +72,4 @@
   #navbar {
     background-color: #c40000;
   }
-
 </style>

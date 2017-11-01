@@ -1,6 +1,5 @@
 <template>
   <section class="section">
-
     <div class="content">
       <div class="field">
         <label class="label">Número de pessoas:</label>
@@ -8,7 +7,6 @@
           <input class="input" id="NumPeopleField" type="text">
         </div>
       </div>
-
       <div class="field">
         <div class="control">
           <label class="checkbox">
@@ -17,15 +15,12 @@
           </label>
         </div>
       </div>
-
       <div class="container has-text-centered">
         <button class="button is-medium is-primary" v-on:click="entrar_na_fila">
           ENTRAR
         </button>
       </div>
-
     </div>
-
   </section>
 </template>
 

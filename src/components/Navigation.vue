@@ -4,27 +4,27 @@
       <a class="navbar-item" href="/">
         <img :src="logo" alt="Logo"/>
       </a>
+      <button class="button navbar-burger"
+              onclick="document.getElementById('menu').classList.toggle('is-active');">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </section>
 
-    <div id="nav-toggle" class="nav-toggle"
-         onclick="document.getElementById('menu').classList.toggle('is-active');">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <section class="nav-right nav-menu" id="menu">
-      <span class="nav-item">
-          <router-link to="/loginAdmin">Admin</router-link>
-      </span>
-      <span class="nav-item">
-          <router-link to="/cadastro">Cadastro</router-link>
-      </span>
-      <span class="nav-item">
-          <router-link to="/login">Login</router-link>
-      </span>
+    <section class="navbar-menu" id="menu">
+      <div class="navbar-end">
+        <span class="navbar-item">
+            <router-link to="/loginAdmin"><span style="color: #fff">Admin</span></router-link>
+        </span>
+        <span class="navbar-item">
+            <router-link to="/cadastro"><span style="color: #fff">Cadastro</span></router-link>
+        </span>
+        <span class="navbar-item">
+            <router-link to="/login"><span style="color: #fff">Login</span></router-link>
+        </span>
+      </div>
     </section>
-
   </nav>
 </template>
 
@@ -49,5 +49,3 @@
     background-color: #c40000;
   }
 </style>
-
--->
