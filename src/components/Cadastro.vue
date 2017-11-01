@@ -88,9 +88,9 @@
         }).then(response => {
           console.log(`Response: ${response}`)
         })
-        .catch(err => {
-          console.log(`Error: ${err}`)
-        })
+          .catch(err => {
+            console.log(`Error: ${err}`)
+          })
       },
     },
     data () {

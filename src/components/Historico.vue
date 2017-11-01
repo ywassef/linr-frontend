@@ -60,9 +60,9 @@
     name: 'Historico',
     methods: {
       voltar: function (event) {
-        this.$router.push({ path: 'espaco_usuario' });
+        this.$router.push({path: 'espaco_usuario'})
       },
-    }
+    },
   }
 </script>
 

@@ -16,7 +16,7 @@ import AlterarDados from './AlterarDados.vue'
 import Historico from './Historico.vue'
 import Restaurantes from './Restaurantes.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   routes: [

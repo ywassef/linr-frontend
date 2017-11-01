@@ -67,43 +67,42 @@
   export default {
     name: 'Entrarnafila',
     methods: {
-      entrar_na_fila: function(event) {
-        var cljs = new ClientJS();
+      entrar_na_fila: function (event) {
+        var cljs = new ClientJS()
 
-        var nome_check = false, numpeople_check = false, sms_check = false;
+        var nome_check = false, numpeople_check = false, sms_check = false
 
-        if(document.getElementById('NameField').value === '') {
-          alert('Você deve informar o nome');
+        if (document.getElementById('NameField').value === '') {
+          alert('Você deve informar o nome')
         } else {
-          nome_check = true;
+          nome_check = true
         }
 
-        if(document.getElementById('NumPeopleField').value === '') {
-          alert('Você deve informar o número de pessoas');
+        if (document.getElementById('NumPeopleField').value === '') {
+          alert('Você deve informar o número de pessoas')
         } else {
-          numpeople_check = true;
+          numpeople_check = true
         }
 
-        if(document.getElementById('SMS').checked === true && document.getElementById('MobileField').value === '') {
-          alert('Você deve informar o número telefone');
+        if (document.getElementById('SMS').checked === true && document.getElementById('MobileField').value === '') {
+          alert('Você deve informar o número telefone')
         } else {
-          sms_check = true;
+          sms_check = true
         }
-        if(nome_check && numpeople_check && sms_check === true) {
-          Vue.prototype.$name = document.getElementById('NameField').value;
-          Vue.prototype.$num_people = document.getElementById('NumPeopleField').value;
-          Vue.prototype.$rest_id = document.getElementById('restaurantID').textContent;
-          Vue.prototype.$line = '15';
-          Vue.prototype.$time = '30';
-
+        if (nome_check && numpeople_check && sms_check === true) {
+          Vue.prototype.$name = document.getElementById('NameField').value
+          Vue.prototype.$num_people = document.getElementById('NumPeopleField').value
+          Vue.prototype.$rest_id = document.getElementById('restaurantID').textContent
+          Vue.prototype.$line = '15'
+          Vue.prototype.$time = '30'
 
           this.$router.push({
             path: 'confirmado',
-            query: {hash: cljs.getFingerprint()}
-          });
+            query: {hash: cljs.getFingerprint()},
+          })
           console.log(event)
         }
-      }
+      },
     },
     data () {
       return data

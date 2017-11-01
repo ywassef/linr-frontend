@@ -37,17 +37,22 @@
 <script>
   import MaskedInput from 'vue-masked-input'
   import EntrarFila from './EntrarFilaCadastrado.vue'
+
   export default {
     name: 'Home',
     components: {
-      "BEntrar": EntrarFila
+      'BEntrar': EntrarFila,
     },
     methods: {},
-    data() {
+    data () {
       return {
         restaurantes: [
-          {nome: 'Outback Steakhouse', descricao: 'Australiano', local: 'Shopping CenterVale'},
-        ]
+          {
+            nome: 'Outback Steakhouse',
+            descricao: 'Australiano',
+            local: 'Shopping CenterVale',
+          },
+        ],
       }
     },
   }
@@ -55,11 +60,13 @@
 
 <style lang="scss">
   @import "../scss/style";
+
   html, body, #app {
     height: 100%;
     width: 100%;
     margin: 0;
   }
+
   html {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }

@@ -6,7 +6,8 @@
       </a>
     </section>
 
-    <div id="nav-toggle" class="nav-toggle"  onclick="document.getElementById('menu').classList.toggle('is-active');">
+    <div id="nav-toggle" class="nav-toggle"
+         onclick="document.getElementById('menu').classList.toggle('is-active');">
       <span></span>
       <span></span>
       <span></span>
@@ -26,7 +27,6 @@
 
   </nav>
 </template>
-
 
 
 <script>

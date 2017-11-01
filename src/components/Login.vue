@@ -44,9 +44,9 @@
     name: 'Login',
     methods: {
       logar: function (event) {
-        if(document.getElementById('EmailField').value === 'maria@gmail.com') {
-          if(document.getElementById('PasswordField').value === 'maria'){
-            this.$router.push({path: 'espaco_usuario'});
+        if (document.getElementById('EmailField').value === 'maria@gmail.com') {
+          if (document.getElementById('PasswordField').value === 'maria') {
+            this.$router.push({path: 'espaco_usuario'})
           } else {
             alert('Senha incorreta')
           }
@@ -54,19 +54,19 @@
           alert('Usuário não encontrado')
         }
       },
-    }
+    },
   }
 </script>
 
 <style lang="scss">
   @import "../scss/style";
-  
+
   html, body, #app {
     height: 100%;
     width: 100%;
     margin: 0;
   }
-  
+
   html {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }

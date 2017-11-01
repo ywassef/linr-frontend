@@ -61,10 +61,10 @@
   export default {
     name: 'AlterarDados',
     methods: {
-      salvar: function(event) {
+      salvar: function (event) {
         alert('Dados alterados com sucesso!')
-        this.$router.push({ path: '/espaco_usuario'});
-      }
+        this.$router.push({path: '/espaco_usuario'})
+      },
     },
     data () {
       return {}

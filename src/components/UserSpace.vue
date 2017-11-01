@@ -2,7 +2,8 @@
   <section class="section_large">
     <div class="title_container">
       <div class="title_body">
-        <h1 class="title has-text-left" style="color: white">Bem vindo(a) Maria!</h1>
+        <h1 class="title has-text-left" style="color: white">
+          Bem vindo(a) Maria!</h1>
       </div>
     </div>
 
@@ -11,35 +12,36 @@
         <nav class="level is-mobile">
           <div class="level-left">
             <div class="level-item">
-              <h2 class="title has-text-centered"><strong>Meu Histórico</strong></h2>
+              <h2 class="title has-text-centered"><strong>Meu Histórico</strong>
+              </h2>
             </div>
           </div>
         </nav>
 
         <table class="table is-mobile">
           <thead>
-            <tr>
-              <th>Data</th>
-              <th>Restaurante</th>
-              <th>Espera</th>
-            </tr>
+          <tr>
+            <th>Data</th>
+            <th>Restaurante</th>
+            <th>Espera</th>
+          </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>25/10/2017</td>
-              <td>Outback</td>
-              <td>30 min</td>
-            </tr>
-            <tr>
-              <td>15/09/2017</td>
-              <td>Outback</td>
-              <td>1h 24 min</td>
-            </tr>
-            <tr>
-              <td>06/08/2017</td>
-              <td>Outback</td>
-              <td>15 min</td>
-            </tr>
+          <tr>
+            <td>25/10/2017</td>
+            <td>Outback</td>
+            <td>30 min</td>
+          </tr>
+          <tr>
+            <td>15/09/2017</td>
+            <td>Outback</td>
+            <td>1h 24 min</td>
+          </tr>
+          <tr>
+            <td>06/08/2017</td>
+            <td>Outback</td>
+            <td>15 min</td>
+          </tr>
           </tbody>
         </table>
 
@@ -70,26 +72,26 @@
 </template>
 
 <script>
-   export default {
+  export default {
     name: 'UserSpace',
     methods: {
       alterar_dados: function (event) {
-        this.$router.push({ path: 'alterar_dados' });
+        this.$router.push({path: 'alterar_dados'})
       },
       historico: function (event) {
-        this.$router.push({ path: 'historico' });
+        this.$router.push({path: 'historico'})
       },
       restaurantes: function (event) {
-        this.$router.push({ path: 'restaurantes' });
+        this.$router.push({path: 'restaurantes'})
       },
-    }
+    },
   }
 </script>
 
 <style>
- .section_large {
-   padding: 0;
- }
+  .section_large {
+    padding: 0;
+  }
 
   .user_body {
     padding: 3rem 1.5rem;
@@ -108,8 +110,8 @@
     margin: 10px;
   }
 
- #navbar {
-   background-color: #c40000;
- }
+  #navbar {
+    background-color: #c40000;
+  }
 
 </style>
