@@ -63,7 +63,7 @@
         Restaurante: {
           nome: 'Outback',
           data: '30/10/2017',
-          pa: '150',
+          pa: '0',
           tme: '00:40',
           ppa: '00:23',
         },
