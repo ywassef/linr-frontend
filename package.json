@@ -2,7 +2,7 @@
   "name": "linr_frontend",
   "description": "Frontend for the Linr project",
   "version": "1.0.0",
-  "author": "Ivan Dardi <ivy.dardi@gmail.com>",
+  "author": "Ivan Dardi <ivy.dardi@gmail.com>, Denis Taveira Laurentino de Lima <denis.taveira@hotmail.com>",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --hot",

@@ -1,9 +1,7 @@
 <template>
-
   <section class="section">
-
     <div class="container has-text-centered">
-      <h1 class="title">Cadastro Empresa</h1>
+      <h1 class="title">INFORMAÇÕES RESTAURANTES</h1>
     </div>
 
     <div class="content">
@@ -17,6 +15,20 @@
                 <div class="control">
                   <input class="input" id="NameField" type="text"
                          placeholder="Ex: Ivan Alves">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Categoria</label>
+                <div class="control">
+                  <div class="select">
+                    <select>
+                      <option>Pizzaria</option>
+                      <option>Lanchonete</option>
+                      <option>Comida Mexicana</option>
+                      <option>Comida Japonesa</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
@@ -63,19 +75,18 @@
               </div>
 
               <div class="field">
-                <label class="label">Senha</label>
+                <label class="label">Forma Pagamento</label>
                 <div class="control">
-                  <input class="input" id="PasswordField" type="password"
-                         placeholder="Deve conter pelo menos 6 caracteres">
+                  <textarea class="textarea"
+                            placeholder="e.g. Hello world"></textarea>
                 </div>
               </div>
 
               <div class="field">
+                <label class="label">Dia Funcionamento</label>
                 <div class="control">
-                  <label class="checkbox">
-                    <input type="checkbox" id="Termos">
-                    Concordo com os  <a href="#">Termos e Condições de Uso</a>
-                  </label>
+                  <textarea class="textarea"
+                            placeholder="e.g. Hello world"></textarea>
                 </div>
               </div>
 
@@ -83,8 +94,8 @@
           </div>
           <div class="hero-foot">
             <div class="container has-text-centered">
-              <a class="button is-large is-primary" v-on:click="cadastrar"
-                 href="#/loginAdmin">Cadastrar</a>
+              <a class="button is-outlined is-primary" v-on:click="atualizar"
+                 href="#/admin">Atualizar</a>
             </div>
           </div>
 
@@ -101,19 +112,14 @@
   export default {
     name: 'Cadastro',
     methods: {
-      cadastrar: function (event) {
-        if (document.getElementById('Termos').checked) {
-          alert(document.getElementById('NameField').value + '\n'
-            + document.getElementById('EmailField').value + '\n'
-            + document.getElementById('PasswordField').value + '\n'
-            + document.getElementById('TelephoneField').value + '\n'
-            + 'Cadastro realizado com sucesso!')
-          console.log(event)
-        }
-        else {
-          alert('Você deve aceitar os Termos e Condições de Uso para fazer o cadastro!')
-          console.log(event)
-        }
+      atualizar: function (event) {
+        alert(document.getElementById('NameField').value + '\n'
+          + document.getElementById('TelephoneField1').value + '\n'
+          + document.getElementById('TelephoneField2').value + '\n'
+          + document.getElementById('SiteField').value + '\n'
+          + document.getElementById('EnderecoField').value + '\n'
+          + 'Cadastro realizado com sucesso!')
+        console.log(event)
       },
     },
     data () {
@@ -133,5 +139,9 @@
 
   html {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
+  #navbar {
+    background-color: black;
   }
 </style>
