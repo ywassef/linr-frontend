@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div id="restaurantID" style="visibility: hidden; height: 0px; width: 0px">outback12</div>
+    <div id="restaurantID" style="visibility: hidden; height: 0px; width: 0px">
+      outback12
+    </div>
     <FormFilaView></FormFilaView>
   </div>
 
@@ -13,7 +15,7 @@
   export default {
     name: 'FilaOutback12',
     components: {
-      "FormFilaView": EntrarFila
+      'FormFilaView': EntrarFila,
     },
   }
 </script>
