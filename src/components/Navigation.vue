@@ -1,9 +1,10 @@
 <template>
   <nav id="navbar" class="navbar">
     <section class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <router-link to="/" class="navbar-item">
+        <h1 class="is-size-4">Linr </h1>
         <img :src="logo" alt="Logo"/>
-      </a>
+      </router-link>
       <button class="button navbar-burger"
               onclick="document.getElementById('menu').classList.toggle('is-active');">
         <span></span>
