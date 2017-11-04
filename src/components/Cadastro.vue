@@ -8,7 +8,7 @@
         <form>
           <div class="hero-body">
             <div class="columns is-mobile is-centered">
-              <div class="column is-one-third has-text-centered">
+              <div class="column has-text-centered is-one-third-desktop">
                 <div class="field">
                   <label class="label">Nome</label>
                   <div class="control">
@@ -75,7 +75,7 @@
       cadastrar: function () {
         const form = document.getElementsByTagName('form')[0]
         if (!form.termos.checked) {
-          alert('Nao aceitou os termos e condicoes.')
+          alert('Você deve aceitar os Termos e Condições para fazer o cadastro!')
           return
         }
         console.log(this.axios)
@@ -88,9 +88,9 @@
         }).then(response => {
           console.log(`Response: ${response}`)
         })
-        .catch(err => {
-          console.log(`Error: ${err}`)
-        })
+          .catch(err => {
+            console.log(`Error: ${err}`)
+          })
       },
     },
     data () {
@@ -113,6 +113,6 @@
   }
 
   #navbar {
-    background-color: $primary;
+    background-color: #c40000;
   }
 </style>

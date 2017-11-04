@@ -12,6 +12,10 @@ import CadastroRestaurante from './CadastroRestaurante.vue'
 import LoginAdmin from './LoginAdmin.vue'
 import Admin from './Admin.vue'
 import EditarConta from './EditarConta.vue'
+import UserSpace from './UserSpace.vue'
+import AlterarDados from './AlterarDados.vue'
+import Historico from './Historico.vue'
+import Restaurantes from './Restaurantes.vue'
 
 Vue.use(Router)
 
@@ -66,6 +70,26 @@ export default new Router({
       path: '/cadastroRestaurante',
       name: 'CadastroRestaurante',
       component: CadastroRestaurante,
+    },
+    {
+      path: '/espaco_usuario',
+      name: 'EspacoUsuario',
+      component: UserSpace,
+    },
+    {
+      path: '/alterar_dados',
+      name: 'AlterarDados',
+      component: AlterarDados,
+    },
+    {
+      path: '/historico',
+      name: 'Historico',
+      component: Historico,
+    },
+    {
+      path: '/restaurantes',
+      name: 'Restaurantes',
+      component: Restaurantes,
     },
     {
       path: '/loginAdmin',

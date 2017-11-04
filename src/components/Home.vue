@@ -1,10 +1,11 @@
 <template>
   <section class="section">
+    <img src="../img/logo_big.png" style="width: 400px; height: auto"/>
     <div class="content">
       <section class="hero">
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
-            <div class="column has-text-centered">
+            <div class="column has-text-centered is-one-third-desktop">
               <div class="field">
                 <label class="label">Código do Restaurante</label>
                 <div class="control">
@@ -60,6 +61,6 @@
   }
 
   #navbar {
-    background-color: $primary;
+    background-color: #c40000;
   }
 </style>
