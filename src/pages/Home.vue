@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <img src="../img/logo_big.png" style="width: 400px; height: auto"/>
+    <img :src="logo" style="width: 400px; height: auto"/>
     <div class="content">
       <section class="hero">
         <div class="hero-body">
@@ -13,7 +13,6 @@
                          placeholder="Ex: outback12">
                 </div>
               </div>
-
             </div>
           </div>
           <div class="hero-foot">
@@ -30,8 +29,15 @@
 </template>
 
 <script>
+  import logo from '../img/logo_big.png'
+
   export default {
     name: 'Home',
+    data () {
+      return {
+        logo,
+      }
+    },
     methods: {
       entrar_na_fila: function (event) {
         if (document.getElementById('RestID').value === 'outback12') {

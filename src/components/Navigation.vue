@@ -12,23 +12,21 @@
         <span></span>
       </button>
     </section>
-
     <section class="navbar-menu" id="menu">
       <div class="navbar-end">
-        <span class="navbar-item">
-            <router-link to="/loginAdmin"><span style="color: #fff">Admin</span></router-link>
-        </span>
-        <span class="navbar-item">
-            <router-link to="/cadastro"><span style="color: #fff">Cadastro</span></router-link>
-        </span>
-        <span class="navbar-item">
-            <router-link to="/login"><span style="color: #fff">Login</span></router-link>
-        </span>
+        <router-link to="/admin" class="navbar-item">
+          <span>Admin</span>
+        </router-link>
+        <router-link to="/usuario/cadastro" class="navbar-item">
+          <span>Cadastro</span>
+        </router-link>
+        <router-link to="/usuario/login" class="navbar-item">
+          <span>Login</span>
+        </router-link>
       </div>
     </section>
   </nav>
 </template>
-
 
 <script>
   import Logo from '../img/logo.png'

@@ -43,10 +43,10 @@
   export default {
     name: 'Login',
     methods: {
-      logar: function (event) {
+      logar (event) {
         if (document.getElementById('EmailField').value === 'maria@gmail.com') {
           if (document.getElementById('PasswordField').value === 'maria') {
-            this.$router.push({path: 'espaco_usuario'})
+            this.$router.push('Dashboard')
           } else {
             alert('Senha incorreta')
           }
@@ -59,7 +59,7 @@
 </script>
 
 <style lang="scss">
-  @import "../scss/style";
+  @import "../../scss/style";
 
   html, body, #app {
     height: 100%;

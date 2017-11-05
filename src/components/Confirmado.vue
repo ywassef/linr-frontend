@@ -1,6 +1,5 @@
 <template>
   <section class="section">
-
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-parent is-mobile">
         <div class="tile is-child notification is-primary">

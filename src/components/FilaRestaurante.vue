@@ -143,7 +143,7 @@
           },
         ],
 
-        Restaurante: {nome: 'Outback'},
+        restaurante: {nome: 'Outback'},
       }
     },
   }

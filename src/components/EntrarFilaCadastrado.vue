@@ -1,10 +1,18 @@
 <template>
-  <section class="section">
-    <div class="content">
-      <div class="field">
-        <label class="label">Número de pessoas:</label>
+  <div>
+    <div class="tile">
+      <div class="field has-addons">
         <div class="control">
-          <input class="input" id="NumPeopleField" type="text">
+          <input
+              class="input"
+              id="NumPeopleField"
+              type="number"
+              placeholder="Número de pessoas">
+        </div>
+        <div class="control">
+          <button class="button is-primary" v-on:click="entrar_na_fila">
+            Entrar
+          </button>
         </div>
       </div>
       <div class="field">
@@ -15,28 +23,19 @@
           </label>
         </div>
       </div>
-      <div class="container has-text-centered">
-        <button class="button is-medium is-primary" v-on:click="entrar_na_fila">
-          ENTRAR
-        </button>
-      </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-
-  var data = {
-    smscheckbox: 'Alertas via SMS',
-  }
-
   import Vue from 'vue'
 
   export default {
-    name: 'Entrarnafila',
+    name: 'EntrarFilaCadastrado',
     methods: {
-      entrar_na_fila: function (event) {
+      entrar_na_fila (event) {
         if (document.getElementById('NumPeopleField').value !== '') {
+          // TODO: Usar props
           Vue.prototype.$name = 'Maria'
           Vue.prototype.$num_people = document.getElementById('NumPeopleField').value
           Vue.prototype.$rest_id = 'outback12'
@@ -53,7 +52,9 @@
       },
     },
     data () {
-      return data
+      return {
+        smscheckbox: 'Alertas via SMS',
+      }
     },
   }
 

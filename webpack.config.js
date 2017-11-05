@@ -20,6 +20,7 @@ module.exports = {
           },
           include: [
             path.resolve(__dirname, './src/components'),
+            path.resolve(__dirname, './src/pages'),
           ],
           // other vue-loader options go here
         },

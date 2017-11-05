@@ -66,14 +66,11 @@
         this.$router.push({path: '/espaco_usuario'})
       },
     },
-    data () {
-      return {}
-    },
   }
 </script>
 
 <style lang="scss">
-  @import "../scss/style";
+  @import "../../scss/style";
 
   html, body, #app {
     height: 100%;
