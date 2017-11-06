@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: './src/js/main.js',
   output: {
-    path: path.join(path.resolve(__dirname), 'deploy'),
+    path: path.join(path.resolve(__dirname), './deploy'),
     filename: 'dist/js/[name].build.js',
   },
   module: {
@@ -20,6 +20,7 @@ module.exports = {
           },
           include: [
             path.resolve(__dirname, './src/components'),
+            path.resolve(__dirname, './src/pages'),
           ],
           // other vue-loader options go here
         },

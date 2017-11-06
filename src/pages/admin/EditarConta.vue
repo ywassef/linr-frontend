@@ -1,81 +1,63 @@
 <template>
-
   <section class="section">
-
     <div class="container has-text-centered">
-      <h1 class="title">Login Admin</h1>
+      <h1 class="title">INFORMAÇÕES RESTAURANTE</h1>
     </div>
-
     <div class="content">
       <section class="hero">
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
             <div class="column is-one-third has-text-centered">
-
               <div class="field">
-                <label class="label">Email</label>
+                <label class="label">E-mail</label>
                 <div class="control">
-                  <input class="input" id="EmailField" type="email"
-                         placeholder="Ex: ivanalves@gmail.com">
+                  <input class="input" id="Email" type="text"
+                         placeholder="Ex: Ivan Alves">
                 </div>
               </div>
-
               <div class="field">
-                <label class="label">Senha</label>
+                <label class="label">Senha Atual</label>
                 <div class="control">
-                  <input class="input" id="PasswordField" type="password"
+                  <input class="input" id="PasswordField" type="password">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Senha Nova</label>
+                <div class="control">
+                  <input class="input" id="PasswordFieldNew" type="password"
                          placeholder="Deve conter pelo menos 6 caracteres">
                 </div>
               </div>
-
             </div>
           </div>
           <div class="hero-foot">
             <div class="container has-text-centered">
-              <a class="button is-outlined" v-on:click="logar"
-                 href="#/admin">Entrar</a>
+              <a class="button is-outlined is-primary" v-on:click="atualizar"
+                 href="#/admin">Atualizar</a>
             </div>
           </div>
-
         </div>
       </section>
     </div>
-
   </section>
 </template>
 
 <script>
-  import MaskedInput from 'vue-masked-input'
-
   export default {
-    name: 'Login',
+    name: 'EditarConta',
     methods: {
-      logar: function (event) {
-        alert(document.getElementById('EmailField').value + '\n'
+      atualizar: function (event) {
+        alert(document.getElementById('Email').value + '\n'
           + document.getElementById('PasswordField').value + '\n'
-          + 'Login realizado com sucesso!')
+          + document.getElementById('PasswordFieldNew').value + '\n'
+          + 'Atualizado com sucesso!')
         console.log(event)
       },
-    },
-    data () {
-      return {}
     },
   }
 </script>
 
-<style lang="scss">
-  @import "../scss/style";
-
-  html, body, #app {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
-
+<style>
   #navbar {
     background-color: black;
   }

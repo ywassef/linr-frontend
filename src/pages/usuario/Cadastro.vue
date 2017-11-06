@@ -8,33 +8,45 @@
         <form>
           <div class="hero-body">
             <div class="columns is-mobile is-centered">
-              <div class="column is-one-third has-text-centered">
+              <div class="column has-text-centered is-one-third-desktop">
                 <div class="field">
                   <label class="label">Nome</label>
                   <div class="control">
-                    <input class="input" name="nome" type="text"
-                           placeholder="Ex: Ivan Alves">
+                    <input
+                        class="input"
+                        name="nome"
+                        type="text"
+                        placeholder="Ex: Ivan Alves"/>
                   </div>
                 </div>
                 <div class="field">
                   <label class="label">Telefone</label>
                   <div class="control">
-                    <input class="input" name="telefone" type="tel"
-                           placeholder="(11) 11111-1111">
+                    <input
+                        class="input"
+                        name="telefone"
+                        type="tel"
+                        placeholder="(11) 11111-1111"/>
                   </div>
                 </div>
                 <div class="field">
                   <label class="label">Email</label>
                   <div class="control">
-                    <input class="input" name="email" type="email"
-                           placeholder="Ex: ivanalves@gmail.com">
+                    <input
+                        class="input"
+                        name="email"
+                        type="email"
+                        placeholder="Ex: ivanalves@gmail.com"/>
                   </div>
                 </div>
                 <div class="field">
                   <label class="label">Senha</label>
                   <div class="control">
-                    <input class="input" name="senha" type="password"
-                           placeholder="Deve conter pelo menos 6 caracteres">
+                    <input
+                        class="input"
+                        name="senha"
+                        type="password"
+                        placeholder="Deve conter pelo menos 6 caracteres"/>
                   </div>
                 </div>
                 <div class="field">
@@ -49,8 +61,10 @@
             </div>
             <div class="hero-foot">
               <div class="container has-text-centered">
-                <button type="submit" class="button is-large is-primary"
-                        v-on:click="cadastrar">
+                <button
+                    type="button"
+                    class="button is-large is-primary"
+                    v-on:click="cadastrar">
                   Cadastrar
                 </button>
               </div>
@@ -72,35 +86,37 @@
   export default {
     name: 'Cadastro',
     methods: {
-      cadastrar: function () {
-        const form = document.getElementsByTagName('form')[0]
+      cadastrar () {
+        const [form] = document.getElementsByTagName('form')
         if (!form.termos.checked) {
-          alert('Nao aceitou os termos e condicoes.')
-          return
+          alert('Você deve aceitar os Termos e Condições para fazer o cadastro!')
+          return false
         }
-        console.log(this.axios)
-        this.axios.post('http://localhost:8080/api/auth/new', {
-          id: getRandomInt(0, 10000000),
-          nome: form.name.value,
-          telefone: form.telefone.value,
-          email: form.email.value,
-          senha: form.senha.value,
-        }).then(response => {
-          console.log(`Response: ${response}`)
-        })
-        .catch(err => {
-          console.log(`Error: ${err}`)
-        })
+        this.$http
+          .post('http://localhost:8080/auth/new', {
+            id: getRandomInt(0, 10000000),
+            nome: form.nome.value,
+            telefone: form.telefone.value,
+            email: form.email.value,
+            senha: form.senha.value,
+          })
+          .then(response => {
+            console.log(`Response: ${response}`)
+            // TODO add session to cookies
+            const session_id = response.data.id_usuario
+            this.$router.push('Dashboard')
+          })
+          .catch(err => {
+            console.log(`Error: ${err}`)
+            return false
+          })
       },
-    },
-    data () {
-      return {}
     },
   }
 </script>
 
 <style lang="scss">
-  @import "../scss/style";
+  @import "../../scss/style";
 
   html, body, #app {
     height: 100%;
@@ -113,6 +129,6 @@
   }
 
   #navbar {
-    background-color: $primary;
+    background-color: #c40000;
   }
 </style>

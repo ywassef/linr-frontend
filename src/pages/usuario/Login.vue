@@ -7,20 +7,18 @@
       <section class="hero">
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
-            <div class="column has-text-centered">
+            <div class="column has-text-centered is-one-third-desktop">
               <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                  <input class="input" id="EmailField" type="email"
-                         placeholder="Ex: ivanalves@gmail.com">
+                  <input class="input" id="EmailField" type="email">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Senha</label>
                 <div class="control">
-                  <input class="input" id="PasswordField" type="password"
-                         placeholder="Deve conter pelo menos 6 caracteres">
+                  <input class="input" id="PasswordField" type="password">
                 </div>
               </div>
 
@@ -45,26 +43,35 @@
   export default {
     name: 'Login',
     methods: {
-      logar: function (event) {
-        alert(document.getElementById('EmailField').value + '\n'
-          + document.getElementById('PasswordField').value + '\n'
-          + 'Login realizado com sucesso!')
-        console.log(event)
+      logar (event) {
+        if (document.getElementById('EmailField').value === 'maria@gmail.com') {
+          if (document.getElementById('PasswordField').value === 'maria') {
+            this.$router.push('Dashboard')
+          } else {
+            alert('Senha incorreta')
+          }
+        } else {
+          alert('Usuário não encontrado')
+        }
       },
-    },
-    data () {
-      return {}
     },
   }
 </script>
 
-</style lang="scss">
-==
-==
-==
-=
+<style lang="scss">
+  @import "../../scss/style";
 
-#navbar {
-  background-color: $primary;
-}
+  html, body, #app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  html {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
+  #navbar {
+    background-color: #c40000;
+  }
 </style>

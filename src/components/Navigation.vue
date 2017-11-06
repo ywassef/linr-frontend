@@ -1,24 +1,30 @@
 <template>
   <nav id="navbar" class="navbar">
     <section class="navbar-brand">
-      <a class="navbar-item" href="#/home">
+      <router-link to="/" class="navbar-item">
         <h1 class="is-size-4">Linr </h1>
         <img :src="logo" alt="Logo"/>
-      </a>
+      </router-link>
+      <button class="button navbar-burger"
+              onclick="document.getElementById('menu').classList.toggle('is-active');">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </section>
-
-    <section class="nav-right nav-menu">
-      <span class="nav-item">
-          <router-link to="/loginAdmin">Admin</router-link>
-      </span>
-      <span class="nav-item">
-          <router-link to="/cadastro">Cadastro</router-link>
-      </span>
-      <span class="nav-item">
-          <router-link to="/login">Login</router-link>
-      </span>
+    <section class="navbar-menu" id="menu">
+      <div class="navbar-end">
+        <router-link to="/admin" class="navbar-item">
+          <span>Admin</span>
+        </router-link>
+        <router-link to="/usuario/cadastro" class="navbar-item">
+          <span>Cadastro</span>
+        </router-link>
+        <router-link to="/usuario/login" class="navbar-item">
+          <span>Login</span>
+        </router-link>
+      </div>
     </section>
-
   </nav>
 </template>
 
@@ -39,6 +45,6 @@
   @import "../scss/style";
 
   #navbar {
-    background-color: $primary;
+    background-color: #c40000;
   }
 </style>

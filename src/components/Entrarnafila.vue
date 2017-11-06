@@ -5,7 +5,7 @@
       <section class="hero">
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
-            <div class="column has-text-centered">
+            <div class="column has-text-centered is-one-third-desktop">
 
               <div class="field">
                 <label class="label">Nome</label>
@@ -69,15 +69,39 @@
     methods: {
       entrar_na_fila: function (event) {
         var cljs = new ClientJS()
-        Vue.prototype.$name = document.getElementById('NameField').value
-        Vue.prototype.$num_people = document.getElementById('NumPeopleField').value
-        Vue.prototype.$rest_id = document.getElementById('restaurantID').textContent
 
-        this.$router.push({
-          path: 'confirmado',
-          query: {hash: cljs.getFingerprint()},
-        })
-        console.log(event)
+        var nome_check = false, numpeople_check = false, sms_check = false
+
+        if (document.getElementById('NameField').value === '') {
+          alert('Você deve informar o nome')
+        } else {
+          nome_check = true
+        }
+
+        if (document.getElementById('NumPeopleField').value === '') {
+          alert('Você deve informar o número de pessoas')
+        } else {
+          numpeople_check = true
+        }
+
+        if (document.getElementById('SMS').checked === true && document.getElementById('MobileField').value === '') {
+          alert('Você deve informar o número telefone')
+        } else {
+          sms_check = true
+        }
+        if (nome_check && numpeople_check && sms_check === true) {
+          Vue.prototype.$name = document.getElementById('NameField').value
+          Vue.prototype.$num_people = document.getElementById('NumPeopleField').value
+          Vue.prototype.$rest_id = document.getElementById('restaurantID').textContent
+          Vue.prototype.$line = '15'
+          Vue.prototype.$time = '30'
+
+          this.$router.push({
+            path: 'confirmado',
+            query: {hash: cljs.getFingerprint()},
+          })
+          console.log(event)
+        }
       },
     },
     data () {
@@ -95,3 +119,9 @@
     }
   }
 </script>
+
+<style>
+  #navbar {
+    background-color: #c40000;
+  }
+</style>
