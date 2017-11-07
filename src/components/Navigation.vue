@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import Logo from '../img/logo.png'
+  import Logo from '../img/logo64px.png'
 
   export default {
     name: 'navbar',
@@ -45,6 +45,6 @@
   @import "../scss/style";
 
   #navbar {
-    background-color: #c40000;
+    background-color: $navbarbg;
   }
 </style>
