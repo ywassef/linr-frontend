@@ -41,10 +41,16 @@
     },
     data () {
       return {
-        restaurantes: [],
+        restaurantes: [
+          {
+            nome: 'Outback Steakhouse',
+            descricao: 'Australiano',
+            local: 'Shopping CenterVale',
+          },
+        ],
       }
     },
-    methods: {
+    /*methods: {
       preencherRestaurantes () {
         const vm = this
         vm.$http
@@ -67,7 +73,7 @@
     },
     mounted () {
       this.preencherRestaurantes()
-    },
+    },*/
   }
 </script>
 
