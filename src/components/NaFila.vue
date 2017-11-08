@@ -25,8 +25,7 @@
             </div>
 
             <div class="tile is-child notification is-warning">
-              <span style="font-size: 30px"><img src="../img/group_of.png"
-                                                 style="height: 25px; width: 25px"/> {{this.$line}} grupos na fila</span>
+              <span style="font-size: 30px"><img src="../img/group_of.png" style="height: 25px; width: 25px"/> {{this.$line}} grupos na fila</span>
             </div>
           </div>
         </div>
