@@ -46,7 +46,7 @@
                         class="input"
                         name="senha"
                         type="password"
-                        placeholder="Deve conter pelo menos 6 caracteres"/>
+                        placeholder="••••••"/>
                   </div>
                 </div>
                 <div class="field">
@@ -116,7 +116,7 @@
 </script>
 
 <style lang="scss">
-  @import "../../scss/style";
+  @import "../scss/style";
 
   html, body, #app {
     height: 100%;

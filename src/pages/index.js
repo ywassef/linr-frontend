@@ -2,14 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from './Home.vue'
+import Cadastro from './Cadastro.vue'
+import Login from './Login.vue'
+import Restaurantes from './Restaurantes.vue'
 
 import {
   AlterarDados,
-  Cadastro,
   Dashboard,
   Historico,
-  Login,
-  Restaurantes,
   UserSpace,
 } from './usuario'
 
@@ -31,6 +31,21 @@ export default new Router({
       component: Home,
     },
     {
+      path: '/cadastro',
+      name: 'Cadastro',
+      component: Cadastro,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
+    },
+    {
+      path: '/restaurantes',
+      name: 'Restaurantes',
+      component: Restaurantes,
+    },
+    {
       path: '/usuario',
       name: 'Usuario',
       component: UserSpace,
@@ -38,16 +53,6 @@ export default new Router({
         {
           path: '',
           redirect: {name: 'Dashboard'},
-        },
-        {
-          path: 'login',
-          name: 'Login',
-          component: Login,
-        },
-        {
-          path: 'cadastro',
-          name: 'Cadastro',
-          component: Cadastro,
         },
         {
           path: 'dashboard',
@@ -58,11 +63,6 @@ export default new Router({
           path: 'config',
           name: 'Configuracao',
           component: AlterarDados,
-        },
-        {
-          path: 'restaurantes',
-          name: 'Restaurantes',
-          component: Restaurantes,
         },
         {
           path: 'historico',
