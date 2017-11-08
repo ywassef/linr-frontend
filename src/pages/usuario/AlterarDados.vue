@@ -95,8 +95,4 @@
     margin-bottom: 20px;
   }
 
-  #navbar {
-    background-color: #c40000;
-  }
-
 </style>

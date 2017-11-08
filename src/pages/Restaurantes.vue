@@ -92,7 +92,4 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }
 
-  #navbar {
-    background-color: #c40000;
-  }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="content">
-      <section class="hero">
+      <section class="hero is-one-third-desktop">
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
             <div class="column has-text-centered is-one-third-desktop">
@@ -114,7 +114,5 @@
 </script>
 
 <style>
-  #navbar {
-    background-color: #c40000;
-  }
+
 </style>

@@ -38,7 +38,4 @@
     margin: 10px;
   }
 
-  #navbar {
-    background-color: #c40000;
-  }
 </style>

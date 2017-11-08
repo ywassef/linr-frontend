@@ -61,8 +61,4 @@
     border-radius: 10px;
   }
 
-  #navbar {
-    background-color: #c40000;
-  }
-
 </style>

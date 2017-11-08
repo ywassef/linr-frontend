@@ -70,7 +70,5 @@
 </script>
 
 <style>
-  #navbar {
-    background-color: #c40000;
-  }
+
 </style>
