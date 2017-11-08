@@ -59,16 +59,12 @@
                 </div>
               </div>
             </div>
-            <div class="hero-foot">
-              <div class="container has-text-centered">
-                <button
-                    type="button"
-                    class="button is-large is-primary"
-                    v-on:click="cadastrar">
-                  Cadastrar
-                </button>
-              </div>
-            </div>
+          </div>
+          <div class="hero-body">
+            <button type="button" class="button is-large is-primary"
+                v-on:click="cadastrar">
+              Cadastrar
+            </button>
           </div>
         </form>
       </section>

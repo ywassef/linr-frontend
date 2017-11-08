@@ -1,30 +1,31 @@
 <template>
-  <section class="seaction">
-
+  <section>
     <div class="content">
       <section class="hero">
         <div class="hero-body">
+          <div class="columns is-mobile is-centered">
+            <div class="column has-text-centered is-one-third-desktop">
               <div class="field">
                 <label class="label">Nome</label>
                 <div class="control">
                   <input class="input" id="NameField" type="text"
                          placeholder="Ex: Ivan Alves">
+                  </div>
                 </div>
-              </div>
 
-              <div class="field">
-                <label class="label">Número de pessoas:</label>
-                <div class="control">
-                  <input class="input" id="NumPeopleField" type="text">
-                </div>
-              </div>
+                <div class="field">
+                  <label class="label">Número de pessoas:</label>
+                  <div class="control">
+                   <input class="input" id="NumPeopleField" type="text">
+                  </div>
+               </div>
 
-              <div class="field">
-                <label class="label">Celular</label>
-                <div class="control">
-                  <input class="input" id="MobileField" type="tel"
+               <div class="field">
+                 <label class="label">Celular</label>
+                  <div class="control">
+                   <input class="input" id="MobileField" type="tel"
                          placeholder="(11) 11111-1111">
-                </div>
+                  </div>
               </div>
 
               <div class="field">
@@ -33,19 +34,18 @@
                     <input type="checkbox" id="SMS">
                     {{ smscheckbox }}
                   </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="hero-body">
-          <div class="container has-text-centered">
-            <button class="button is-large is-primary"
-                    v-on:click="entrar_na_fila">ENTRAR NA FILA
-            </button>
-          </div>
+          <button class="button is-large is-primary"
+                  v-on:click="entrar_na_fila">ENTRAR NA FILA
+          </button>
         </div>
       </section>
     </div>
-
   </section>
 </template>
 

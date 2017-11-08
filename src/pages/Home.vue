@@ -1,24 +1,26 @@
 <template>
-  <section class="seaction">
+  <section>
     <div class="content">
       <section class="hero">
-        <div class="hero-body">
-          <img :src="logo" style="width: auto; height: auto"/>
-        </div>
-        <div class="hero-body">
-          <div class="field">
-            <label class="label">Código do Restaurante</label>
-            <div class="control">
-              <input class="input" id="RestID" type="email"
-                     placeholder="Ex: outback12" value="outback12">
+        <div class="columns is-mobile is-centered">
+          <div class="column has-text-centered is-one-third-desktop">
+            <div class="hero-body">
+              <img :src="logo" style="width: auto; height: auto"/>
             </div>
-          </div>
-        </div>
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <button class="button is-large is-primary"
-                    v-on:click="entrar_na_fila">ENTRAR NA FILA
-            </button>
+            <div class="hero-body">
+              <div class="field">
+                <label class="label">Código do Restaurante</label>
+                <div class="control">
+                  <input class="input" id="RestID" type="email"
+                         placeholder="Ex: outback12" value="outback12">
+                </div>
+              </div>
+            </div>
+            <div class="hero-body">
+              <button class="button is-large is-primary"
+                      v-on:click="entrar_na_fila">ENTRAR NA FILA
+              </button>
+            </div>
           </div>
         </div>
       </section>

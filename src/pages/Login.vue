@@ -11,26 +11,24 @@
               <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                  <input class="input" id="EmailField" type="email">
+                  <input class="input" id="EmailField" type="email" value="maria@gmail.com">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Senha</label>
                 <div class="control">
-                  <input class="input" id="PasswordField" type="password">
+                  <input class="input" id="PasswordField" type="password" value="maria">
                 </div>
               </div>
 
             </div>
           </div>
-          <div class="hero-foot">
-            <div class="container has-text-centered">
-              <button class="button is-large is-primary" v-on:click="logar">
-                Entrar
-              </button>
-            </div>
-          </div>
+        </div>
+        <div class="hero-body">
+          <button class="button is-large is-primary" v-on:click="logar">
+            Entrar
+          </button>
         </div>
       </section>
     </div>
@@ -46,7 +44,7 @@
       logar (event) {
         if (document.getElementById('EmailField').value === 'maria@gmail.com') {
           if (document.getElementById('PasswordField').value === 'maria') {
-            this.$router.push('Dashboard')
+            this.$router.push('Usuario')
           } else {
             alert('Senha incorreta')
           }

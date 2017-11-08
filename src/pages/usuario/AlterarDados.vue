@@ -63,7 +63,7 @@
     methods: {
       salvar: function (event) {
         alert('Dados alterados com sucesso!')
-        this.$router.push({path: '/espaco_usuario'})
+        this.$router.push({path: '/usuario'})
       },
     },
   }
