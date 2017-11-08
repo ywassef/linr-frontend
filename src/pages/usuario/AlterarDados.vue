@@ -1,11 +1,11 @@
 <template>
-  <section class="section">
-    <div class="container is-mobile has-text-centered">
-      <h1 class="title">Alterar Dados Cadastrais</h1>
-    </div>
+  <section>
     <div class="content">
       <section class="hero">
         <form>
+          <div class="hero-body">
+            <h1 class="title"><b>Alterar Dados Cadastrais</b></h1>
+          </div>
           <div class="hero-body">
             <div class="columns is-mobile is-centered">
               <div class="column has-text-centered is-one-third-desktop">
@@ -40,15 +40,12 @@
                 </div>
               </div>
             </div>
-
-            <div class="hero-foot">
-              <div class="container has-text-centered">
-                <button type="submit" class="button is-large is-primary"
-                        v-on:click="salvar">
-                  Salvar Dados
-                </button>
-              </div>
-            </div>
+          </div>
+          <div class="hero-body">
+            <button type="submit" class="button is-large is-primary"
+                    v-on:click="salvar">
+              Salvar Dados
+            </button>
           </div>
         </form>
       </section>

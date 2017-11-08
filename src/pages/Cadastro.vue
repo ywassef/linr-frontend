@@ -1,11 +1,11 @@
 <template>
-  <section class="section">
-    <div class="container has-text-centered">
-      <h1 class="title">Cadastro de Usuário</h1>
-    </div>
+  <section>
     <div class="content">
       <section class="hero">
         <form>
+          <div class="hero-body">
+            <h2 class="title"><b>Cadastro de Usuário</b></h2>
+          </div>
           <div class="hero-body">
             <div class="columns is-mobile is-centered">
               <div class="column has-text-centered is-one-third-desktop">

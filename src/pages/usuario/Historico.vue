@@ -8,7 +8,7 @@
 
     <div class="columns is-mobile is-centered">
       <div class="column has-text-centered is-half-desktop">
-        <table class="table is-mobile is-full-width">
+        <table class="table is-mobile is-fullwidth">
           <thead>
           <tr>
             <th>Data</th>

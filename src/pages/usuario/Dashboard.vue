@@ -54,7 +54,7 @@
           Restaurantes
         </button>
       </router-link>
-      <router-link to="alterar_dados">
+      <router-link to="config">
         <button class="button is-medium is-danger">
           <img :src="setting" style="height: 25px; width: 25px"/>
           Alterar dados cadastrais
