@@ -20,8 +20,7 @@
         <div class="tile is-child">
           <div class="tile is-parent is-mobile">
             <div class="tile is-child notification is-warning">
-              <span style="font-size: 30px"><img src="../img/clock.png"
-                                                 style="height: 25px; width: 25px"/> {{this.$time}} min</span>
+              <span style="font-size: 30px"><img src="../img/clock.png" style="height: 25px; width: 25px"/> {{this.$time}} min</span>
             </div>
 
             <div class="tile is-child notification is-warning">
