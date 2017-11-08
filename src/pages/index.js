@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import Entrarnafila from '../components/EntrarNaFila.vue'
 import Home from './Home.vue'
 import Cadastro from './Cadastro.vue'
 import Login from './Login.vue'
 import Restaurantes from './Restaurantes.vue'
+import NaFila from '../components/NaFila.vue'
 
 import {
   AlterarDados,
@@ -24,6 +25,7 @@ import {
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -46,8 +48,12 @@ export default new Router({
       component: Restaurantes,
     },
     {
+      path: '/nafila',
+      name: 'NaFila',
+      component: NaFila,
+    },
+    {
       path: '/usuario',
-      name: 'Usuario',
       component: UserSpace,
       children: [
         {
@@ -72,8 +78,12 @@ export default new Router({
       ],
     },
     {
+      path: '/r/:id',
+      name: 'Entrarnafila',
+      component: Entrarnafila,
+    },
+    {
       path: '/admin',
-      name: 'admin',
       component: Admin,
       children: [
         {

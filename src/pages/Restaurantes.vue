@@ -10,7 +10,8 @@
                   {{restaurante.nome}}
                 </p>
                 <p class="subtitle">
-                  {{restaurante.descricao}}
+                  {{restaurante.descricao}} <br>
+                  {{$route.params.id}}
                 </p>
                 <p class="subtitle">
                   {{restaurante.local}}
@@ -52,6 +53,7 @@
     },
     /*methods: {
       preencherRestaurantes () {
+        return;
         const vm = this
         vm.$http
           .get('http://localhost:8080/restaurante')

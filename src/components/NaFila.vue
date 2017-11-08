@@ -45,7 +45,7 @@
 
 <script>
   export default {
-    name: 'Confirmado',
+    name: 'NaFila',
     methods: {
       desistir: function (event) {
         if (confirm('Você tem certeza que deseja sair da fila?') === true) {

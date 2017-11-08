@@ -10,7 +10,7 @@
                 <label class="label">Código do Restaurante</label>
                 <div class="control">
                   <input class="input" id="RestID" type="email"
-                         placeholder="Ex: outback12">
+                         placeholder="Ex: outback12" value="outback12">
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@
     methods: {
       entrar_na_fila: function (event) {
         if (document.getElementById('RestID').value === 'outback12') {
-          this.$router.push({path: 'outback12'})
+          this.$router.push({path: 'r/outback12'})
           console.log(event)
         }
         else {
