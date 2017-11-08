@@ -1,12 +1,9 @@
 <template>
-  <section class="section">
+  <section class="seaction">
 
     <div class="content">
       <section class="hero">
         <div class="hero-body">
-          <div class="columns is-mobile is-centered">
-            <div class="column has-text-centered is-one-third-desktop">
-
               <div class="field">
                 <label class="label">Nome</label>
                 <div class="control">
@@ -36,19 +33,15 @@
                     <input type="checkbox" id="SMS">
                     {{ smscheckbox }}
                   </label>
-                </div>
-              </div>
-
             </div>
           </div>
-          <div class="hero-foot">
-            <div class="container has-text-centered">
-              <button class="button is-large is-primary"
-                      v-on:click="entrar_na_fila">ENTRAR NA FILA
-              </button>
-            </div>
+        </div>
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <button class="button is-large is-primary"
+                    v-on:click="entrar_na_fila">ENTRAR NA FILA
+            </button>
           </div>
-
         </div>
       </section>
     </div>

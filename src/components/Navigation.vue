@@ -5,8 +5,7 @@
         <h1 class="is-size-4">Linr </h1>
         <img :src="logo" alt="Logo"/>
       </router-link>
-      <button class="button navbar-burger"
-              onclick="document.getElementById('menu').classList.toggle('is-active');">
+      <button class="button navbar-burger" onclick="document.getElementById('menu').classList.toggle('is-active');">
         <span></span>
         <span></span>
         <span></span>
@@ -14,13 +13,13 @@
     </section>
     <section class="navbar-menu" id="menu">
       <div class="navbar-end">
-        <router-link to="/admin" class="navbar-item">
+        <router-link to="/admin" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
           <span style="color: #fff">Admin</span>
         </router-link>
-        <router-link to="/cadastro" class="navbar-item">
+        <router-link to="/cadastro" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
           <span style="color: #fff">Cadastro</span>
         </router-link>
-        <router-link to="/login" class="navbar-item">
+        <router-link to="/login" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
           <span style="color: #fff">Login</span>
         </router-link>
       </div>
