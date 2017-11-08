@@ -57,7 +57,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
   #navbar {
     background-color: black;
   }

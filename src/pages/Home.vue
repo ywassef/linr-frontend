@@ -53,18 +53,8 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../scss/style";
-
-  html, body, #app {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
 
   #navbar {
     background-color: #c40000;

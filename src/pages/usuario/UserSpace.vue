@@ -16,7 +16,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
   .section_large {
     padding: 0;
   }

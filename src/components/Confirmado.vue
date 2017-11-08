@@ -57,7 +57,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
   .tile {
     border: 5px solid white;
     border-radius: 10px;
