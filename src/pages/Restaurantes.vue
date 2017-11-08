@@ -32,7 +32,7 @@
 
 <script>
   import MaskedInput from 'vue-masked-input'
-  import EntrarFila from '../../components/EntrarFilaCadastrado.vue'
+  import EntrarFila from '../components/EntrarFilaCadastrado.vue'
 
   export default {
     name: 'Restaurantes',
@@ -72,7 +72,7 @@
 </script>
 
 <style lang="scss">
-  @import "../../scss/style";
+  @import "../scss/style";
 
   html, body, #app {
     height: 100%;

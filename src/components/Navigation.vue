@@ -15,13 +15,13 @@
     <section class="navbar-menu" id="menu">
       <div class="navbar-end">
         <router-link to="/admin" class="navbar-item">
-          <span>Admin</span>
+          <span style="color: #fff">Admin</span>
         </router-link>
-        <router-link to="/usuario/cadastro" class="navbar-item">
-          <span>Cadastro</span>
+        <router-link to="/cadastro" class="navbar-item">
+          <span style="color: #fff">Cadastro</span>
         </router-link>
-        <router-link to="/usuario/login" class="navbar-item">
-          <span>Login</span>
+        <router-link to="/login" class="navbar-item">
+          <span style="color: #fff">Login</span>
         </router-link>
       </div>
     </section>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import Logo from '../img/logo.png'
+  import Logo from '../img/logo64px.png'
 
   export default {
     name: 'navbar',
