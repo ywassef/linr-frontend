@@ -32,10 +32,10 @@ export default new Router({
     },
     {
       path: '/usuario',
-      name: 'Usuario',
       component: UserSpace,
       children: [
         {
+          name: 'Usuario',
           path: '',
           redirect: {name: 'Dashboard'},
         },
@@ -73,10 +73,10 @@ export default new Router({
     },
     {
       path: '/admin',
-      name: 'admin',
       component: Admin,
       children: [
         {
+          name: 'Admin',
           path: '',
           redirect: {name: 'MeuRestaurante'},
         },

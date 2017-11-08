@@ -33,6 +33,7 @@
 <script>
   import MaskedInput from 'vue-masked-input'
   import EntrarFila from '../../components/EntrarFilaCadastrado.vue'
+  import { api } from '../../js/environment'
 
   export default {
     name: 'Restaurantes',
@@ -48,7 +49,7 @@
       preencherRestaurantes () {
         const vm = this
         vm.$http
-          .get('http://localhost:8080/restaurante')
+          .get(api('/restaurantes'))
           .then(function (response) {
             return response.data.data
               .map(function (restaurante) {

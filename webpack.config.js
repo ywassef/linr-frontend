@@ -1,6 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/js/main.js',
@@ -40,6 +40,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/html/index.html',
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: `'${process.env.NODE_ENV}'`,
+      },
+    }),
   ],
   resolve: {
     alias: {
@@ -60,11 +65,6 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"',
-      },
-    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {

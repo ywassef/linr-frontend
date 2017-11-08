@@ -77,6 +77,8 @@
 </template>
 
 <script>
+  import { api } from '../../js/environment'
+
   function getRandomInt (min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
@@ -93,7 +95,7 @@
           return false
         }
         this.$http
-          .post('http://localhost:8080/auth/new', {
+          .post(api('/auth/new'), {
             id: getRandomInt(0, 10000000),
             nome: form.nome.value,
             telefone: form.telefone.value,

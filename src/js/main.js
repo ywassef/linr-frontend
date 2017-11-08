@@ -5,6 +5,8 @@ import VueAxios from 'vue-axios'
 import App from '../components/App.vue'
 import router from '../pages'
 
+Vue.use(VueAxios, axios)
+
 new Vue({
   el: '#app',
   router,
@@ -13,5 +15,3 @@ new Vue({
     App,
   },
 })
-
-Vue.use(VueAxios, axios)
