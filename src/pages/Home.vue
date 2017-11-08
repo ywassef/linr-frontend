@@ -40,14 +40,8 @@
     },
     methods: {
       entrar_na_fila: function (event) {
-        if (document.getElementById('RestID').value === 'outback12') {
-          this.$router.push({path: 'r/outback12'})
-          console.log(event)
-        }
-        else {
-          alert('Código inválido')
-          console.log(event)
-        }
+        this.$router.push({path: 'r/' + document.getElementById('RestID').value})
+        console.log(event)
       },
     },
   }
