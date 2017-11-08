@@ -64,7 +64,7 @@
     name: 'Historico',
     methods: {
       voltar: function (event) {
-        this.$router.push({path: 'usuario'})
+        this.$router.push({path: '/usuario'})
       },
     },
   }

@@ -79,6 +79,10 @@ export default new Router({
     },
     {
       path: '/r/:id',
+      redirect: {name: 'Entrarnafila'},
+    },
+    {
+      path: '/restaurante/:id',
       name: 'Entrarnafila',
       component: Entrarnafila,
     },

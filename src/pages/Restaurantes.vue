@@ -53,7 +53,6 @@
     },
     /*methods: {
       preencherRestaurantes () {
-        return;
         const vm = this
         vm.$http
           .get('http://localhost:8080/restaurante')
