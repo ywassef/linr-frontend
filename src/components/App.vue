@@ -15,11 +15,5 @@
     components: {
       'navigation': Navigation,
     },
-    methods: {
-      entrar_na_fila: function (event) {
-        alert('Entrou na fila!')
-        console.log(event)
-      },
-    },
   }
 </script>

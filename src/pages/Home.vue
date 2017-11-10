@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import logo from '../img/logo_big.png'
+  import logo from '../img/full_logo640px.png'
 
   export default {
     name: 'Home',
