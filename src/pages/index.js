@@ -54,7 +54,7 @@ export default new Router({
     },
     {
       path: '/usuario',
-      component: UserSpace,
+      component: Dashboard,
       children: [
         {
           path: '',

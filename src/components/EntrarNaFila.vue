@@ -91,7 +91,7 @@
 
           this.$router.push({
             path: 'confirmado',
-            query: {hash: cljs.getFingerprint()},
+            query: {hash: Vue.prototype.$CalculateSnowflake(0, 0)},
           })
           console.log(event)
         }
