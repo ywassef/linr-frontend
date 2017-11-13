@@ -69,10 +69,6 @@
 <style lang="scss" scoped>
   @import "../../scss/style";
 
-  #navbar {
-    background-color: $primary;
-  }
-
   .tile {
     padding: 10px;
     border-radius: 10px;
