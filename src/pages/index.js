@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Entrarnafila from '../components/EntrarNaFila.vue'
 import Home from './Home.vue'
 import Cadastro from './Cadastro.vue'

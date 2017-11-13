@@ -61,28 +61,25 @@
     name: 'Entrarnafila',
     methods: {
       entrar_na_fila: function (event) {
-        var cljs = new ClientJS()
 
-        var nome_check = false, numpeople_check = false, sms_check = false
+        let nameValid = function() {
+          return !(document.getElementById('NameField').value === '')
+        };
+        let groupnumberValid = function() {
+          return !(document.getElementById('NumPeopleField').value === '')
+        };
+        let phoneValid = function() {
+          return !(document.getElementById('SMS').checked === true && document.getElementById('MobileField').value === '')
+        };
 
-        if (document.getElementById('NameField').value === '') {
-          alert('Você deve informar o nome')
-        } else {
-          nome_check = true
+        if(!nameValid() || !groupnumberValid() || !phoneValid()){
+          alert('Dados inválidos: \n\n'
+          + (!nameValid() ? 'Nome não preeeeenchido\n' : '')
+          + (!groupnumberValid() ? 'Número de pessoas no seu grupo inválido\n' : '')
+          + (!phoneValid() ? 'Número de celular inválido': ''))
+
         }
-
-        if (document.getElementById('NumPeopleField').value === '') {
-          alert('Você deve informar o número de pessoas')
-        } else {
-          numpeople_check = true
-        }
-
-        if (document.getElementById('SMS').checked === true && document.getElementById('MobileField').value === '') {
-          alert('Você deve informar o número telefone')
-        } else {
-          sms_check = true
-        }
-        if (nome_check && numpeople_check && sms_check === true) {
+        else {
           Vue.prototype.$name = document.getElementById('NameField').value
           Vue.prototype.$num_people = document.getElementById('NumPeopleField').value
           Vue.prototype.$rest_id = document.getElementById('restaurantID').textContent
@@ -105,7 +102,7 @@
   window.onload = function () {
     const client = new ClientJS()
     const OS = client.getOS()
-    if (OS === 'iOS' || OS === 'Mac OS') {
+    if (OS === 'iOS' || OS === 'Mac OS' ||  !('serviceWorker' in navigator)) {
       data.smscheckbox = 'É necessário o uso de alertas via SMS para iOS'
       document.getElementById('SMS').checked = true
       document.getElementById('SMS').disabled = true
