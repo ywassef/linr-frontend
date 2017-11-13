@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Entrarnafila from '../components/EntrarNaFila.vue'
 import Home from './Home.vue'
+import Cadastro from './Cadastro.vue'
+import Login from './Login.vue'
+import Restaurantes from './Restaurantes.vue'
+import NaFila from '../components/NaFila.vue'
 
 import {
   AlterarDados,
-  Cadastro,
   Dashboard,
   Historico,
-  Login,
-  Restaurantes,
   UserSpace,
 } from './usuario'
 
@@ -24,6 +26,7 @@ import {
 Vue.use(Router)
 
 export default new Router({
+  //mode: 'history',
   routes: [
     {
       path: '/',
@@ -31,23 +34,33 @@ export default new Router({
       component: Home,
     },
     {
+      path: '/cadastro',
+      name: 'Cadastro',
+      component: Cadastro,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
+    },
+    {
+      path: '/restaurantes',
+      name: 'Restaurantes',
+      component: Restaurantes,
+    },
+    {
+      path: '/nafila',
+      name: 'NaFila',
+      component: NaFila,
+    },
+    {
       path: '/usuario',
-      component: UserSpace,
+      component: Dashboard,
       children: [
         {
           name: 'Usuario',
           path: '',
           redirect: {name: 'Dashboard'},
-        },
-        {
-          path: 'login',
-          name: 'Login',
-          component: Login,
-        },
-        {
-          path: 'cadastro',
-          name: 'Cadastro',
-          component: Cadastro,
         },
         {
           path: 'dashboard',
@@ -60,16 +73,20 @@ export default new Router({
           component: AlterarDados,
         },
         {
-          path: 'restaurantes',
-          name: 'Restaurantes',
-          component: Restaurantes,
-        },
-        {
           path: 'historico',
           name: 'Historico',
           component: Historico,
         },
       ],
+    },
+    {
+      path: '/r/:id',
+      redirect: {name: 'Entrarnafila'},
+    },
+    {
+      path: '/restaurante/:id',
+      name: 'Entrarnafila',
+      component: Entrarnafila,
     },
     {
       path: '/admin',

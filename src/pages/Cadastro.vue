@@ -1,11 +1,11 @@
 <template>
-  <section class="section">
-    <div class="container has-text-centered">
-      <h1 class="title">Cadastro de Usuário</h1>
-    </div>
+  <section>
     <div class="content">
       <section class="hero">
         <form>
+          <div class="hero-body">
+            <h2 class="title"><b>Cadastro de Usuário</b></h2>
+          </div>
           <div class="hero-body">
             <div class="columns is-mobile is-centered">
               <div class="column has-text-centered is-one-third-desktop">
@@ -46,7 +46,7 @@
                         class="input"
                         name="senha"
                         type="password"
-                        placeholder="Deve conter pelo menos 6 caracteres"/>
+                        placeholder="••••••"/>
                   </div>
                 </div>
                 <div class="field">
@@ -59,16 +59,12 @@
                 </div>
               </div>
             </div>
-            <div class="hero-foot">
-              <div class="container has-text-centered">
-                <button
-                    type="button"
-                    class="button is-large is-primary"
-                    v-on:click="cadastrar">
-                  Cadastrar
-                </button>
-              </div>
-            </div>
+          </div>
+          <div class="hero-body">
+            <button type="button" class="button is-large is-primary"
+                v-on:click="cadastrar">
+              Cadastrar
+            </button>
           </div>
         </form>
       </section>
@@ -77,8 +73,6 @@
 </template>
 
 <script>
-  import { api } from '../../js/environment'
-
   function getRandomInt (min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
@@ -95,7 +89,7 @@
           return false
         }
         this.$http
-          .post(api('/auth/new'), {
+          .post('http://localhost:8080/auth/new', {
             id: getRandomInt(0, 10000000),
             nome: form.nome.value,
             telefone: form.telefone.value,
@@ -117,5 +111,17 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  @import "../scss/style";
+
+  html, body, #app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+
+  html {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
 </style>
