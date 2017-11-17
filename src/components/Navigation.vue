@@ -13,9 +13,7 @@
     </section>
     <section class="navbar-menu" id="menu">
       <div class="navbar-end">
-        <router-link to="/admin" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
-          Admin
-        </router-link>
+        <!-- Refactoring to v-on:click doesnt work -->
         <router-link to="/cadastro" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
           Cadastro
         </router-link>
