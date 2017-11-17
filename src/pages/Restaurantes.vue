@@ -10,7 +10,8 @@
                   {{restaurante.nome}}
                 </p>
                 <p class="subtitle">
-                  {{restaurante.descricao}}
+                  {{restaurante.descricao}} <br>
+                  {{$route.params.id}}
                 </p>
                 <p class="subtitle">
                   {{restaurante.local}}
@@ -32,7 +33,7 @@
 
 <script>
   import MaskedInput from 'vue-masked-input'
-  import EntrarFila from '../../components/EntrarFilaCadastrado.vue'
+  import EntrarFila from '../components/EntrarFilaCadastrado.vue'
 
   export default {
     name: 'Restaurantes',
@@ -41,10 +42,16 @@
     },
     data () {
       return {
-        restaurantes: [],
+        restaurantes: [
+          {
+            nome: 'Outback Steakhouse',
+            descricao: 'Australiano',
+            local: 'Shopping CenterVale',
+          },
+        ],
       }
     },
-    methods: {
+    /*methods: {
       preencherRestaurantes () {
         const vm = this
         vm.$http
@@ -67,24 +74,10 @@
     },
     mounted () {
       this.preencherRestaurantes()
-    },
+    },*/
   }
 </script>
 
-<style lang="scss">
-  @import "../../scss/style";
-
-  html, body, #app {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
-
-  #navbar {
-    background-color: #c40000;
-  }
+<style lang="scss" scoped>
+  @import "../scss/style";
 </style>

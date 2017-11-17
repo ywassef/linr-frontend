@@ -20,13 +20,11 @@
         <div class="tile is-child">
           <div class="tile is-parent is-mobile">
             <div class="tile is-child notification is-warning">
-              <span style="font-size: 30px"><img src="../img/clock.png"
-                                                 style="height: 25px; width: 25px"/> {{this.$time}} min</span>
+              <span style="font-size: 30px"><img src="../img/clock.png" style="height: 25px; width: 25px"/> {{this.$time}} min</span>
             </div>
 
             <div class="tile is-child notification is-warning">
-              <span style="font-size: 30px"><img src="../img/group_of.png"
-                                                 style="height: 25px; width: 25px"/> {{this.$line}} grupos na fila</span>
+              <span style="font-size: 30px"><img src="../img/group_of.png" style="height: 25px; width: 25px"/> {{this.$line}} grupos na fila</span>
             </div>
           </div>
         </div>
@@ -45,7 +43,7 @@
 
 <script>
   export default {
-    name: 'Confirmado',
+    name: 'NaFila',
     methods: {
       desistir: function (event) {
         if (confirm('Você tem certeza que deseja sair da fila?') === true) {
@@ -57,14 +55,10 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
   .tile {
     border: 5px solid white;
     border-radius: 10px;
-  }
-
-  #navbar {
-    background-color: #c40000;
   }
 
 </style>

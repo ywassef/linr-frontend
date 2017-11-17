@@ -1,22 +1,22 @@
 <template>
-  <section class="section">
-    <img :src="logo" style="width: 400px; height: auto"/>
+  <section>
     <div class="content">
       <section class="hero">
-        <div class="hero-body">
-          <div class="columns is-mobile is-centered">
-            <div class="column has-text-centered is-one-third-desktop">
+        <div class="columns is-mobile is-centered">
+          <div class="column has-text-centered is-one-third-desktop">
+            <div class="hero-body">
+              <img :src="logo" style="width: auto; height: auto"/>
+            </div>
+            <div class="hero-body">
               <div class="field">
                 <label class="label">Código do Restaurante</label>
                 <div class="control">
                   <input class="input" id="RestID" type="email"
-                         placeholder="Ex: outback12">
+                         placeholder="Ex: outback12" value="outback12">
                 </div>
               </div>
             </div>
-          </div>
-          <div class="hero-foot">
-            <div class="container has-text-centered">
+            <div class="hero-body">
               <button class="button is-large is-primary"
                       v-on:click="entrar_na_fila">ENTRAR NA FILA
               </button>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import logo from '../img/logo_big.png'
+  import logo from '../img/full_logo640px.png'
 
   export default {
     name: 'Home',
@@ -40,33 +40,14 @@
     },
     methods: {
       entrar_na_fila: function (event) {
-        if (document.getElementById('RestID').value === 'outback12') {
-          this.$router.push({path: 'outback12'})
-          console.log(event)
-        }
-        else {
-          alert('Código inválido')
-          console.log(event)
-        }
+        this.$router.push({path: 'r/' + document.getElementById('RestID').value})
+        console.log(event)
       },
     },
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../scss/style";
 
-  html, body, #app {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
-
-  #navbar {
-    background-color: #c40000;
-  }
 </style>

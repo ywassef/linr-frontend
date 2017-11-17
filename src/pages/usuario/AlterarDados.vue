@@ -1,11 +1,11 @@
 <template>
-  <section class="section">
-    <div class="container is-mobile has-text-centered">
-      <h1 class="title">Alterar Dados Cadastrais</h1>
-    </div>
+  <section>
     <div class="content">
       <section class="hero">
         <form>
+          <div class="hero-body">
+            <h1 class="title"><b>Alterar Dados Cadastrais</b></h1>
+          </div>
           <div class="hero-body">
             <div class="columns is-mobile is-centered">
               <div class="column has-text-centered is-one-third-desktop">
@@ -40,15 +40,12 @@
                 </div>
               </div>
             </div>
-
-            <div class="hero-foot">
-              <div class="container has-text-centered">
-                <button type="submit" class="button is-large is-primary"
-                        v-on:click="salvar">
-                  Salvar Dados
-                </button>
-              </div>
-            </div>
+          </div>
+          <div class="hero-body">
+            <button type="submit" class="button is-large is-primary"
+                    v-on:click="salvar">
+              Salvar Dados
+            </button>
           </div>
         </form>
       </section>
@@ -63,28 +60,14 @@
     methods: {
       salvar: function (event) {
         alert('Dados alterados com sucesso!')
-        this.$router.push({path: '/espaco_usuario'})
+        this.$router.push({path: '/usuario'})
       },
     },
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../scss/style";
-
-  html, body, #app {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
-
-  #navbar {
-    background-color: $primary;
-  }
 
   .tile {
     padding: 10px;
@@ -93,10 +76,6 @@
 
   .input {
     margin-bottom: 20px;
-  }
-
-  #navbar {
-    background-color: #c40000;
   }
 
 </style>

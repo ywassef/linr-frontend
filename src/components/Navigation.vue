@@ -2,11 +2,10 @@
   <nav id="navbar" class="navbar">
     <section class="navbar-brand">
       <router-link to="/" class="navbar-item">
-        <h1 class="is-size-4">Linr </h1>
         <img :src="logo" alt="Logo"/>
+        <h1 class="is-size-4" style='margin-left:0.5rem; display:inline-block'>Linr </h1>
       </router-link>
-      <button class="button navbar-burger"
-              onclick="document.getElementById('menu').classList.toggle('is-active');">
+      <button class="button navbar-burger" onclick="document.getElementById('menu').classList.toggle('is-active');">
         <span></span>
         <span></span>
         <span></span>
@@ -14,14 +13,14 @@
     </section>
     <section class="navbar-menu" id="menu">
       <div class="navbar-end">
-        <router-link to="/admin" class="navbar-item">
-          <span>Admin</span>
+        <router-link to="/admin" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
+          Admin
         </router-link>
-        <router-link to="/usuario/cadastro" class="navbar-item">
-          <span>Cadastro</span>
+        <router-link to="/cadastro" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
+          Cadastro
         </router-link>
-        <router-link to="/usuario/login" class="navbar-item">
-          <span>Login</span>
+        <router-link to="/login" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
+          Login
         </router-link>
       </div>
     </section>
@@ -29,7 +28,7 @@
 </template>
 
 <script>
-  import Logo from '../img/logo.png'
+  import Logo from '../img/logo64px.png'
 
   export default {
     name: 'navbar',
@@ -41,10 +40,18 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../scss/style";
 
+  .navbar-item {
+    color: #FFFFFF !important;
+  }
+
+  .navbar-item img{
+    max-height: 2rem !important;
+  }
+
   #navbar {
-    background-color: #c40000;
+    background-color: $navbarbg;
   }
 </style>

@@ -10,7 +10,7 @@
 
 <script>
 
-  import EntrarFila from './Entrarnafila.vue'
+  import EntrarFila from './EntrarNaFila.vue'
 
   export default {
     name: 'FilaOutback12',
