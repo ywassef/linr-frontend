@@ -53,7 +53,7 @@
 
   var data = {
     smscheckbox: 'Quero receber alertas da fila via SMS',
-  }
+  };
 
   import Vue from 'vue'
 
@@ -74,7 +74,7 @@
 
         if(!nameValid() || !groupnumberValid() || !phoneValid()){
           alert('Dados inválidos: \n\n'
-          + (!nameValid() ? 'Nome não preeeeenchido\n' : '')
+          + (!nameValid() ? 'Nome não preenchido\n' : '')
           + (!groupnumberValid() ? 'Número de pessoas no seu grupo inválido\n' : '')
           + (!phoneValid() ? 'Número de celular inválido': ''))
 
@@ -89,7 +89,7 @@
           this.$router.push({
             path: 'confirmado',
             query: {hash: Vue.prototype.$CalculateSnowflake(0, 0)},
-          })
+          });
           console.log(event)
         }
       },
