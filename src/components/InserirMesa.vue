@@ -1,16 +1,14 @@
 <template>
   <section class="section">
-    <label class="label">Nome</label>
+    <label class="label">ID MESA</label>
     <div class="control">
-      <input class="input" id="NameField" type="text"
-             placeholder="Ex: Ivan Alves">
+      <input class="input" id="idMesa" type="text">
     </div>
     <br>
     <div class="field">
-      <label class="label">Telefone</label>
+      <label class="label">Capacidade</label>
       <div class="control">
-        <input class="input" id="TelephoneField" type="tel"
-               placeholder="(11) 11111-1111">
+        <input class="input" id="qtd" type="text">
       </div>
     </div>
     <br>
@@ -24,9 +22,9 @@
   import MaskedInput from 'vue-masked-input'
 
   export default {
-    name: 'InsercaoManual',
+    name: 'InserirMesa',
     methods: {
-      insertmanual: function (event) {
+      insertmanual (event) {
         const cljs = new ClientJS()
         alert(document.getElementById('NameField').value + '\n'
           + document.getElementById('TelephoneField').value + '\n'
@@ -42,16 +40,6 @@
 
 <style lang="scss" scoped>
   @import "../scss/style";
-
-  html, body, #app {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
 
   button {
     position: relative;

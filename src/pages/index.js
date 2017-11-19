@@ -7,21 +7,11 @@ import Cadastro from './Cadastro.vue'
 import Login from './Login.vue'
 import Restaurantes from './Restaurantes.vue'
 import NaFila from '../components/NaFila.vue'
+import Index from './Index.vue'
 
-import {
-  AlterarDados,
-  Dashboard,
-  Historico,
-  UserSpace,
-} from './usuario'
+import { AlterarDados, Dashboard, Historico, UserSpace, } from './usuario'
 
-import {
-  Admin,
-  CadastroRestaurante,
-  EditarConta,
-  LoginAdmin,
-  MeuRestaurante,
-} from './admin'
+import { Admin, CadastroRestaurante, EditarConta, EditarFunc, LoginAdmin, Mesas, MeuRestaurante } from './admin'
 
 Vue.use(Router)
 
@@ -30,63 +20,69 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
-    },
-    {
-      path: '/cadastro',
-      name: 'Cadastro',
-      component: Cadastro,
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login,
-    },
-    {
-      path: '/restaurantes',
-      name: 'Restaurantes',
-      component: Restaurantes,
-    },
-    {
-      path: '/nafila',
-      name: 'NaFila',
-      component: NaFila,
-    },
-    {
-      path: '/usuario',
-      component: Dashboard,
+      component: Index,
       children: [
         {
-          name: 'Usuario',
-          path: '',
-          redirect: {name: 'Dashboard'},
+          path: '/',
+          name: 'Home',
+          component: Home,
         },
         {
-          path: 'dashboard',
-          name: 'Dashboard',
+          path: '/cadastro',
+          name: 'Cadastro',
+          component: Cadastro,
+        },
+        {
+          path: '/login',
+          name: 'Login',
+          component: Login,
+        },
+        {
+          path: '/restaurantes',
+          name: 'Restaurantes',
+          component: Restaurantes,
+        },
+        {
+          path: '/nafila',
+          name: 'NaFila',
+          component: NaFila,
+        },
+        {
+          path: '/usuario',
           component: Dashboard,
+          children: [
+            {
+              name: 'Usuario',
+              path: '',
+              redirect: {name: 'Dashboard'},
+            },
+            {
+              path: 'dashboard',
+              name: 'Dashboard',
+              component: Dashboard,
+            },
+            {
+              path: 'config',
+              name: 'Configuracao',
+              component: AlterarDados,
+            },
+            {
+              path: 'historico',
+              name: 'Historico',
+              component: Historico,
+            },
+          ],
         },
         {
-          path: 'config',
-          name: 'Configuracao',
-          component: AlterarDados,
+          path: '/r/:id',
+          redirect: {name: 'Entrarnafila'},
         },
         {
-          path: 'historico',
-          name: 'Historico',
-          component: Historico,
+          path: '/restaurante/:id',
+          name: 'Entrarnafila',
+          component: Entrarnafila,
         },
       ],
-    },
-    {
-      path: '/r/:id',
-      redirect: {name: 'Entrarnafila'},
-    },
-    {
-      path: '/restaurante/:id',
-      name: 'Entrarnafila',
-      component: Entrarnafila,
     },
     {
       path: '/admin',
@@ -116,6 +112,16 @@ export default new Router({
           path: 'cadastro',
           name: 'CadastroRestaurante',
           component: CadastroRestaurante,
+        },
+        {
+          path: 'mesas',
+          name: 'Mesas',
+          component: Mesas,
+        },
+        {
+          path: 'editarFunc',
+          name: 'EditarFunc',
+          component: EditarFunc,
         },
       ],
     },

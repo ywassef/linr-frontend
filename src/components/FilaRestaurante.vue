@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="content">
-      <div class="columns is-centered">
+      <div class="columns is-centered has-text-centered">
         <div class="column">
           <abbr title="Posição">Pos</abbr>
         </div>
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="columns is-centered" v-for="user in Usuarios">
+      <div class="columns is-centered has-text-centered" v-for="user in Usuarios" id="linha">
         <div class="column has-text-centered">
           {{user.posicao}}
         </div>
@@ -82,13 +82,27 @@
 
         this.Usuarios.splice(posicao - 1, 1)
       },
+      consultar () {
+        this.$http
+          .get(`http://localhost:8080/filas/${id}`)
+          .then(response => {
+            console.log(`Response: ${response}`)
+            // TODO add session to cookies
+            const session_id = response.data.id_usuario
+            this.$router.push('Dashboard')
+          })
+          .catch(err => {
+            console.log(`Error: ${err}`)
+            return false
+          })
+      },
     },
     data () {
       return {
-        Usuarios: [
+        usuarios: [
           {
             posicao: 1,
-            nome: 'Denis Taveira Laurentino de Lima',
+            nome: 'Denis Taveira L de Lima',
             telefone: '12982054061',
             hef: '14:30',
             hsf: '14:50',
@@ -146,26 +160,25 @@
         restaurante: {nome: 'Outback'},
       }
     },
+
   }
 </script>
 
 <style lang="scss" scoped>
   @import "../scss/style";
 
-  html, body, #app {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-
-  html {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
-
   .content {
     position: relative;
     top: 40px;
   }
 
+  section {
+    padding-right: 50px;
+    padding-left: 20px;
+  }
+
+  #linha {
+    padding-top: 20px;
+  }
 
 </style>
