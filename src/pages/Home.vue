@@ -11,8 +11,8 @@
               <div class="field">
                 <label class="label">Código do Restaurante</label>
                 <div class="control">
-                  <input class="input" id="RestID" type="email"
-                         placeholder="Ex: outback12" value="outback12">
+                  <input class="input" id="RestID" type="text"
+                         placeholder="Ex: outback12" value="1">
                 </div>
               </div>
             </div>
@@ -40,6 +40,15 @@
     },
     methods: {
       entrar_na_fila: function (event) {
+        /*this.$http
+          .get('http://localhost:8080/restaurantes/')
+          .then(response => {
+            console.log('Response: ' + response.data.data[1].id)
+          })
+          .catch(err => {
+            console.log(`Error: ${err}`)
+            return false
+          })*/
         this.$router.push({path: 'r/' + document.getElementById('RestID').value})
         console.log(event)
       },

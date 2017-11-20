@@ -79,42 +79,36 @@
           + (!phoneValid() ? 'Número de celular inválido': ''))
 
         }
-        /*else {
-          Vue.prototype.$name = document.getElementById('NameField').value
-          Vue.prototype.$num_people = document.getElementById('NumPeopleField').value
-          Vue.prototype.$line = '15'
-          Vue.prototype.$time = '30'*/
+        else {
+          //request fila id to insert the new user
+          this.$http
+            .get('http://localhost:8080/restaurantes/' + this.$route.params.id)
+            .then(response => {
+              console.log('Response: ' + response.data.data[0].filas[0])
+              this.$http
+                //inserting the new user
+                .put('http://localhost:8080/filas/' + response.data.data[0].filas[0] + '/enter', {
+                  id_usuario: Vue.prototype.$CalculateSnowflake(0, 0),
+                  qtd_pessoas: document.getElementById('NumPeopleField'),
+                })
+                .then(response => {
+                  console.log(`Response: ${response}`)
+                })
+                .catch(err => {
+                  console.log('Error: ${err}')
+                  return false
+                })
+              this.$router.push({
+                path: '../nafila/' + response.data.data[0].filas[0],
+                query: {hash: Vue.prototype.$CalculateSnowflake(0, 0)},
+              })
 
-        var fila_id;
-
-        this.$http
-          .get('http://localhost:8080/restaurantes/' /+ this.$route.params.id)
-          .then(response => {
-            console.log('Response: ' + response.data[0])
-            fila_id = response.data.filas[0];
-          })
-          .catch(err => {
-            console.log(`Error: ${err}`)
-            return false
-          })
-
-        this.$http
-          .put('http://localhost:8080/filas/' + fila_id + '/enter', {
-            id_usuario: Vue.prototype.$CalculateSnowflake(0, 0),
-            qtd_pessoas: document.getElementById('NumPeopleField'),
-          })
-          .then(response => {
-            console.log('Response: ' + response.data[0])
-          })
-          .catch(err => {
-            console.log('Error: ${err}')
-            return false
-          })
-
-        this.$router.push({
-         path: '../nafila',
-         query: {hash: Vue.prototype.$CalculateSnowflake(0, 0)},
-         })
+            })
+            .catch(err => {
+              console.log(`Error: ${err}`)
+              return false
+            })
+          }
         }
       },
     data () {

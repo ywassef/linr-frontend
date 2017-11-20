@@ -3,16 +3,16 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-parent">
         <div class="tile is-child notification is-primary">
-          <h2 class="title">Código do restaurante: {{rest_nome}}</h2>
+          <h2 class="title">Código do restaurante: {{ rest_nome }}</h2>
         </div>
         <div class="tile is-child">
           <div class="tile is-parent">
             <div class="tile is-child notification is-info">
-              <h3 class="subtitle">Nome: {{user_nome}}</h3>
+              <h3 class="subtitle">Nome: {{ user_nome }}</h3>
             </div>
 
             <div class="tile is-child notification is-info">
-              <h3 class="subtitle">Grupo de: {{num_people}}</h3>
+              <h3 class="subtitle">Grupo de: {{ num_people }}</h3>
             </div>
           </div>
         </div>
@@ -21,12 +21,12 @@
           <div class="tile is-parent">
             <div class="tile is-child notification is-warning">
               <h3 class="subtitle"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                {{line_time}} min</h3>
+                {{ line_time }} min</h3>
             </div>
 
             <div class="tile is-child notification is-warning">
               <h3 class="subtitle"><i class="fa fa-users" aria-hidden="true"></i>
-                {{line_numpeople}} grupos na fila</h3>
+                {{ line_numpeople }} grupos na fila</h3>
             </div>
           </div>
         </div>
@@ -53,6 +53,8 @@
     line_numpeople: 'YY',
   }
 
+  import Vue from 'vue'
+
   export default {
     name: 'NaFila',
     methods: {
@@ -63,7 +65,28 @@
         }
       },
     },
+    data () {
+      return data
+    },
   }
+
+  //type error: this.$http is undefined
+  /*window.onload = function () {
+    this.$http
+      .get('http://localhost:8080/filas/' + this.$route.params.fila_id)
+      .then(response => {
+        data.line_time = response.data.data[0].tempo_medio_inicial
+        outras variáveis - acrescentar função na API pra acessar usuario_fila passando o id da fila e
+         o snowflake do usuário como parâmetro
+        console.log('Tempo: ' + response.data.data[0].tempo_medio_inicial)
+      })
+      .catch(err => {
+        console.log(`Error: ${err}`)
+        return false
+      })
+  }
+  */
+
 </script>
 
 <style lang="scss" scoped>
