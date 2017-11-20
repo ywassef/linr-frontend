@@ -79,21 +79,44 @@
           + (!phoneValid() ? 'Número de celular inválido': ''))
 
         }
-        else {
+        /*else {
           Vue.prototype.$name = document.getElementById('NameField').value
           Vue.prototype.$num_people = document.getElementById('NumPeopleField').value
-          Vue.prototype.$rest_id = document.getElementById('restaurantID').textContent
           Vue.prototype.$line = '15'
-          Vue.prototype.$time = '30'
+          Vue.prototype.$time = '30'*/
 
-          this.$router.push({
-            path: 'confirmado',
-            query: {hash: Vue.prototype.$CalculateSnowflake(0, 0)},
+        var fila_id;
+
+        this.$http
+          .get('http://localhost:8080/restaurantes/' /+ this.$route.params.id)
+          .then(response => {
+            console.log('Response: ' + response.data[0])
+            fila_id = response.data.filas[0];
           })
-          console.log(event)
+          .catch(err => {
+            console.log(`Error: ${err}`)
+            return false
+          })
+
+        this.$http
+          .put('http://localhost:8080/filas/' + fila_id + '/enter', {
+            id_usuario: Vue.prototype.$CalculateSnowflake(0, 0),
+            qtd_pessoas: document.getElementById('NumPeopleField'),
+          })
+          .then(response => {
+            console.log('Response: ' + response.data[0])
+          })
+          .catch(err => {
+            console.log('Error: ${err}')
+            return false
+          })
+
+        this.$router.push({
+         path: '../nafila',
+         query: {hash: Vue.prototype.$CalculateSnowflake(0, 0)},
+         })
         }
       },
-    },
     data () {
       return data
     },
