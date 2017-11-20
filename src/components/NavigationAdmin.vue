@@ -13,15 +13,27 @@
     </section>
     <section class="navbar-menu" id="menu">
       <div class="navbar-end">
-        <router-link to="/admin" class="navbar-item"
+        <router-link to="restaurante" class="navbar-item"
                      onclick="document.getElementById('menu').classList.toggle('is-active');">
-          Admin
+          Fila
         </router-link>
-        <router-link to="/cadastro" class="navbar-item"
+        <router-link to="mesas" class="navbar-item"
                      onclick="document.getElementById('menu').classList.toggle('is-active');">
-          Cadastro
+          Mesas
         </router-link>
-        <router-link to="/login" class="navbar-item"
+        <router-link to="cadastro" class="navbar-item"
+                     onclick="document.getElementById('menu').classList.toggle('is-active');">
+          Restaurantes
+        </router-link>
+        <router-link to="config" class="navbar-item"
+                     onclick="document.getElementById('menu').classList.toggle('is-active');">
+          Conta
+        </router-link>
+        <router-link to="editarFunc" class="navbar-item"
+                     onclick="document.getElementById('menu').classList.toggle('is-active');">
+          Funcinários
+        </router-link>
+        <router-link to="login" class="navbar-item"
                      onclick="document.getElementById('menu').classList.toggle('is-active');">
           Login
         </router-link>
@@ -34,7 +46,7 @@
   import Logo from '../img/logo64px.png'
 
   export default {
-    name: 'navbar',
+    name: 'navbarAdmin',
     data () {
       return {
         'logo': Logo,
@@ -55,6 +67,6 @@
   }
 
   #navbar {
-    background-color: $navbarbg;
+    background-color: black;
   }
 </style>
