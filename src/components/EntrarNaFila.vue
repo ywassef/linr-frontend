@@ -9,7 +9,7 @@
                 <label class="label">Nome</label>
                 <div class="control">
                   <input class="input" id="NameField" type="text"
-                         placeholder="Ex: Ivan Alves">
+                         placeholder="Ex: Ivan Alvez">
                   </div>
                 </div>
 
