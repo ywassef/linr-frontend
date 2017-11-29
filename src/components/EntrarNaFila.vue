@@ -63,6 +63,22 @@
   export default {
     name: 'Entrarnafila',
     methods: {
+
+      urlB64ToUint8Array: function (base64String) {
+        const padding = '='.repeat((4 - base64String.length % 4) % 4);
+        const base64 = (base64String + padding)
+          .replace(/\-/g, '+')
+          .replace(/_/g, '/');
+
+        const rawData = window.atob(base64);
+        const outputArray = new Uint8Array(rawData.length);
+
+        for (let i = 0; i < rawData.length; ++i) {
+          outputArray[i] = rawData.charCodeAt(i);
+        }
+        return outputArray;
+      },
+
       entrar_na_fila: function (event) {
 
         let nameValid = function() {
@@ -100,6 +116,21 @@
 
           //Register a Service Worker.
 
+        navigator.serviceWorker.register('../../serviceworker.js')
+          .then(function(registration) {
+            const subscribeOptions = {
+              userVisibleOnly: true,
+              applicationServerKey: Uint8Array [  4,  73,  122,  218,  37,  24,  129,  72,  175,  196,  137,  47,  235,  220,  149, 136,  75,  162,  4,  134,  190,  33,  191,  126,  74,  75,  204,  120,  11, 64,  220,  177,  96,  15,  57,  43,  197,  146,  99,  74,  4,  167,  125,  201,  35,  4,  155,  129,  146,  189,  234,  5,  70,  8,  28,  20,  5,  45,  118,  41,  228,  217,  44,  135,  197 ],
+            };
+
+            return registration.pushManager.subscribe(subscribeOptions);
+          })
+          .then(function(pushSubscription) {
+            console.log('Received PushSubscription: ', JSON.stringify(pushSubscription));
+            return pushSubscription;
+          });
+
+          /*
           navigator.serviceWorker.register('../../serviceworker.js')
             .then(function(registration) {
 
@@ -146,12 +177,12 @@
               }),
             });
           });
-
+          */
 
           // Go to confirmation page
 
           this.$router.push({
-            path: 'confirmado',
+            path: '/nafila',
             query: {hash: Vue.prototype.$CalculateSnowflake(0, 0)},
           });
           console.log(event)
