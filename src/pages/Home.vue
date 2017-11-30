@@ -9,7 +9,7 @@
             </div>
             <div class="hero-body">
               <div class="field">
-                <label class="label">Código do Restaurante</label>
+                <label class="label">Código da Fila</label>
                 <div class="control">
                   <input class="input" id="RestID" type="text"
                          placeholder="Ex: outback12" value="1">

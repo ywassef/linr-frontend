@@ -13,10 +13,6 @@
     </section>
     <section class="navbar-menu" id="menu">
       <div class="navbar-end">
-        <router-link to="/admin" class="navbar-item"
-                     onclick="document.getElementById('menu').classList.toggle('is-active');">
-          Admin
-        </router-link>
         <router-link to="/cadastro" class="navbar-item"
                      onclick="document.getElementById('menu').classList.toggle('is-active');">
           Cadastro
