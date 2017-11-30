@@ -10,22 +10,22 @@
                 <div class="control">
                   <input class="input" id="NameField" type="text"
                          placeholder="Ex: Ivan Alves">
-                  </div>
                 </div>
+              </div>
 
-                <div class="field">
-                  <label class="label">Número de pessoas:</label>
-                  <div class="control">
-                   <input class="input" id="NumPeopleField" type="text">
-                  </div>
-               </div>
+              <div class="field">
+                <label class="label">Número de pessoas:</label>
+                <div class="control">
+                  <input class="input" id="NumPeopleField" type="text">
+                </div>
+              </div>
 
-               <div class="field">
-                 <label class="label">Celular</label>
-                  <div class="control">
-                   <input class="input" id="MobileField" type="tel"
+              <div class="field">
+                <label class="label">Celular</label>
+                <div class="control">
+                  <input class="input" id="MobileField" type="tel"
                          placeholder="(11) 11111-1111">
-                  </div>
+                </div>
               </div>
 
               <div class="field">
@@ -62,21 +62,21 @@
     methods: {
       entrar_na_fila: function (event) {
 
-        let nameValid = function() {
+        let nameValid = function () {
           return !(document.getElementById('NameField').value === '')
-        };
-        let groupnumberValid = function() {
+        }
+        let groupnumberValid = function () {
           return !(document.getElementById('NumPeopleField').value === '')
-        };
-        let phoneValid = function() {
+        }
+        let phoneValid = function () {
           return !(document.getElementById('SMS').checked === true && document.getElementById('MobileField').value === '')
-        };
+        }
 
-        if(!nameValid() || !groupnumberValid() || !phoneValid()){
+        if (!nameValid() || !groupnumberValid() || !phoneValid()) {
           alert('Dados inválidos: \n\n'
-          + (!nameValid() ? 'Nome não preeeeenchido\n' : '')
-          + (!groupnumberValid() ? 'Número de pessoas no seu grupo inválido\n' : '')
-          + (!phoneValid() ? 'Número de celular inválido': ''))
+            + (!nameValid() ? 'Nome não preeeeenchido\n' : '')
+            + (!groupnumberValid() ? 'Número de pessoas no seu grupo inválido\n' : '')
+            + (!phoneValid() ? 'Número de celular inválido' : ''))
 
         }
         else {
@@ -119,7 +119,7 @@
   window.onload = function () {
     const client = new ClientJS()
     const OS = client.getOS()
-    if (OS === 'iOS' || OS === 'Mac OS' ||  !('serviceWorker' in navigator)) {
+    if (OS === 'iOS' || OS === 'Mac OS' || !('serviceWorker' in navigator)) {
       data.smscheckbox = 'É necessário o uso de alertas via SMS para iOS'
       document.getElementById('SMS').checked = true
       document.getElementById('SMS').disabled = true

@@ -1,49 +1,10 @@
 <template>
-  <section class="section">
-    <section class="columns">
-      <router-link to="restaurante" class="column">
-        <figure>
-          <img class="imagem" :src="fila" alt="Fila"/>
-          <figcaption>
-            Gerenciar Fila
-          </figcaption>
-        </figure>
-      </router-link>
-      <router-link to="restaurante" class="column">
-        <figure>
-          <img class="imagem" :src="mesa" alt="Mesa"/>
-          <figcaption>
-            Editar Mesas
-          </figcaption>
-        </figure>
-      </router-link>
-      <router-link to="cadastro" class="column">
-        <figure>
-          <img class="imagem" :src="restaurante" alt="Restaurante"/>
-          <figcaption>
-            Editar Informações Restaurantes
-          </figcaption>
-        </figure>
-      </router-link>
-      <router-link to="config" class="column">
-        <figure>
-          <img class="imagem" :src="usuario" alt="Usuario"/>
-          <figcaption>
-            Editar Conta
-          </figcaption>
-        </figure>
-      </router-link>
-      <router-link to="config" class="column">
-        <figure>
-          <img class="imagem" :src="usuario" alt="Usuario"/>
-          <figcaption>
-            Editar Usuários
-          </figcaption>
-        </figure>
-      </router-link>
+  <div class="section">
+    <navigation></navigation>
+    <section>
+      <router-view></router-view>
     </section>
-    <router-view></router-view>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -51,9 +12,13 @@
   import Mesa from '../../img/mesa.jpg'
   import Restaurante from '../../img/restaurante.png'
   import Usuario from '../../img/usuario.png'
+  import NavigationAdmin from '../../components/NavigationAdmin.vue'
 
   export default {
     name: 'Admin',
+    components: {
+      'navigation': NavigationAdmin,
+    },
     data () {
       return {
         'fila': Fila,
@@ -68,6 +33,16 @@
 <style lang="scss" scoped>
   #navbar {
     background-color: black;
+  }
+
+  .section {
+    padding: 0px;
+  }
+
+  div {
+    section {
+      padding: 1.5%;
+    }
   }
 
   .imagem {
