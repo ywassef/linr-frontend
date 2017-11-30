@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="content">
-      <h1>{{restaurante.nome}}</h1>
+      <h1 align="center">{{restaurante.nome}}</h1>
       <nav class="level">
         <div class="level-item has-text-centered">
           <div>
