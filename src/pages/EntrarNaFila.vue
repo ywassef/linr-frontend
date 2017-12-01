@@ -55,10 +55,11 @@
 
   var data = {
     smscheckbox: 'Quero receber alertas da fila via SMS',
-  }
+  };
 
   import Vue from 'vue'
-
+  import '../../firebase-messaging-sw.js'
+  require('../../firebase-messaging-sw.js');
   import api from '../js/environment.js'
 
   export default {
@@ -84,6 +85,25 @@
 
         }
         else {
+        
+          /*
+          const messaging = firebase.messaging();
+
+          console.log('Requesting permission...');
+          // [START request_permission]
+          messaging.requestPermission()
+          .then(function() {
+            console.log('Notification permission granted.');
+            messaging.getToken()
+              .then(function(currentToken) {
+                console.log(currentToken)
+              })
+          })
+          .catch(function(err) {
+            console.log('Unable to get permission to notify.', err);
+          });
+          */
+        
           //insert new temporary user in the database
           this.$http
             .post(api('/auth/new/temp'), {
