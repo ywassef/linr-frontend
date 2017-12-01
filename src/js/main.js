@@ -35,6 +35,13 @@ Vue.prototype.$CalculateSnowflake = function (restaurantid, userid) {
   const cljs = new ClientJS()
   const d = new Date()
 
-  return pad(cljs.getFingerprint(), 10) + d.getFullYear() + pad(d.getMonth(), 2) + pad(d.getDay(), 2) + pad(restaurantid, 3) + pad(userid, 3)
+  return (pad(cljs.getFingerprint(), 10).substr(5)
+      + d.getFullYear().substring(3)
+      + pad(d.getMonth(), 2)
+      + pad(d.getDay(), 2)
+      + pad(d.getMinutes(), 2)
+      + pad(d.getSeconds(), 2)
+      + pad(restaurantid, 2)
+      + pad(userid, 2))
 
 }
