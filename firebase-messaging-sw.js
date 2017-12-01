@@ -56,7 +56,7 @@ if( 'function' === typeof importScripts) {
     const notificationTitle = 'Background Message Title';
     const notificationOptions = {
       body: 'Background Message body.',
-      icon: '/firebase-logo.png'
+      icon: '/logo192px.png'
     };
 
     return self.registration.showNotification(notificationTitle,
