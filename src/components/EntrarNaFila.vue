@@ -56,8 +56,8 @@
   };
 
   import Vue from 'vue'
-  import '../../serviceworker.js'
-  require('../../serviceworker.js');
+  import '../../firebase-messaging-sw.js'
+  require('../../firebase-messaging-sw.js');
 
 
   export default {
@@ -108,78 +108,21 @@
           Vue.prototype.$line = '15'
           Vue.prototype.$time = '30'
 
-          // Subscribe user to push notifications
+          const messaging = firebase.messaging();
 
-          var endpoint;
-          var key;
-          var authSecret;
-
-          //Register a Service Worker.
-
-        navigator.serviceWorker.register('../../serviceworker.js')
-          .then(function(registration) {
-            const subscribeOptions = {
-              userVisibleOnly: true,
-              applicationServerKey: Uint8Array [  4,  73,  122,  218,  37,  24,  129,  72,  175,  196,  137,  47,  235,  220,  149, 136,  75,  162,  4,  134,  190,  33,  191,  126,  74,  75,  204,  120,  11, 64,  220,  177,  96,  15,  57,  43,  197,  146,  99,  74,  4,  167,  125,  201,  35,  4,  155,  129,  146,  189,  234,  5,  70,  8,  28,  20,  5,  45,  118,  41,  228,  217,  44,  135,  197 ],
-            };
-
-            return registration.pushManager.subscribe(subscribeOptions);
-          })
-          .then(function(pushSubscription) {
-            console.log('Received PushSubscription: ', JSON.stringify(pushSubscription));
-            return pushSubscription;
-          });
-
-          /*
-          navigator.serviceWorker.register('../../serviceworker.js')
-            .then(function(registration) {
-
-              //Use the PushManager to get the user’s subscription to the push service.
-
-              return registration.pushManager.getSubscription()
-                .then(function(subscription) {
-
-                  //If a subscription was found, return it.
-
-                  if (subscription) {
-                    return subscription;
-                  }
-
-                  //Otherwise, subscribe the user (userVisibleOnly allows to specify that we don’t plan to send notifications that don’t have a visible effect for the user).
-
-                  return registration.pushManager.subscribe({ userVisibleOnly: true });
-                });
-            }).then(function(subscription) {
-
-            //Retrieve the user’s public key.
-
-            var rawKey = subscription.getKey ? subscription.getKey('p256dh') : '';
-            key = rawKey ?
-              btoa(String.fromCharCode.apply(null, new Uint8Array(rawKey))) : '';
-            var rawAuthSecret = subscription.getKey ? subscription.getKey('auth') : '';
-            authSecret = rawAuthSecret ?
-              btoa(String.fromCharCode.apply(null, new Uint8Array(rawAuthSecret))) :
-              '';
-
-            endpoint = subscription.endpoint;
-
-            //Send the subscription details to the server using the Fetch API.
-
-            fetch('./register', {
-              method: 'post',
-              headers: {
-                'Content-type': 'application/json'
-              },
-              body: JSON.stringify({
-                endpoint: subscription.endpoint,
-                key: key,
-                authSecret: authSecret,
-              }),
+          console.log('Requesting permission...');
+          // [START request_permission]
+          messaging.requestPermission()
+            .then(function() {
+              console.log('Notification permission granted.');
+              messaging.getToken()
+                .then(function(currentToken) {
+                  console.log(currentToken)
+                })
+            })
+            .catch(function(err) {
+              console.log('Unable to get permission to notify.', err);
             });
-          });
-          */
-
-          // Go to confirmation page
 
           this.$router.push({
             path: '/nafila',
