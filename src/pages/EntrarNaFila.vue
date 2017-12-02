@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="content">
-      <form>
+      <form onsubmit="return false">
         <section class="hero is-one-third-desktop">
           <div class="hero-body">
             <div class="columns is-mobile is-centered">
@@ -52,14 +52,9 @@
 </template>
 
 <script>
-
-  var data = {
-    smscheckbox: 'Quero receber alertas da fila via SMS',
-  };
-
-  import Vue from 'vue'
   import '../../firebase-messaging-sw.js'
-  require('../../firebase-messaging-sw.js');
+
+  require('../../firebase-messaging-sw.js')
   import api from '../js/environment.js'
 
   export default {
@@ -85,8 +80,7 @@
 
         }
         else {
-        
-          /*
+
           const messaging = firebase.messaging();
 
           console.log('Requesting permission...');
@@ -102,44 +96,54 @@
           .catch(function(err) {
             console.log('Unable to get permission to notify.', err);
           });
-          */
-        
+
+          const id_user = Math.floor(Math.random() * 10000000);
+          const id_fila = this.$route.params.id
+          console.log('User id: ' + id_user + ' params: ' + this.$route.params.id)
+
+
           //insert new temporary user in the database
-          this.$http
+          const vm = this
+          vm.$http
             .post(api('/auth/new/temp'), {
-              id: Vue.prototype.$CalculateSnowflake(0, 0),
+              id: id_user,
               nome: form.NameField.value,
               telefone: form.MobileField.value,
             })
             //with the id returned in the insertion, I put the new user in line
-            .then(response => {
-              this.$http
-                .put(api('/filas' + this.$route.params.id + '/enter'), {
-                  id_usuario: response.data.data[0].id_usuario,
+            .then(function (response) {
+              vm.$http
+                .put(api(`/filas/${id_fila}/enter`), {
+                  id_usuario: response.data.data.id_usuario,
                   qtd_pessoas: form.NumPeopleField.value,
                 })
-                .then(response => {
+                .then(function (response) {
                   console.log(`Response: ${response}`)
                 })
-                .catch(err => {
+                .catch(function (err) {
                   console.log('Error: ${err}')
                   return false
                 })
-              //send information to the next page
-              this.$router.push({
-                path: '../nafila/' + response.data.data[0].id_usuario
-                /*query: {hash: response.data.data[0].id_usuario},*/
+              console.log("Router 1: ", vm.$router)
+              vm.$router.push({
+                path: '../nafila/' + response.data.data.id_usuario,
+                /*query: {hash: },*/
               })
+              console.log("Router 2: ", vm.$router)
+              //send information to the next page
             })
-            .catch(err => {
+            .catch(function (err) {
               console.log(`Error: ${err}`)
               return false
             })
-          }
+
         }
       },
+    },
     data () {
-      return data
+      return {
+        smscheckbox: 'Quero receber alertas da fila via SMS',
+      }
     },
   }
 

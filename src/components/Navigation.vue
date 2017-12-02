@@ -46,6 +46,10 @@
     color: #FFFFFF !important;
   }
 
+  .navbar-menu {
+    background-color: $navbarbg;
+  }
+
   .navbar-item img {
     max-height: 2rem !important;
   }
