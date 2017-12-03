@@ -107,9 +107,9 @@
 
           });
 
-          const id_fila = this.$route.params.id
+          const id_fila = this.$route.params.id_fila
           const id_user = this.$CalculateSnowflake(id_fila, 0);
-          console.log('User id: ' + id_user + ' params: ' + this.$route.params.id)
+          console.log('User id: ' + id_user + ' params: ' + this.$route.params.id_fila)
 
 
           //insert new temporary user in the database

@@ -74,11 +74,11 @@ export default new Router({
 	      ],
 	    },
 	    {
-	      path: '/r/:id',
+	      path: '/r/:id_fila',
 	      redirect: {name: 'Entrarnafila'},
 	    },
 	    {
-	      path: '/restaurante/:id',
+	      path: '/restaurante/:id_fila',
 	      name: 'Entrarnafila',
 	      component: Entrarnafila,
 	    },
