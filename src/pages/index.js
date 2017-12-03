@@ -43,7 +43,7 @@ export default new Router({
 	      component: Restaurantes,
 	    },
 	    {
-		  path: '/nafila/:fila_id',
+		  path: '/nafila/:id_fila',
 		  name: 'NaFila',
 		  component: NaFila,
 		},

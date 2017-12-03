@@ -53,7 +53,6 @@
 
 <script>
   import '../../firebase-messaging-sw.js'
-
   require('../../firebase-messaging-sw.js')
   import api from '../js/environment.js'
 
@@ -83,54 +82,56 @@
 
           const messaging = firebase.messaging();
 
+          // Request permission to send notifications
+
           console.log('Requesting permission...');
-          // [START request_permission]
           messaging.requestPermission()
           .then(function() {
             console.log('Notification permission granted.');
+
+            // Get the user notifications token
+
             messaging.getToken()
-              .then(function(currentToken) {
-                console.log(currentToken)
-              })
+            .then(function(currentToken) {
+              // TODO: send the token to the API
+              console.log(currentToken)
+
+            })
           })
           .catch(function(err) {
             console.log('Unable to get permission to notify.', err);
+
+            if(!form.SMS.checked){
+              data.smscheckbox = '<strong>É preciso habilitar notificações pelo navegador or por SMS</strong>'
+            }
+
           });
 
-          const id_user = Math.floor(Math.random() * 10000000);
           const id_fila = this.$route.params.id
+          const id_user = this.$CalculateSnowflake(id_fila, 0);
           console.log('User id: ' + id_user + ' params: ' + this.$route.params.id)
 
 
           //insert new temporary user in the database
           const vm = this
-          vm.$http
-            .post(api('/auth/new/temp'), {
-              id: id_user,
-              nome: form.NameField.value,
-              telefone: form.MobileField.value,
-            })
-            //with the id returned in the insertion, I put the new user in line
+
+          vm.$http.post(api('/auth/new/temp'), {
+            id: id_user,
+            nome: form.NameField.value,
+            telefone: form.MobileField.value,
+          })
+          //with the id returned in the insertion, I put the new user in line
             .then(function (response) {
-              vm.$http
-                .put(api(`/filas/${id_fila}/enter`), {
-                  id_usuario: response.data.data.id_usuario,
-                  qtd_pessoas: form.NumPeopleField.value,
-                })
-                .then(function (response) {
-                  console.log(`Response: ${response}`)
-                })
-                .catch(function (err) {
-                  console.log('Error: ${err}')
-                  return false
-                })
-              console.log("Router 1: ", vm.$router)
-              vm.$router.push({
-                path: '../nafila/' + response.data.data.id_usuario,
-                /*query: {hash: },*/
+              vm.$http.put(api(`/filas/${id_fila}/enter`), {
+                id_usuario: id_user,
+                qtd_pessoas: form.NumPeopleField.value,
               })
-              console.log("Router 2: ", vm.$router)
-              //send information to the next page
+              .then(function (response) {
+                console.log(`Response: ${response}`)
+                vm.$router.push({
+                  path: '../nafila/' + id_fila, query: {id: id_user}
+                })
+              })
             })
             .catch(function (err) {
               console.log(`Error: ${err}`)

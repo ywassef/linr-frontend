@@ -3,16 +3,16 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-parent">
         <div class="tile is-child notification is-primary">
-          <h2 class="title">Código do restaurante: {{ rest_nome }}</h2>
+          <h2 class="title">Código da fila: {{ this.$route.params.id_fila }}</h2>
         </div>
         <div class="tile is-child">
           <div class="tile is-parent">
             <div class="tile is-child notification is-info">
-              <h3 class="subtitle">Nome: {{ user_nome }}</h3>
+              <h3 class="subtitle">Nome: {{ nome }}</h3>
             </div>
 
             <div class="tile is-child notification is-info">
-              <h3 class="subtitle">Grupo de: {{ num_people }}</h3>
+              <h3 class="subtitle">Grupo de: {{ qtd_pessoas }}</h3>
             </div>
           </div>
         </div>
@@ -21,12 +21,12 @@
           <div class="tile is-parent">
             <div class="tile is-child notification is-warning">
               <h3 class="subtitle"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                {{ line_time }} min</h3>
+                {{ tempo_fila }} min</h3>
             </div>
 
             <div class="tile is-child notification is-warning">
               <h3 class="subtitle"><i class="fa fa-users" aria-hidden="true"></i>
-                {{ line_numpeople }} grupos na fila</h3>
+                {{ num_pessoas_fila }} grupos na fila</h3>
             </div>
           </div>
         </div>
@@ -46,18 +46,43 @@
 <script>
 
   var data = {
-    rest_nome: 'Default_Rest_Name',
-    user_nome: 'Default_User_Name',
-    num_people: 'Default_Num_People',
-    line_time: 'XX',
-    line_numpeople: 'YY',
+    nome: 'def name',
+    qtd_pessoas: 'def qtd',
+    num_pessoas_fila: 'def num',
+    tempo_fila: 'def tempo'
   }
 
   import Vue from 'vue'
+  import api from '../js/environment.js'
 
   export default {
     name: 'NaFila',
+    data () {
+      return data
+    },
     methods: {
+      preencherPagina () {
+        const vm = this
+        const id_fila =  this.$route.params.id_fila
+        const id_user = this.$route.query.id
+
+        vm.$http
+          .get(api(`/filas/${id_fila}`))
+          .then(function (response) {
+            const users = response.data.data.usuarios_na_fila;
+            console.log(users)
+            for(var i = 0; i < users.length; i++) {
+              console.log('posicao usuario: '+ i + ' - ' + users[i].id_usuario + ' id_user: ' + id_user)
+              if (users[i].id_usuario === id_user) {
+                console.log('entrou no if')
+                data.nome = users[i].nome
+                data.qtd_pessoas = users[i].qtd_pessoas
+                data.num_pessoas_fila = i + 1
+                break
+              }
+            }
+          })
+      },
       desistir: function (event) {
         if (confirm('Você tem certeza que deseja sair da fila?') === true) {
           this.$router.push({path: '/'})
@@ -65,27 +90,10 @@
         }
       },
     },
-    data () {
-      return data
-    },
+    mounted () {
+      this.preencherPagina()
+    }
   }
-
-  //type error: this.$http is undefined
-  /*window.onload = function () {
-    this.$http
-      .get('http://localhost:8080/filas/' + this.$route.params.fila_id)
-      .then(response => {
-        data.line_time = response.data.data[0].tempo_medio_inicial
-        outras variáveis - acrescentar função na API pra acessar usuario_fila passando o id da fila e
-         o snowflake do usuário como parâmetro
-        console.log('Tempo: ' + response.data.data[0].tempo_medio_inicial)
-      })
-      .catch(err => {
-        console.log(`Error: ${err}`)
-        return false
-      })
-  }
-  */
 
 </script>
 
