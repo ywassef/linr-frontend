@@ -9,7 +9,7 @@
 
 <script>
   import Fila from '../../img/fila.png'
-  import Mesa from '../../img/mesa.jpg'
+  import Mesa from '../../img/mesa.png'
   import Restaurante from '../../img/restaurante.png'
   import Usuario from '../../img/usuario.png'
   import NavigationAdmin from '../../components/NavigationAdmin.vue'
