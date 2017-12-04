@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="container has-text-centered">
-      <h1 class="title">INFORMAÇÕES RESTAURANTE</h1>
+      <h1 class="title">INFORMAÇÕES CONTA</h1>
     </div>
     <div class="content">
       <section class="hero">
@@ -53,7 +53,14 @@
           + 'Atualizado com sucesso!')
         console.log(event)
       },
+      preencher(){
+        document.getElementById('Email').value = 'Denis Taveira'
+      }
     },
+    mounted () {
+      this.preencher()
+
+    }
   }
 </script>
 

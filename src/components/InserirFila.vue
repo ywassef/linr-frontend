@@ -1,34 +1,33 @@
 <template>
   <section class="section">
     <form>
+
+      <label class="label">ID FILA</label>
+      <div class="control">
+        <input class="input" name="idFila" type="text" placeholder="Ex: 2">
+      </div>
       <div class="field">
-        <label class="label">Permissão</label>
+        <label class="label">Descricao</label>
         <div class="control">
-          <div class="select" id="TypeField">
-            <select>
-              <option>dono</option>
-              <option>garcom</option>
-            </select>
-          </div>
+          <input class="input" name="descricao" type="text" placeholder="Ex: Delivery">
         </div>
       </div>
       <div class="field">
-        <label class="label">Nome</label>
+        <label class="label">Hora Funcionamento Início</label>
         <div class="control">
-          <input class="input" id="NameField" type="text">
+          <input class="input" name="hfi" type="text" placeholder="Ex: 08:00">
         </div>
       </div>
       <div class="field">
-        <label class="label">E-mail</label>
+        <label class="label">Hora Funcionamento Fim</label>
         <div class="control">
-          <input class="input" id="EmailField" type="text">
+          <input class="input" name="hff" type="text" placeholder="Ex: 20:00">
         </div>
       </div>
       <div class="field">
-        <label class="label">Senha</label>
+        <label class="label">Tempo Médio Inicial</label>
         <div class="control">
-          <input class="input" id="PasswordField" type="password"
-                 placeholder="Deve conter pelo menos 6 caracteres">
+          <input class="input" name="tm" type="text" placeholder="Ex: 25">
         </div>
       </div>
       <br>
@@ -43,28 +42,22 @@
   import MaskedInput from 'vue-masked-input'
   import { api } from '../js/environment'
 
-  const id_rest = 1
+  const id_rest = 1;
 
   export default {
-    name: 'InserirFunc',
+    name: 'InserirFila',
     methods: {
-      insertmanual (event) {
-        const cljs = new ClientJS()
-        alert(document.getElementById('NameField').value + '\n'
-          + document.getElementById('TelephoneField').value + '\n'
-          + 'ID do usuário: ' + cljs.getFingerprint())
-        console.log(event)
-      },
       cadastrar () {
         const [form] = document.getElementsByTagName('form')
 
         console.log(form.idFila.value)
-        this.$http.post(api('/Admin'), {
+        this.$http.post(api('/filas'), {
+          id: form.idFila.value,
+          descricao: form.descricao.value,
           id_restaurante: id_rest,
-          nome: form.NameField.value,
-          email: form.EmailField.value,
-          tipo: form.TypeField.value,
-          senha: form.PasswordField.value,
+          hora_funcionamento_inicio: form.hfi.value,
+          hora_funcionamento_fim: form.hff.value,
+          tempo_medio_inicial: form.tm.value,
         })
           .then(response => {
             console.log(`Response: ${response}`)
@@ -78,8 +71,7 @@
     },
     data () {
       return {}
-    }
-    ,
+    },
   }
 </script>
 
