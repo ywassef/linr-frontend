@@ -17,7 +17,7 @@
                 <div class="field">
                   <label class="label">Número de pessoas:</label>
                   <div class="control">
-                    <input class="input" name="NumPeopleField" type="text">
+                    <input class="input" name="NumPeopleField" type="text" maxlength="2">
                   </div>
                 </div>
 
@@ -33,7 +33,7 @@
                   <div class="control">
                     <label class="checkbox">
                       <input type="checkbox" name="SMS">
-                      {{ smscheckbox }}
+                      <span v-html="smscheckbox"></span>
                     </label>
                   </div>
                 </div>
@@ -56,10 +56,17 @@
   require('../../firebase-messaging-sw.js')
   import api from '../js/environment.js'
 
+  var data = {
+    smscheckbox: 'Quero receber alertas da fila via SMS',
+  }
+
   export default {
     name: 'Entrarnafila',
     methods: {
       entrar_na_fila: function (event) {
+
+        //Validar se dados estão corretos
+
         const [form] = document.getElementsByTagName('form')
 
         let nameValid = function () {
@@ -74,7 +81,8 @@
 
         let phoneValid = function () {
           // Check if SMS is not blank and only contains numbers, iff SMS is checked
-          return !form.SMS.checked || (!(form.MobileField.value === '') && /^\d+$/.test(form.MobileField.value))
+          return !form.SMS.checked ||
+            (!(form.MobileField.value === '') && /^\d+$/.test(form.MobileField.value) && form.MobileField.value.length == 11)
         }
 
         if (!nameValid() || !groupnumberValid() || !phoneValid()) {
@@ -86,23 +94,31 @@
         }
         else {
 
-          const messaging = firebase.messaging();
+          this.subscribe_to_notifications()
 
-          // Request permission to send notifications
+        }
+      },
+      subscribe_to_notifications: function (){
 
-          console.log('Requesting permission...');
-          messaging.requestPermission()
+        const vm = this
+        const messaging = firebase.messaging();
+        const [form] = document.getElementsByTagName('form')
+        // Request permission to send notifications
+
+        console.log('Requesting permission...');
+        messaging.requestPermission()
           .then(function() {
             console.log('Notification permission granted.');
 
             // Get the user notifications token
 
             messaging.getToken()
-            .then(function(currentToken) {
-              // TODO: send the token to the API
-              console.log(currentToken)
+              .then(function(currentToken) {
+                // TODO: send the token to the API
+                console.log(currentToken)
+                vm.call_api_entrarnafila()
 
-            })
+              })
           })
           .catch(function(err) {
             console.log('Unable to get permission to notify.', err);
@@ -110,47 +126,49 @@
             if(!form.SMS.checked){
               data.smscheckbox = '<strong>É preciso habilitar notificações pelo navegador or por SMS</strong>'
             }
+            else{
+              vm.call_api_entrarnafila()
+            }
 
           });
 
-          const id_fila = this.$route.params.id_fila
-          const id_user = this.$CalculateSnowflake(id_fila, 0);
-          console.log('User id: ' + id_user + ' params: ' + this.$route.params.id_fila)
+      },
+      call_api_entrarnafila: function () {
 
+        const id_fila = this.$route.params.id_fila
+        const id_user = this.$CalculateSnowflake(id_fila, 0);
+        console.log('User id: ' + id_user + ' params: ' + this.$route.params.id_fila)
+        const [form] = document.getElementsByTagName('form')
 
-          //insert new temporary user in the database
-          const vm = this
+        //insert new temporary user in the database
+        const vm = this
 
-          vm.$http.post(api('/auth/new/temp'), {
-            id: id_user,
-            nome: form.NameField.value,
-            telefone: form.MobileField.value,
-          })
-          //with the id returned in the insertion, I put the new user in line
-            .then(function (response) {
-              vm.$http.put(api(`/filas/${id_fila}/enter`), {
-                id_usuario: id_user,
-                qtd_pessoas: form.NumPeopleField.value,
-              })
+        vm.$http.post(api('/auth/new/temp'), {
+          id: id_user,
+          nome: form.NameField.value,
+          telefone: form.MobileField.value,
+        })
+        //with the id returned in the insertion, put the new user in line
+          .then(function (response) {
+            vm.$http.put(api(`/filas/${id_fila}/enter`), {
+              id_usuario: id_user,
+              qtd_pessoas: form.NumPeopleField.value,
+            })
               .then(function (response) {
                 console.log(`Response: ${response}`)
                 vm.$router.push({
                   path: '../nafila/' + id_fila, query: {id: id_user}
                 })
               })
-            })
-            .catch(function (err) {
-              console.log(`Error: ${err}`)
-              return false
-            })
-
-        }
+          })
+          .catch(function (err) {
+            console.log(`Error: ${err}`)
+            return false
+          })
       },
     },
     data () {
-      return {
-        smscheckbox: 'Quero receber alertas da fila via SMS',
-      }
+      return data
     },
   }
 
@@ -168,3 +186,4 @@
 <style lang="scss" scoped>
 
 </style>
+
