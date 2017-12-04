@@ -24,8 +24,8 @@
                 <div class="field">
                   <label class="label">Celular</label>
                   <div class="control">
-                    <input class="input" name="MobileField" type="tel"
-                           placeholder="(11) 11111-1111">
+                    <input class="input" name="MobileField" type="tel" minlength="11" maxlength="11"
+                           placeholder="Telefone com DDD, somente números">
                   </div>
                 </div>
 
@@ -61,19 +61,25 @@
     methods: {
       entrar_na_fila: function (event) {
         const [form] = document.getElementsByTagName('form')
+
         let nameValid = function () {
-          return !(form.NameField.value === '')
+          // Check if name is not blank and does not contain numbers
+          return !(form.NameField.value === '') && !(/^\d+$/.test(form.NameField.value))
         }
+
         let groupnumberValid = function () {
-          return !(form.NumPeopleField.value === '')
+          // Check if groupnumber is not blank and only contains numbers
+          return !(form.NumPeopleField.value === '') && (/^\d+$/.test(form.NumPeopleField.value))
         }
+
         let phoneValid = function () {
-          return !(form.SMS.checked && form.MobileField.value === '')
+          // Check if SMS is not blank and only contains numbers, iff SMS is checked
+          return !form.SMS.checked || (!(form.MobileField.value === '') && /^\d+$/.test(form.MobileField.value))
         }
 
         if (!nameValid() || !groupnumberValid() || !phoneValid()) {
           alert('Dados inválidos: \n\n'
-            + (!nameValid() ? 'Nome não preenchido\n' : '')
+            + (!nameValid() ? 'Nome não preenchido ou inválido\n' : '')
             + (!groupnumberValid() ? 'Número de pessoas no seu grupo inválido\n' : '')
             + (!phoneValid() ? 'Número de celular inválido' : ''))
 
