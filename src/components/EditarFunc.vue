@@ -37,6 +37,9 @@
 
 <script>
   import MaskedInput from 'vue-masked-input'
+  import { api } from '../js/environment'
+
+  const adm = 1
 
   export default {
     name: 'EditarFunc',
@@ -46,10 +49,17 @@
 
         this.Usuarios.splice(posicao - 1, 1)
       },
-    },
-    data () {
-      return {
-        funcionarios: [
+      pegarFunc () {
+        const vm = this
+
+        this.$http.get(api('/Admin'))
+          .then(function (response) {
+            vm.funcionarios = response.data.data.filter(e => {
+              return e.id_restaurante == adm
+            })
+          })
+
+        this.funcionarios = [
           {
             nome: 'Denis Taveira',
             email: 'denis.taveira@hotmail.com',
@@ -75,9 +85,17 @@
             email: 'alex@hotmail.com',
             permissao: 'Funcionario',
           },
-        ],
+        ]
+      },
+    },
+    data () {
+      return {
+        funcionarios: [],
       }
     },
+    created () {
+      this.pegarFunc()
+    }
   }
 </script>
 

@@ -98,9 +98,7 @@
           })
           .then(response => {
             console.log(`Response: ${response}`)
-            // TODO add session to cookies
-            const session_id = response.data.id_usuario
-            this.$router.push('Dashboard')
+            this.$router.push({name: 'Dashboard'})
           })
           .catch(err => {
             console.log(`Error: ${err}`)

@@ -7,7 +7,7 @@
             <div class="card-content">
               <div class="content">
                 <p class="title">
-                  ID: {{mesa.id}}
+                  ID: {{mesa.id_mesa}}
                 </p>
                 <p class="subtitle">
                   Capacidade
@@ -16,10 +16,15 @@
               </div>
             </div>
             <footer class="card-footer">
-              <button class="button is-primary is-outlined card-footer-item" v-on:click="insertmanual">
+              <button class="button is-primary card-footer-item" v-if="mesa.ocupada"
+                      v-on:click="atualizar(mesa.id_mesa, mesa.ocupada)">
                 Ocupada
               </button>
-              <button class="button is-primary is-outlined card-footer-item is-centered" v-on:click="insertmanual">
+              <button class="button is-primary is-outlined card-footer-item" v-else
+                      v-on:click="atualizar(mesa.id_mesa, mesa.ocupada)">
+                Desocupada
+              </button>
+              <button class="button is-primary is-outlined card-footer-item is-centered" v-on:click="excluir(mesa.id_mesa)">
                 Excluir
               </button>
             </footer>
@@ -31,56 +36,56 @@
 </template>
 
 <script>
+  import { api } from '../js/environment'
+
+  const idr = 1
+
   export default {
     name: 'EditarMesa',
     components: {},
     methods: {
-      insertmanual (event) {
-        const cljs = new ClientJS()
-        alert(document.getElementById('NameField').value + '\n'
-          + document.getElementById('TelephoneField').value + '\n'
-          + 'ID do usuário: ' + cljs.getFingerprint())
-        console.log(event)
+      atualizar (id, ocupada) {
+        ocupada = !ocupada
+        this.$http.put(api('/restaurantes/' + idr + '/mesas/' + id), {
+          ocupada: ocupada,
+        })
+          .then(response => {
+            console.log(`Response: ${response}`)
+            // TODO add session to cookies
+          })
+
+        this.pegarMesas()
+      },
+      excluir (id) {
+        this.$http.put(api('/restaurantes/' + idr + '/mesas/' + id), {
+          capacidade: -1,
+        })
+          .then(response => {
+            console.log(`Response: ${response}`)
+            // TODO add session to cookies
+          })
+
+        this.pegarMesas()
+      },
+      pegarMesas () {
+        const vm = this
+
+        this.$http.get(api('/restaurantes/' + idr))
+          .then(function (response) {
+            vm.mesas = response.data.data.mesas.filter(e => {
+              return e.capacidade > 0
+            })
+          })
       },
     },
     data () {
       return {
-        mesas: [
-          {
-            id: '1',
-            capacidade: 2,
-          },
-          {
-            id: '5',
-            capacidade: 2,
-          },
-          {
-            id: '9',
-            capacidade: 4,
-          },
-          {
-            id: '14',
-            capacidade: 4,
-          },
-          {
-            id: '19',
-            capacidade: 2,
-          },
-          {
-            id: '51',
-            capacidade: 2,
-          },
-          {
-            id: '49',
-            capacidade: 4,
-          },
-          {
-            id: '54',
-            capacidade: 4,
-          }
-        ],
+        mesas: [],
       }
     },
+    created () {
+      this.pegarMesas()
+    }
   }
 </script>
 
