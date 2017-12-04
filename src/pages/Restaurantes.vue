@@ -30,7 +30,7 @@
                     </button>
                     <button
                         class="button is-outlined is-primary card-footer-item"
-                        v-on:click="entrar">
+                        v-on:click="perfil(restaurante.id)">
                       Ver perfil
                     </button>
                   </footer>
@@ -63,6 +63,9 @@
       entrar () {
         this.$router.push('/')
       },
+      perfil (id) {
+        this.$router.push('/restaurantes/' + id)
+      },
       preencherRestaurantes () {
         const vm = this
         vm.$http
@@ -75,6 +78,7 @@
                   nome: restaurante.nome,
                   descricao: restaurante.descricao,
                   local: restaurante.endereco,
+                  id: restaurante.id,
                 }
               })
           })

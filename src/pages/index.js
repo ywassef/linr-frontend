@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
 import Entrarnafila from './EntrarNaFila.vue'
 import Home from './Home.vue'
 import Cadastro from './Cadastro.vue'
@@ -8,6 +7,7 @@ import Login from './Login.vue'
 import Restaurantes from './Restaurantes.vue'
 import NaFila from '../components/NaFila.vue'
 import Index from './Index.vue'
+import PerfilRestaurante from './PerfilRestaurante.vue'
 
 import { AlterarDados, Dashboard, Historico, UserSpace, } from './usuario'
 
@@ -42,6 +42,11 @@ export default new Router({
 	      name: 'Restaurantes',
 	      component: Restaurantes,
 	    },
+			{
+        path: '/restaurantes/:r_id',
+        name: 'PerfilRestaurante',
+        component: PerfilRestaurante,
+			},
 	    {
 		  path: '/nafila/:id_fila',
 		  name: 'NaFila',
