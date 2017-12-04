@@ -14,7 +14,7 @@
                 <div class="field">
                   <label class="label">Nome</label>
                   <div class="control">
-                    <input class="input" id="NameField" type="text"
+                    <input class="input" name="NameField" type="text"
                            placeholder="Ex: Ivan Alves">
                   </div>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="field">
                   <label class="label">Telefone 1</label>
                   <div class="control">
-                    <input class="input" id="TelephoneField1" type="tel"
+                    <input class="input" name="TelephoneField1" type="tel"
                            placeholder="(11) 11111-1111">
                   </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="field">
                   <label class="label">Site</label>
                   <div class="control">
-                    <input class="input" id="SiteField" type="text"
+                    <input class="input" name="SiteField" type="text"
                            placeholder="Ex: www.google.com">
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                 <div class="field">
                   <label class="label">Endereço</label>
                   <div class="control">
-                    <input class="input" id="EnderecoField" type="text"
+                    <input class="input" name="EnderecoField" type="text"
                            placeholder="Ex: Rua 21 de Abril, 154 - SJC - SP">
                   </div>
                 </div>
@@ -62,7 +62,7 @@
                   <label class="label">Descrição</label>
                   <div class="control">
                     <input class="textarea"
-                           placeholder="e.g. Hello world" id="DescricaoField">
+                           placeholder="e.g. Hello world" name="DescricaoField">
                   </div>
                 </div>
 
@@ -70,7 +70,7 @@
                   <label class="label">Forma Pagamento</label>
                   <div class="control">
                   <textarea class="textarea"
-                            placeholder="e.g. Hello world" id="FormaPagamento"></textarea>
+                            placeholder="e.g. Hello world" name="FormaPagamento"></textarea>
                   </div>
                 </div>
 
@@ -78,7 +78,7 @@
                   <label class="label">Dia Funcionamento</label>
                   <div class="control">
                   <textarea class="textarea"
-                            placeholder="e.g. Hello world" id="DiaFuncionamento"></textarea>
+                            placeholder="e.g. Hello world" name="DiaFuncionamento"></textarea>
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@
                   <label class="label">Informação Adicional</label>
                   <div class="control">
                   <textarea class="textarea"
-                            placeholder="e.g. Hello world" id="InformacaoAdicional"></textarea>
+                            placeholder="e.g. Hello world" name="InformacaoAdicional"></textarea>
                   </div>
                 </div>
 
@@ -153,14 +153,16 @@
           })
       },
       preencherRestaurante () {
-        document.getElementById('NameField').value = this.restaurante.nome
-        document.getElementById('TelephoneField1').value = this.restaurante.telefone
-        document.getElementById('SiteField').value = this.restaurante.site
-        document.getElementById('EnderecoField').value = this.restaurante.endereco
-        document.getElementById('DescricaoField').value = this.restaurante.descricao
-        document.getElementById('FormaPagamento').value = this.restaurante.forma_pagamento
-        document.getElementById('InformacaoAdicional').value = this.restaurante.informacao_adicional
-        document.getElementById('DiaFuncionamento').value = this.restaurante.hora_funcionamento_inicio
+        const [form] = document.getElementsByTagName('form')
+
+        form.NameField.value = this.restaurante.nome
+        form.TelephoneField1.value = this.restaurante.telefone
+        form.SiteField.value = this.restaurante.site
+        form.EnderecoField.value = this.restaurante.endereco
+        form.DescricaoField.value = this.restaurante.descricao
+        form.FormaPagamento.value = this.restaurante.forma_pagamento
+        form.InformacaoAdicional.value = this.restaurante.informacao_adicional
+        form.DiaFuncionamento.value = this.restaurante.hora_funcionamento_inicio
           + '\t' + this.restaurante[0].hora_funcionamento_fim
       }
     },
