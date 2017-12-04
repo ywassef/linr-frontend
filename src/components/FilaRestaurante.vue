@@ -6,7 +6,7 @@
           <abbr title="Posição">Pos</abbr>
         </div>
         <div class="column has-text-centered">
-          {{idfila}}
+          Nome
         </div>
         <div class="column has-text-centered">
           Telefone
@@ -87,8 +87,9 @@
     props: ['idfila'],
     methods: {
       usuario_desistiu (id) {
+        console.log(id)
         this.$http
-          .put(api ('/filas/'+this.fila+'/remove'), {
+          .put(api('/filas/' + this.idfila + '/remove'), {
             id_usuario_fila: id,
           })
           .then(response => {
@@ -100,9 +101,9 @@
           })
         this.consultarFila()
       },
-      usuario_atendido (id){
+      usuario_atendido (id) {
         this.$http
-          .put(api ('/filas/'+this.fila+'/exit'), {
+          .put(api('/filas/' + this.idfila + '/exit'), {
             id_usuario_fila: id,
           })
           .then(response => {
@@ -118,7 +119,7 @@
 
         const vm = this
         this.$http
-          .get(api(`/filas/`+vm.fila)) //Arrumar
+          .get(api(`/filas/` + vm.idfila)) //Arrumar
           .then(response => {
             // TODO add session to cookies
             vm.usuarios = response.data.data.usuarios_na_fila
@@ -128,21 +129,12 @@
             console.log(`Error: ${err}`)
             return false
           })
-
-        /*this.usuarios = [
-          {
-            posicao: 1,
-            nome: 'Denis Taveira',
-            telefone: '12982054061',
-            hef: '14:30',
-            hsf: '14:50',
-            hpa: '14:40',
-            qp: 2,
-            r: 'N',
-            obs: '-',
-          },
-        ]*/
       },
+    },
+    watch: {
+      idfila : function(){
+        this.consultarFila()
+      }
     },
     data () {
       return {
@@ -159,8 +151,6 @@
             id: 2,
             nome: 'Entrega',
           }],
-
-        fila: this.idfila,
       }
     },
     mounted () {

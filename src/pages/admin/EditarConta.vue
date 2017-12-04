@@ -47,11 +47,8 @@
     name: 'EditarConta',
     methods: {
       atualizar: function (event) {
-        alert(document.getElementById('Email').value + '\n'
-          + document.getElementById('PasswordField').value + '\n'
-          + document.getElementById('PasswordFieldNew').value + '\n'
-          + 'Atualizado com sucesso!')
-        console.log(event)
+        alert('Atualizado!')
+        this.$router.push({name: 'MeuRestaurante'})
       },
       preencher(){
         document.getElementById('Email').value = 'Denis Taveira'

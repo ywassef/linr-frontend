@@ -64,6 +64,7 @@
             // TODO add session to cookies
           })
           .catch(err => {
+            alert('Inserir fila com ID que não existe!')
             console.log(`Error: ${err}`)
             return false
           })

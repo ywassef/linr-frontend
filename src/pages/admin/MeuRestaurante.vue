@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="content">
-      <h1 align="center">{{restaurante[0].nome}}</h1>
+      <h1 align="center">{{restaurante.nome}}</h1>
       <div class="select" id="dropdown">
         <select v-model="nfila" @change="atualizarFila">
           <option v-for="f in filas" :value="f.id">{{f.id}} {{f.descricao}}</option>
@@ -53,16 +53,12 @@
   import MaskedInput from 'vue-masked-input'
   import { api } from '../../js/environment'
 
-  const hoje = new Date()
-  const dia = hoje.getDate()
-  const mes = hoje.getMonth()
-  const ano4 = hoje.getFullYear()
-  const str_data = dia + '/' + (mes + 1) + '/' + ano4
+  let hoje = new Date()
+  let str_data = hoje.getDate() + '/' + (hoje.getMonth() + 1) + '/' + hoje.getFullYear()
 
-  const hora = new Date()
+  let hora = new Date()
   hora.setMinutes(hora.getMinutes() + 15)
   let str_prevAtendimento = hora.getHours() + ':' + hora.getMinutes()
-  let idf = 1
   const idr = 1
 
   export default {
@@ -87,20 +83,11 @@
             console.log(`Error: ${err}`)
             return false
           })
-
-        /*this.fila =
-          {
-            id: 1,
-            id_restaurante: 0,
-            hora_funcionamento_inicio: '14:30',
-            hora_funcionamento_fim: '15:50',
-            tempo_medio_inicial: '00:30',
-          }*/
       },
       consultarFila () {
         const vm = this
         this.$http
-          .get(api('/filas/' + idf))
+          .get(api('/filas/' + vm.nfila))
           .then(response => {
             // TODO add session to cookies
             vm.fila = response.data.data
@@ -111,20 +98,11 @@
             console.log(`Error: ${err}`)
             return false
           })
-
-        /*this.fila =
-          {
-            id: 1,
-            id_restaurante: 0,
-            hora_funcionamento_inicio: '14:30',
-            hora_funcionamento_fim: '15:50',
-            tempo_medio_inicial: '00:30',
-          }*/
       },
       consultarRestautante () {
         const vm = this
         this.$http
-          .get(api('/restaurantes/' + idr)) //Arrumar
+          .get(api('/restaurantes/' + idr))
           .then(response => {
             vm.restaurante = response.data.data
           })
@@ -134,12 +112,13 @@
           })
       },
       atualizarFila () {
-        idf = this.nfila
         this.consultarFila()
         this.consultarRestautante()
         this.consultarFilas()
 
-        hora.setMinutes(hora.getMinutes() + 15)
+        console.log(this.fila.tempo_medio_inicial)
+        hora = new Date()
+        hora.setMinutes(hora.getMinutes() + this.fila.tempo_medio_inicial)
         this.datahoje.hp = hora.getHours() + ':' + hora.getMinutes()
       }
     },

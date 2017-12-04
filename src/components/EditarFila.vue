@@ -29,7 +29,7 @@
 
 <script>
   import { api } from '../js/environment'
-  const adm = 1
+  const adr = 1
 
   export default {
     name: 'EditarFila',
@@ -41,7 +41,7 @@
         this.$http.get(api('/filas'))
           .then(function (response) {
             vm.filas = response.data.data.filter(e => {
-              return e.id_restaurante == adm
+              return e.id_restaurante == adr
             })
           })
 

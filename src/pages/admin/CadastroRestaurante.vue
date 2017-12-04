@@ -130,6 +130,8 @@
         })
           .then(response => {
             console.log(`Response: ${response}`)
+            alert('Atualizado!')
+            this.$router.push({name: 'MeuRestaurante'})
             // TODO add session to cookies
           })
           .catch(err => {
@@ -151,14 +153,14 @@
           })
       },
       preencherRestaurante () {
-        document.getElementById('NameField').value = this.restaurante[0].nome
-        document.getElementById('TelephoneField1').value = this.restaurante[0].telefone
-        document.getElementById('SiteField').value = this.restaurante[0].site
-        document.getElementById('EnderecoField').value = this.restaurante[0].endereco
-        document.getElementById('DescricaoField').value = this.restaurante[0].descricao
-        document.getElementById('FormaPagamento').value = this.restaurante[0].forma_pagamento
-        document.getElementById('InformacaoAdicional').value = this.restaurante[0].informacao_adicional
-        document.getElementById('DiaFuncionamento').value = this.restaurante[0].hora_funcionamento_inicio
+        document.getElementById('NameField').value = this.restaurante.nome
+        document.getElementById('TelephoneField1').value = this.restaurante.telefone
+        document.getElementById('SiteField').value = this.restaurante.site
+        document.getElementById('EnderecoField').value = this.restaurante.endereco
+        document.getElementById('DescricaoField').value = this.restaurante.descricao
+        document.getElementById('FormaPagamento').value = this.restaurante.forma_pagamento
+        document.getElementById('InformacaoAdicional').value = this.restaurante.informacao_adicional
+        document.getElementById('DiaFuncionamento').value = this.restaurante.hora_funcionamento_inicio
           + '\t' + this.restaurante[0].hora_funcionamento_fim
       }
     },
