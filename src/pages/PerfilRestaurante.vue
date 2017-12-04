@@ -127,8 +127,9 @@
         vm.$http
           .get(api(`/restaurantes/${rest_id}`))
           .then(function (response) {
-            const dados = response.data.data[0];
-            //console.log(dados)
+            console.log('Respostas: ' + response.data.data)
+            const dados = response.data.data;
+            console.log('Dados: ' + dados)
             data.nome = dados.nome
             data.informacao_adicional = dados.informacao_adicional
             data.endereco = dados.endereco
