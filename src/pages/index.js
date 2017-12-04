@@ -11,7 +11,7 @@ import Index from './Index.vue'
 
 import { AlterarDados, Dashboard, Historico, UserSpace, } from './usuario'
 
-import { Admin, CadastroRestaurante, EditarConta, EditarFunc, LoginAdmin, Mesas, MeuRestaurante } from './admin'
+import { Admin, CadastroRestaurante, EditarConta, EditarFunc, LoginAdmin, Mesas, Filas, MeuRestaurante } from './admin'
 
 Vue.use(Router)
 
@@ -117,6 +117,11 @@ export default new Router({
           path: 'mesas',
           name: 'Mesas',
           component: Mesas,
+        },
+        {
+          path: 'filas',
+          name: 'Filas',
+          component: Filas,
         },
         {
           path: 'editarFunc',

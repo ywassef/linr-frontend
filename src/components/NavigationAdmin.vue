@@ -15,6 +15,10 @@
       <div class="navbar-end">
         <router-link to="restaurante" class="navbar-item"
                      onclick="document.getElementById('menu').classList.toggle('is-active');">
+          Meu Restaurante
+        </router-link>
+        <router-link to="filas" class="navbar-item"
+                     onclick="document.getElementById('menu').classList.toggle('is-active');">
           Fila
         </router-link>
         <router-link to="mesas" class="navbar-item"
@@ -31,7 +35,7 @@
         </router-link>
         <router-link to="editarFunc" class="navbar-item"
                      onclick="document.getElementById('menu').classList.toggle('is-active');">
-          Funcinários
+          Funcionários
         </router-link>
         <router-link to="login" class="navbar-item"
                      onclick="document.getElementById('menu').classList.toggle('is-active');">
