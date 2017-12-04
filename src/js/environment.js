@@ -1,4 +1,4 @@
-export function api (path) {
+export default function api (path) {
   if (process.env.NODE_ENV === 'production') {
     return '/api' + path
   }

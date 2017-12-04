@@ -13,12 +13,8 @@
     </section>
     <section class="navbar-menu" id="menu">
       <div class="navbar-end">
-        <router-link to="/admin" class="navbar-item"
-                     onclick="document.getElementById('menu').classList.toggle('is-active');">
-          Admin
-        </router-link>
-        <router-link to="/cadastro" class="navbar-item"
-                     onclick="document.getElementById('menu').classList.toggle('is-active');">
+        <!-- Refactoring to v-on:click doesnt work -->
+        <router-link to="/cadastro" class="navbar-item" onclick="document.getElementById('menu').classList.toggle('is-active');">
           Cadastro
         </router-link>
         <router-link to="/login" class="navbar-item"
@@ -48,6 +44,10 @@
 
   .navbar-item {
     color: #FFFFFF !important;
+  }
+
+  .navbar-menu {
+    background-color: $navbarbg;
   }
 
   .navbar-item img {
