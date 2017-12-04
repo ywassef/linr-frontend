@@ -7,26 +7,27 @@
         </div>
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
-            <div class="column has-text-centered is-one-third-desktop">
+            <form class="column has-text-centered is-one-third-desktop">
               <div class="field">
                 <label class="label">Email</label>
                 <div class="control">
-                  <input class="input" id="EmailField" type="email" value="maria@gmail.com">
+                  <input class="input" name="email" type="email"
+                         value="usuario1@gmail.com">
                 </div>
               </div>
-
               <div class="field">
                 <label class="label">Senha</label>
                 <div class="control">
-                  <input class="input" id="PasswordField" type="password" value="maria">
+                  <input class="input" name="senha" type="password"
+                         value="hunter1">
                 </div>
               </div>
-
-            </div>
+            </form>
           </div>
         </div>
         <div class="hero-body">
-          <button class="button is-large is-primary" v-on:click="logar">
+          <button class="button is-large is-primary" type="button"
+                  v-on:click="logar">
             Entrar
           </button>
         </div>
@@ -36,21 +37,31 @@
 </template>
 
 <script>
-  import MaskedInput from 'vue-masked-input'
+  import { api } from '../js/environment'
 
   export default {
     name: 'Login',
     methods: {
       logar (event) {
-        if (document.getElementById('EmailField').value === 'maria@gmail.com') {
-          if (document.getElementById('PasswordField').value === 'maria') {
-            this.$router.push('Usuario')
-          } else {
-            alert('Senha incorreta')
-          }
-        } else {
-          alert('Usuário não encontrado')
-        }
+        const [form] = document.getElementsByTagName('form')
+        this.$http
+          .post(api('/auth/login'), {
+            email: form.email.value,
+            senha: form.senha.value,
+          })
+          .then(response => {
+            console.log(`Response: ${JSON.stringify(response)}`)
+            if (response.data.status === 'ok') {
+              this.$session.start()
+              this.$session.set('usuario', response.data.session.usuario)
+              this.$session.set('token', response.data.session.token)
+              this.$router.push({name: 'Home'})
+            }
+          })
+          .catch(err => {
+            console.log(`Error: ${err}`)
+            return false
+          })
       },
     },
   }

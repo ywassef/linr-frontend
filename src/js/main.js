@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueSession from 'vue-session'
 
 import App from '../components/App.vue'
 import router from '../pages'
 
 Vue.use(VueAxios, axios)
+Vue.use(VueSession)
 
 new Vue({
   el: '#app',
@@ -15,8 +17,6 @@ new Vue({
     App,
   },
 })
-
-Vue.use(VueAxios, axios)
 
 /**
  * Calculates user snowflake considering date, fingerprint, restaurant and client type.
