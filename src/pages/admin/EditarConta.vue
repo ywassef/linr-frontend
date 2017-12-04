@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="container has-text-centered">
-      <h1 class="title">INFORMAÇÕES RESTAURANTE</h1>
+      <h1 class="title">INFORMAÇÕES CONTA</h1>
     </div>
     <div class="content">
       <section class="hero">
@@ -47,13 +47,17 @@
     name: 'EditarConta',
     methods: {
       atualizar: function (event) {
-        alert(document.getElementById('Email').value + '\n'
-          + document.getElementById('PasswordField').value + '\n'
-          + document.getElementById('PasswordFieldNew').value + '\n'
-          + 'Atualizado com sucesso!')
-        console.log(event)
+        alert('Atualizado!')
+        this.$router.push({name: 'MeuRestaurante'})
       },
+      preencher(){
+        document.getElementById('Email').value = 'Denis Taveira'
+      }
     },
+    mounted () {
+      this.preencher()
+
+    }
   }
 </script>
 

@@ -19,6 +19,11 @@
     components: {
       'navigation': NavigationAdmin,
     },
+    methods: {
+      login(){
+        this.$root.adm = 1
+      }
+    },
     data () {
       return {
         'fila': Fila,
@@ -27,6 +32,9 @@
         'usuario': Usuario,
       }
     },
+    mounted (){
+      this.login()
+    }
   }
 </script>
 
