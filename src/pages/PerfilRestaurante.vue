@@ -280,7 +280,7 @@
               }
             }
 
-            console.log('hora func full: ' + hora_func_full)
+            //console.log('hora func full: ' + hora_func_full)
             data.hora_funcionamento = hora_func_short
             data.botao_icon = 'fa fa-angle-down'
 
@@ -289,7 +289,7 @@
               vm.$http
                 .get(api(`/filas/${filas[i]}`))
                 .then(function (response) {
-                  console.log(response.data.data)
+                  //console.log(response.data.data)
                   data.filas = data.filas + '<strong>Fila ' + response.data.data.id + ':</strong>' + '&ensp;'
                   data.filas = data.filas + response.data.data.descricao + '&ensp;'
                   data.filas = data.filas + '<i class="fa fa-users" aria-hidden="true"></i> &nbsp;'
