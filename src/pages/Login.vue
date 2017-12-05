@@ -55,6 +55,7 @@
               this.$session.start()
               this.$session.set('usuario', response.data.session.usuario)
               this.$session.set('token', response.data.session.token)
+              this.$bus.$emit('login', 'User logged')
               this.$router.push({name: 'Home'})
             }
           })

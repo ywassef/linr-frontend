@@ -9,7 +9,7 @@ import NaFila from '../components/NaFila.vue'
 import Index from './Index.vue'
 import PerfilRestaurante from './PerfilRestaurante.vue'
 
-import { AlterarDados, Dashboard, Historico, UserSpace, } from './usuario'
+import { AlterarDados, Dashboard, Historico, Logout} from './usuario'
 
 import { Admin, CadastroRestaurante, EditarConta, EditarFunc, LoginAdmin, Mesas, Filas, MeuRestaurante } from './admin'
 
@@ -52,31 +52,36 @@ export default new Router({
 		  name: 'NaFila',
 		  component: NaFila,
 		},
-	    {
-	      path: '/usuario',
-	      component: Dashboard,
-	      children: [
-	        {
-	          name: 'Usuario',
-	          path: '',
-	          redirect: {name: 'Dashboard'},
-	        },
-	        {
-	          path: 'dashboard',
-	          name: 'Dashboard',
-	          component: Dashboard,
-	        },
-	        {
-	          path: 'config',
-	          name: 'Configuracao',
-	          component: AlterarDados,
-	        },
-	        {
-	          path: 'historico',
-	          name: 'Historico',
-	          component: Historico,
-	        },
-	      ],
+      {
+        path: '/usuario',
+        component: Dashboard,
+        children: [
+          {
+            name: 'Usuario',
+            path: '',
+            redirect: {name: 'Dashboard'},
+          }
+        ]
+      },
+      {
+        path: '/usuario/dashboard',
+        name: 'Dashboard',
+        component: Dashboard,
+      },
+      {
+        path: '/usuario/config',
+        name: 'Configuracao',
+        component: AlterarDados,
+      },
+      {
+        path: '/usuario/logout',
+        name: 'Logout',
+        component: Logout,
+      },
+      {
+        path: '/usuario/historico',
+        name: 'Historico',
+        component: Historico,
 	    },
 	    {
 	      path: '/r/:id_fila',

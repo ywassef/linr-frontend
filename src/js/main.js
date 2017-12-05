@@ -2,12 +2,13 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueSession from 'vue-session'
-
+import EventBus from './EventBus.js'
 import App from '../components/App.vue'
 import router from '../pages'
 
 Vue.use(VueAxios, axios)
 Vue.use(VueSession)
+Vue.prototype.$bus = EventBus
 
 new Vue({
   el: '#app',
