@@ -122,10 +122,10 @@
                 // TODO: send the token to the API
                 console.log(currentToken)
                 if (vm.$session.exists()) {
-                  vm.call_api_entrarnafila_logged()
+                  vm.call_api_entrarnafila_logged(currentToken)
                 }
                 else {
-                  vm.call_api_entrarnafila_temp()
+                  vm.call_api_entrarnafila_temp(currentToken)
                 }
 
               })
@@ -138,17 +138,17 @@
             }
             else {
               if (vm.$session.exists()) {
-                vm.call_api_entrarnafila_logged()
+                vm.call_api_entrarnafila_logged('')
               }
               else {
-                vm.call_api_entrarnafila_temp()
+                vm.call_api_entrarnafila_temp('')
               }
             }
 
           })
 
       },
-      call_api_entrarnafila_logged: function () {
+      call_api_entrarnafila_logged: function (currentToken) {
         console.log('entrou')
         console.log(this.$session.getAll().usuario)
 
@@ -181,7 +181,7 @@
           form.elements['MobileField'].value = usuario.telefone
         }
       },
-      call_api_entrarnafila_temp: function () {
+      call_api_entrarnafila_temp: function (currentToken) {
 
         const id_fila = this.$route.params.id_fila
         const id_user = this.$CalculateSnowflake(id_fila, 0)
@@ -194,6 +194,7 @@
         vm.$http.post(api('/auth/new/temp'), {
           id: id_user,
           nome: form.NameField.value,
+          fcmtoken: currentToken,
           telefone: form.MobileField.value,
         })
         //with the id returned in the insertion, put the new user in line

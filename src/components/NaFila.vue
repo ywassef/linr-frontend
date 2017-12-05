@@ -45,6 +45,8 @@
 
 <script>
 
+  let id_usuario_fila
+
   var data = {
     nome: 'def name',
     qtd_pessoas: 'def qtd',
@@ -54,7 +56,6 @@
 
   import Vue from 'vue'
   import { api } from '../js/environment.js'
-
   export default {
     name: 'NaFila',
     data () {
@@ -63,9 +64,8 @@
     methods: {
       preencherPagina () {
         const vm = this
-        const id_fila =  this.$route.params.id_fila
-        const id_user = this.$route.query.id
-
+        let id_fila =  this.$route.params.id_fila
+        let id_user = this.$route.query.id
         vm.$http
           .get(api(`/filas/${id_fila}`))
           .then(function (response) {
@@ -73,8 +73,9 @@
             console.log(users)
             for(var i = 0; i < users.length; i++) {
               console.log('posicao usuario: '+ i + ' - ' + users[i].id_usuario + ' id_user: ' + id_user)
-              if (users[i].id_usuario === id_user && users[i].hora_entrada_atendimento === null && users[i].desistiu_da_fila === false) {
+              if (users[i].id_usuario === id_user && users[i].hora_entrada_atendimento === null) {
                 console.log('entrou no if')
+                id_usuario_fila = users[i].id
                 data.nome = users[i].nome
                 data.qtd_pessoas = users[i].qtd_pessoas
                 data.num_pessoas_fila = i + 1
@@ -86,12 +87,11 @@
       desistir: function (event) {
         if (confirm('Você tem certeza que deseja sair da fila?') === true) {
           const vm = this
-          const id_fila = this.$route.params.id_fila
-          const id_user = this.$route.query.id
-
+          let id_fila =  this.$route.params.id_fila
+          console.log(id_usuario_fila)
           vm.$http
-            .put(api(`/filas/${id_fila}/remove`), {
-              id_usuario_fila: id_user
+            .put(api(`/filas/${id_fila}/desistir`), {
+              id_usuario_fila: id_usuario_fila
             })
             .then(function(response) {
               vm.$router.push({path: '/'})
@@ -100,6 +100,7 @@
               console.log(`Error: ${err}`)
               return false
             })
+
         }
       },
     },
