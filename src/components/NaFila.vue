@@ -73,7 +73,7 @@
             console.log(users)
             for(var i = 0; i < users.length; i++) {
               console.log('posicao usuario: '+ i + ' - ' + users[i].id_usuario + ' id_user: ' + id_user)
-              if (users[i].id_usuario === id_user) {
+              if (users[i].id_usuario === id_user && users[i].hora_entrada_atendimento === null && users[i].desistiu_da_fila === false) {
                 console.log('entrou no if')
                 data.nome = users[i].nome
                 data.qtd_pessoas = users[i].qtd_pessoas
@@ -85,8 +85,21 @@
       },
       desistir: function (event) {
         if (confirm('Você tem certeza que deseja sair da fila?') === true) {
-          this.$router.push({path: '/'})
-          console.log(event)
+          const vm = this
+          const id_fila = this.$route.params.id_fila
+          const id_user = this.$route.query.id
+
+          vm.$http
+            .put(api(`/filas/${id_fila}/remove`), {
+              id_usuario_fila: id_user
+            })
+            .then(function(response) {
+              vm.$router.push({path: '/'})
+            })
+            .catch(function (err) {
+              console.log(`Error: ${err}`)
+              return false
+            })
         }
       },
     },
