@@ -47,7 +47,7 @@
 <script>
   import MaskedInput from 'vue-masked-input'
   import EntrarFila from '../components/EntrarFilaCadastrado.vue'
-  import api from '../js/environment.js'
+  import { api } from '../js/environment.js'
 
   export default {
     name: 'Restaurantes',

@@ -53,7 +53,7 @@
   }
 
   import Vue from 'vue'
-  import api from '../js/environment.js'
+  import { api } from '../js/environment.js'
 
   export default {
     name: 'NaFila',

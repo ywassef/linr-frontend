@@ -54,7 +54,7 @@
 <script>
   import '../../firebase-messaging-sw.js'
   require('../../firebase-messaging-sw.js')
-  import api from '../js/environment.js'
+  import { api } from '../js/environment.js'
 
   var data = {
     smscheckbox: 'Quero receber alertas da fila via SMS',
@@ -116,7 +116,7 @@
               .then(function(currentToken) {
                 // TODO: send the token to the API
                 console.log(currentToken)
-                vm.call_api_entrarnafila()
+                vm.call_api_entrarnafila(currentToken)
 
               })
           })
@@ -133,7 +133,7 @@
           });
 
       },
-      call_api_entrarnafila: function () {
+      call_api_entrarnafila: function (currentToken) {
 
         const id_fila = this.$route.params.id_fila
         const id_user = this.$CalculateSnowflake(id_fila, 0);
@@ -146,6 +146,7 @@
         vm.$http.post(api('/auth/new/temp'), {
           id: id_user,
           nome: form.NameField.value,
+          token: currentToken,
           telefone: form.MobileField.value,
         })
         //with the id returned in the insertion, put the new user in line
