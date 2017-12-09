@@ -28,7 +28,7 @@
         </div>
       </div>
 
-      <button type="submit" class="button is-medium is-primary"
+      <button type="submit" class="button is-medium is-info"
               v-on:click="voltar">
         Voltar
       </button>

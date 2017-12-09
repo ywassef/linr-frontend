@@ -52,7 +52,7 @@
           </div>
           <div class="hero-body">
             <router-link to="../restaurantes">
-              <button class="button is-large is-success">
+              <button class="button is-large is-primary">
                 <img :src="knife_fork" style="height: 30px; width: 30px"/>
                 Restaurantes
               </button>
