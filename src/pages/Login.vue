@@ -56,10 +56,11 @@
               this.$session.set('usuario', response.data.session.usuario)
               this.$session.set('token', response.data.session.token)
               this.$bus.$emit('login', 'User logged')
-              this.$router.push({name: 'Home'})
+              this.$router.push({path: '/usuario'})
             }
           })
           .catch(err => {
+            alert('Email ou senha incorretos')
             console.log(`Error: ${err}`)
             return false
           })

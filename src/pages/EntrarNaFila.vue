@@ -65,6 +65,9 @@
     smscheckbox: 'Quero receber alertas da fila via SMS',
   }
 
+  let num_pessoas_fila;
+  let id_fila
+
   export default {
     name: 'Entrarnafila',
     methods: {
@@ -152,20 +155,26 @@
         console.log('entrou')
         console.log(this.$session.getAll().usuario)
 
-        const id_fila = this.$route.params.id_fila
         const id_user = this.$session.getAll().usuario.id
         const [form] = document.getElementsByTagName('form')
 
         const vm = this
-        vm.$http.put(api(`/filas/${id_fila}/enter`), {
-          id_usuario: id_user,
-          qtd_pessoas: form.NumPeopleField.value,
+        vm.$http.put(api('/auth/updatetoken'), {
+          session: this.$session.getAll().token,
+          fcmtoken: currentToken
         })
-        .then(function (response) {
-          console.log(`Response: ${response}`)
-          vm.$router.push({
-            path: '../nafila/' + id_fila, query: {id: id_user},
+        .then (function (response) {
+          vm.$http.put(api(`/filas/${id_fila}/entercadastrado`), {
+            session_token: vm.$session.getAll().token,
+            qtd_pessoas: form.NumPeopleField.value,
+            posicao_qdo_entrou: num_pessoas_fila
           })
+            .then(function (response) {
+              console.log(`Response: ${response}`)
+              vm.$router.push({
+                path: '../nafila/' + id_fila, query: {id: id_user},
+              })
+            })
         })
         .catch(function (err) {
           console.log(`Error: ${err}`)
@@ -173,7 +182,21 @@
         })
 
       },
-      load_logged_data: function (){
+      load_data: function (){
+        id_fila = this.$route.params.id_fila
+        const client = new ClientJS()
+        const OS = client.getOS()
+        if (OS === 'iOS' || OS === 'Mac OS' || !('serviceWorker' in navigator)) {
+          data.smscheckbox = 'É necessário o uso de alertas via SMS para iOS'
+          document.getElementById('SMS').checked = true
+          document.getElementById('SMS').disabled = true
+        }
+        const vm = this
+        vm.$http.get(api(`/filas/${id_fila}`))
+          .then(function (response) {
+            num_pessoas_fila = parseInt(response.data.data.usuarios_na_fila.length) + 1
+            console.log('Fila dados: ' + num_pessoas_fila)
+          })
         if (this.$session.exists()) {
           const usuario = this.$session.getAll().usuario
           const [form] = document.getElementsByTagName('form')
@@ -183,7 +206,6 @@
       },
       call_api_entrarnafila_temp: function (currentToken) {
 
-        const id_fila = this.$route.params.id_fila
         const id_user = this.$CalculateSnowflake(id_fila, 0)
         console.log('User id: ' + id_user + ' params: ' + this.$route.params.id_fila)
         const [form] = document.getElementsByTagName('form')
@@ -202,6 +224,7 @@
             vm.$http.put(api(`/filas/${id_fila}/enter`), {
               id_usuario: id_user,
               qtd_pessoas: form.NumPeopleField.value,
+              posicao_qdo_entrou: num_pessoas_fila
             })
               .then(function (response) {
                 console.log(`Response: ${response}`)
@@ -220,18 +243,12 @@
       return data
     },
     mounted(){
-      this.load_logged_data()
+      this.load_data()
     },
   }
 
   window.onload = function () {
-    const client = new ClientJS()
-    const OS = client.getOS()
-    if (OS === 'iOS' || OS === 'Mac OS' || !('serviceWorker' in navigator)) {
-      data.smscheckbox = 'É necessário o uso de alertas via SMS para iOS'
-      document.getElementById('SMS').checked = true
-      document.getElementById('SMS').disabled = true
-    }
+
   }
 </script>
 

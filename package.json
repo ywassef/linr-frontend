@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "bulma": "^0.5.1",
+    "bulma": "^0.5.3",
     "clientjs": "^0.1.11",
     "vue": "^2.3.3",
     "vue-axios": "^2.0.2",

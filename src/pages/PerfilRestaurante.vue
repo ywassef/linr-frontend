@@ -1,86 +1,107 @@
 <template>
   <section>
-    <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image">
-            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <h2><strong>{{nome}}</strong></h2>
+    <div v-if="this.$session.exists()">
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image">
+              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+            </figure>
           </div>
-          <div class="level is-mobile">
-            <div class="level-left">
+          <div class="media-content">
+            <div class="content">
+              <h2><strong>{{nome}}</strong></h2>
+            </div>
+            <div class="level is-mobile">
+              <div class="level-left">
 
-              <a class="level-item">
-                <h3 class="subtitle"><i class="fa fa-star" aria-hidden="true"></i>
-                {{avaliacao}}
-              </h3>
-              </a>
+                <a class="level-item">
+                  <h3 class="subtitle"><i class="fa fa-star" aria-hidden="true"></i>
+                    {{avaliacao_average}}
+                  </h3>
+                </a>
+                <a class="level-item">
+                  <h3 class="subtitle"><i class="fa fa-star" aria-hidden="true"></i>
+                    {{avaliacao_user}}
+                  </h3>
+                </a>
+              </div>
             </div>
           </div>
+        </article>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Filas:</strong>
+        <p><small>
+          <span v-html="filas"></span>
+        </small></p>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Descrição:</strong>
+        <p style="text-align:justify "><small>
+          {{informacao_adicional}}
+        </small></p>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Endereço:</strong>
+        <p><small>
+          {{endereco}}
+        </small></p>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Contato:</strong>
+        <p><small>
+          <strong>Telefone:</strong> {{telefone}}
+        </small></p>
+        <p><small>
+          <strong>Site:</strong> <a v-bind:href="'http://' + site">{{site}}</a>
+        </small></p>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Horários de funcionamento:</strong>
+        <p><small>
+          <span v-html="hora_funcionamento"></span>
+        </small></p>
+        <div class="has-text-right">
+          <button class="button is-outlined" v-on:click="hora_func" >
+            <i :class="botao_icon" aria-hidden="true"></i>
+          </button>
         </div>
-      </article>
-    </div>
+      </div>
 
-    <div class="box has-text-left">
-      <strong>Filas:</strong>
-      <p><small>
-        <span v-html="filas"></span>
-      </small></p>
-    </div>
+      <div class="box has-text-left">
+        <strong>Formas de pagamento:</strong>
+        <p><small>
+          <span v-html="pagamento"></span>
+        </small></p>
+      </div>
 
-    <div class="box has-text-left">
-      <strong>Descrição:</strong>
-      <p style="text-align:justify "><small>
-        {{informacao_adicional}}
-      </small></p>
-    </div>
+      <div class="hero-body">
+        <button class="button is-medium is-primary is-outlined"
+                v-on:click="">Avalie esse restaurante!
+        </button>
+      </div>
 
-    <div class="box has-text-left">
-      <strong>Endereço:</strong>
-      <p><small>
-        {{endereco}}
-      </small></p>
-    </div>
-
-    <div class="box has-text-left">
-      <strong>Contato:</strong>
-      <p><small>
-        <strong>Telefone:</strong> {{telefone}}
-      </small></p>
-      <p><small>
-        <strong>Site:</strong> <a v-bind:href="'http://' + site">{{site}}</a>
-      </small></p>
-    </div>
-
-    <div class="box has-text-left">
-      <strong>Horários de funcionamento:</strong>
-      <p><small>
-        <span v-html="hora_funcionamento"></span>
-      </small></p>
-      <div class="has-text-right">
-        <button class="button is-outlined" v-on:click="hora_func" >
-          <i :class="botao_icon" aria-hidden="true"></i>
+      <div class="hero-body">
+        <button class="button is-large is-primary"
+                v-on:click="entrar_na_fila">ENTRAR NA FILA
         </button>
       </div>
     </div>
-
-    <div class="box has-text-left">
-      <strong>Formas de pagamento:</strong>
-      <p><small>
-        <span v-html="pagamento"></span>
-      </small></p>
+    <div v-else>
+      <div class="content">
+      <section class="hero">
+        <div class="hero-body">
+          <h2 class="title"><b>Não autorizado</b></h2>
+        </div>
+      </section>
+      </div>
     </div>
-
-    <div class="hero-body">
-      <button class="button is-large is-primary"
-              v-on:click="entrar_na_fila">ENTRAR NA FILA
-      </button>
-    </div>
-
   </section>
 </template>
 
@@ -91,7 +112,8 @@
 
   var data = {
     nome: '',
-    avaliacao: 'placeholder',
+    avaliacao_average: 'placeholder',
+    avaliacao_user: '',
     filas: '',
     informacao_adicional: '',
     endereco: '',
@@ -105,6 +127,9 @@
   import MaskedInput from 'vue-masked-input'
   import EntrarFila from '../components/EntrarFilaCadastrado.vue'
   import { api } from '../js/environment.js'
+  import Vue from 'vue'
+  import VueSession from 'vue-session'
+  Vue.use(VueSession)
 
   export default {
     name: 'PerfilRestaurantes',
@@ -302,6 +327,16 @@
                   }
                 })
             }
+
+            /*const id_user = vm.$session.getAll().usuario.id
+            console.log('id_user: ' + id_user)
+            vm.$http
+              .get(api(`/restaurantes/${rest_id}/avaliacao`), {
+                id_usuario: id_user
+              })
+              .then(function (response) {
+                console.log('avaliacao media: ' + response.avaliacao_average + ' avaliacao usuario: ' + response.avaliacao_user)
+              })*/
 
           })
           .catch(function (err) {
