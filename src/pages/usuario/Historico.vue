@@ -6,25 +6,29 @@
           <p class="title">Meu Histórico</p>
         </div>
       </nav>
-
       <div class="columns is-mobile is-centered">
         <div class="column has-text-centered is-half-desktop">
-          <table class="table is-mobile is-fullwidth">
-            <thead>
-            <tr>
-              <th>Data</th>
-              <th>Restaurante</th>
-              <th>Espera</th>
-            </tr>
-            </thead>
-            <tbody v-for="log in logs">
-            <tr>
-              <td>{{log.date}}</td>
-              <td>{{log.nome}}</td>
-              <td>{{log.espera}}</td>
-            </tr>
-            </tbody>
-          </table>
+          <div v-if="logs.length === 0">
+            <h3 class="subtitle" style="padding: 3rem 3rem 3rem 3rem;">Não há histórico!</h3>
+          </div>
+          <div v-else>
+            <table class="table is-mobile is-fullwidth">
+              <thead>
+              <tr>
+                <th>Data</th>
+                <th>Restaurante</th>
+                <th>Espera</th>
+              </tr>
+              </thead>
+              <tbody v-for="log in logs">
+              <tr>
+                <td>{{log.date}}</td>
+                <td>{{log.nome}}</td>
+                <td>{{log.espera}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

@@ -14,19 +14,25 @@
             </div>
             <div class="level is-mobile">
               <div class="level-left">
-
                 <a class="level-item">
                   <h3 class="subtitle"><i class="fa fa-star" aria-hidden="true"></i>
                     {{avaliacao_average}}
                   </h3>
-                </a>
-                <a class="level-item">
-                  <h3 class="subtitle"><i class="fa fa-star" aria-hidden="true"></i>
+                  <h3  v-if="avaliacao_user_exists === true" class="subtitle" style="padding-left: 1rem"><b>Sua nota: </b>
                     {{avaliacao_user}}
                   </h3>
                 </a>
               </div>
             </div>
+            <!--<div class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item" style="padding-left: 1rem">
+                  <h3 class="subtitle"><b>Sua nota: </b>
+                    {{avaliacao_user}}
+                  </h3>
+                </a>
+              </div>
+            </div>-->
           </div>
         </article>
       </div>
@@ -83,7 +89,7 @@
 
       <div class="hero-body">
         <button class="button is-medium is-primary is-outlined"
-                v-on:click="">Avalie esse restaurante!
+                v-on:click="avaliar">Avalie esse restaurante!
         </button>
       </div>
 
@@ -114,6 +120,7 @@
     nome: '',
     avaliacao_average: 'placeholder',
     avaliacao_user: '',
+    avaliacao_user_exists: false,
     filas: '',
     informacao_adicional: '',
     endereco: '',
@@ -140,6 +147,9 @@
       entrar_na_fila() {
         this.$router.push('/')
       },
+      avaliar() {
+        this.$router.push('/restaurantes/' + this.$route.params.r_id + '/avaliar')
+      },
       loadPagina() {
         hora_func_full = ''
         hora_func_short = ''
@@ -147,6 +157,7 @@
         var filas = ''
         data.filas = ''
         data.pagamento = ''
+        data.avaliacao_user_exists = false
         const vm = this
 
         vm.$http
@@ -328,15 +339,19 @@
                 })
             }
 
-            /*const id_user = vm.$session.getAll().usuario.id
+            const id_user = vm.$session.getAll().usuario.id
             console.log('id_user: ' + id_user)
             vm.$http
-              .get(api(`/restaurantes/${rest_id}/avaliacao`), {
-                id_usuario: id_user
-              })
+              .get(api(`/restaurantes/${rest_id}/avaliacao/${id_user}`))
               .then(function (response) {
-                console.log('avaliacao media: ' + response.avaliacao_average + ' avaliacao usuario: ' + response.avaliacao_user)
-              })*/
+                console.log(response)
+                if(response.data.data.avaliacao_usuario) {
+                  data.avaliacao_user_exists = true
+                  data.avaliacao_user = response.data.data.avaliacao_usuario.valor
+                }
+                data.avaliacao_average = parseFloat(response.data.data.avaliacao_media.avg).toFixed(1)
+
+              })
 
           })
           .catch(function (err) {

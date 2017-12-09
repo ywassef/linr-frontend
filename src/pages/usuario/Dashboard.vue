@@ -10,7 +10,7 @@
             <div class="columns is-mobile is-centered">
               <div class="column has-text-centered is-one-third-desktop">
                 <div v-if="history_size === 0">
-                  <h3 class="subtitle">Não há histórico!</h3>
+                  <h3 class="subtitle" style="padding: 3rem 3rem 3rem 3rem;">Não há histórico!</h3>
                 </div>
                 <div v-else>
                   <table class="table is-mobile is-fullwidth">
