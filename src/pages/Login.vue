@@ -50,7 +50,6 @@
             senha: form.senha.value,
           })
           .then(response => {
-            console.log(`Response: ${JSON.stringify(response)}`)
             if (response.data.status === 'ok') {
               this.$session.start()
               this.$session.set('usuario', response.data.session.usuario)

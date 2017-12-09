@@ -85,7 +85,6 @@
         vm.$http
           .get(api('/restaurantes'))
           .then(function (response) {
-            console.log(response.data.data)
             return response.data.data
               .map(function (restaurante) {
                 return {
@@ -97,7 +96,6 @@
               })
           })
           .then(function (data) {
-            console.log(`1: ${JSON.stringify(data)}`)
             vm.restaurantes = data
           })
       },

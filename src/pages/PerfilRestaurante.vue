@@ -163,19 +163,13 @@
         vm.$http
           .get(api(`/restaurantes/${rest_id}`))
           .then(function (response) {
-            console.log('Respostas: ' + response.data.data)
             const dados = response.data.data;
-            console.log('Dados: ' + dados)
             data.nome = dados.nome
             data.informacao_adicional = dados.informacao_adicional
             data.endereco = dados.endereco
             data.telefone = dados.telefone
             data.site = dados.site
-            if(dados.forma_pagamento === null) {
-              //console.log('pagamento: 0')
-            }
-            else {
-              //console.log('pagamento: ' + dados.forma_pagamento.length)
+            if(dados.forma_pagamento !== null) {
               for (var i = 0; i < dados.forma_pagamento.length ; i++) {
                 data.pagamento = data.pagamento + dados.forma_pagamento[0] + '<br>'
               }
@@ -245,7 +239,6 @@
               default:
                 break
             }
-            console.log('hora func short: ' + hora_func_short)
 
             for (var i = 0; i < 7; i++) {
               switch(i) {
@@ -317,7 +310,6 @@
               }
             }
 
-            //console.log('hora func full: ' + hora_func_full)
             data.hora_funcionamento = hora_func_short
             data.botao_icon = 'fa fa-angle-down'
 
@@ -326,7 +318,6 @@
               vm.$http
                 .get(api(`/filas/${filas[i]}`))
                 .then(function (response) {
-                  //console.log(response.data.data)
                   data.filas = data.filas + '<strong>Fila ' + response.data.data.id + ':</strong>' + '&ensp;'
                   data.filas = data.filas + response.data.data.descricao + '&ensp;'
                   data.filas = data.filas + '<i class="fa fa-users" aria-hidden="true"></i> &nbsp;'
@@ -340,11 +331,9 @@
             }
 
             const id_user = vm.$session.getAll().usuario.id
-            console.log('id_user: ' + id_user)
             vm.$http
               .get(api(`/restaurantes/${rest_id}/avaliacao/${id_user}`))
               .then(function (response) {
-                console.log(response)
                 if(response.data.data.avaliacao_usuario) {
                   data.avaliacao_user_exists = true
                   data.avaliacao_user = response.data.data.avaliacao_usuario.valor

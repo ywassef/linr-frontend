@@ -56,11 +56,8 @@
           .get(api(`/filas/${id_fila}`))
           .then(function (response) {
             const users = response.data.data.usuarios_na_fila;
-            console.log(users)
             for(var i = 0; i < users.length; i++) {
-              console.log('posicao usuario: '+ i + ' - ' + users[i].id_usuario + ' id_user: ' + id_user)
               if (users[i].id_usuario === id_user && users[i].hora_entrada_atendimento === null) {
-                console.log('entrou no if')
                 id_usuario_fila = users[i].id
                 data.nome = users[i].nome
                 data.qtd_pessoas = users[i].qtd_pessoas
@@ -74,7 +71,6 @@
         if (confirm('Você tem certeza que deseja sair da fila?') === true) {
           const vm = this
           let id_fila =  this.$route.params.id_fila
-          console.log(id_usuario_fila)
           vm.$http
             .put(api(`/filas/${id_fila}/desistir`), {
               id_usuario_fila: id_usuario_fila

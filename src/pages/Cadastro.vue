@@ -99,14 +99,12 @@
             senha: form.senha.value,
           })
           .then(response => {
-            console.log(`Response: ${response}`)
             this.$http
               .post(api('/auth/login'), {
                 email: form.email.value,
                 senha: form.senha.value,
               })
               .then(response => {
-                console.log(`Response: ${JSON.stringify(response)}`)
                 if (response.data.status === 'ok') {
                   this.$session.start()
                   this.$session.set('usuario', response.data.session.usuario)

@@ -109,7 +109,6 @@
     methods: {
       load_pagina(){
         const historico = this.$session.getAll().usuario.historico
-        console.log(historico)
         let i = 0, j = 0
         let hora_entrada, hora_saida
         let date_in, date_out, espera

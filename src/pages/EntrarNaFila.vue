@@ -123,7 +123,6 @@
             messaging.getToken()
               .then(function (currentToken) {
                 // TODO: send the token to the API
-                console.log(currentToken)
                 if (vm.$session.exists()) {
                   vm.call_api_entrarnafila_logged(currentToken)
                 }
@@ -152,9 +151,6 @@
 
       },
       call_api_entrarnafila_logged: function (currentToken) {
-        console.log('entrou')
-        console.log(this.$session.getAll().usuario)
-
         const id_user = this.$session.getAll().usuario.id
         const [form] = document.getElementsByTagName('form')
 
@@ -170,14 +166,12 @@
             posicao_qdo_entrou: num_pessoas_fila
           })
             .then(function (response) {
-              console.log(`Response: ${response}`)
               vm.$router.push({
                 path: '../nafila/' + id_fila, query: {id: id_user},
               })
             })
         })
         .catch(function (err) {
-          console.log(`Error: ${err}`)
           return false
         })
 
@@ -195,7 +189,6 @@
         vm.$http.get(api(`/filas/${id_fila}`))
           .then(function (response) {
             num_pessoas_fila = parseInt(response.data.data.usuarios_na_fila.length) + 1
-            console.log('Fila dados: ' + num_pessoas_fila)
           })
         if (this.$session.exists()) {
           const usuario = this.$session.getAll().usuario
@@ -207,7 +200,6 @@
       call_api_entrarnafila_temp: function (currentToken) {
 
         const id_user = this.$CalculateSnowflake(id_fila, 0)
-        console.log('User id: ' + id_user + ' params: ' + this.$route.params.id_fila)
         const [form] = document.getElementsByTagName('form')
 
         //insert new temporary user in the database
@@ -227,7 +219,6 @@
               posicao_qdo_entrou: num_pessoas_fila
             })
               .then(function (response) {
-                console.log(`Response: ${response}`)
                 vm.$router.push({
                   path: '../nafila/' + id_fila, query: {id: id_user},
                 })

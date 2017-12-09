@@ -106,8 +106,6 @@
           vm.$http
             .put(api(`/restaurantes/${rest_id}/avaliacao/${user_id}/${new_user_avg}`))
             .then(function (response) {
-              console.log('resposta do put:')
-              console.log(response)
               vm.$router.push({path: '/usuario'})
             })
         }
@@ -115,8 +113,6 @@
           vm.$http
             .post(api(`/restaurantes/${rest_id}/avaliacao/${user_id}/${new_user_avg}`))
             .then(function (response) {
-              console.log('resposta do post:')
-              console.log(response)
               vm.$router.push({path: '/usuario'})
             })
         }
@@ -139,8 +135,6 @@
                  data.user_avg = response.data.data.avaliacao_usuario.valor
                }
                data.rest_avg = parseFloat(response.data.data.avaliacao_media.avg).toFixed(1)
-               console.log('data: ')
-               console.log(data)
              })
 
          })

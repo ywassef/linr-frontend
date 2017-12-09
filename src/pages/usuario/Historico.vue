@@ -70,8 +70,6 @@
         data.logs = []
         const vm = this
         const historico = this.$session.getAll().usuario.historico
-        console.log('historioco: ')
-        console.log(historico)
         let hora_entrada, hora_saida
         let date_in, date_out, espera
         for (let i = 0; i < historico.length; i++) {
@@ -93,8 +91,6 @@
             data.logs.push(log_temp)
           }
         }
-        console.log('data.logs')
-        console.log(data.logs)
       }
     },
     mounted () {
