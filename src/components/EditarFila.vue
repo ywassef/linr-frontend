@@ -12,14 +12,14 @@
                 <p class="subtitle">Hora Funcionamento Fim: <br> {{fila.hora_funcionamento_fim}}</p>
               </div>
             </div>
-            <footer class="card-footer">
+            <!--<footer class="card-footer">
               <button class="button is-primary is-outlined card-footer-item" v-on:click="">
                 Ativar
               </button>
               <button class="button is-primary is-outlined card-footer-item is-centered" v-on:click="">
                 Excluir
               </button>
-            </footer>
+            </footer>-->
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@
         </router-link>
         <router-link to="login" class="navbar-item"
                      onclick="document.getElementById('menu').classList.toggle('is-active');">
-          Login
+          Sair
         </router-link>
       </div>
     </section>
