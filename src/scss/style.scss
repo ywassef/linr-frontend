@@ -1,10 +1,11 @@
-@import "../../node_modules/bulma/sass/utilities/all";
+@import "../../node_modules/bulma/sass/utilities/initial-variables";
 
 $primary: #FF5722;
-$primary-invert: findColorInvert($primary);
 $link: #F44336;
 $info: #F44336;
+$danger: $grey;
 $navbarbg: #D32F2F;
+$boxbg: #F44D41;
 
 @import "~bulma";
 

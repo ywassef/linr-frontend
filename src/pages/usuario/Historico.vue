@@ -1,72 +1,101 @@
 <template>
   <section class="section">
-    <nav class="level is-mobile">
-      <div class="level-item has-text-centered">
-        <p class="title">Meu Histórico</p>
+    <div v-if="this.$session.exists()">
+      <nav class="level is-mobile">
+        <div class="level-item has-text-centered">
+          <p class="title">Meu Histórico</p>
+        </div>
+      </nav>
+      <div class="columns is-mobile is-centered">
+        <div class="column has-text-centered is-half-desktop">
+          <div v-if="logs.length === 0">
+            <h3 class="subtitle" style="padding: 3rem 3rem 3rem 3rem;">Não há histórico!</h3>
+          </div>
+          <div v-else>
+            <table class="table is-mobile is-fullwidth">
+              <thead>
+              <tr>
+                <th>Data</th>
+                <th>Restaurante</th>
+                <th>Espera</th>
+              </tr>
+              </thead>
+              <tbody v-for="log in logs">
+              <tr>
+                <td>{{log.date}}</td>
+                <td>{{log.nome}}</td>
+                <td>{{log.espera}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </nav>
 
-    <div class="columns is-mobile is-centered">
-      <div class="column has-text-centered is-half-desktop">
-        <table class="table is-mobile is-fullwidth">
-          <thead>
-          <tr>
-            <th>Data</th>
-            <th>Restaurante</th>
-            <th>Espera</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>25/10/2017</td>
-            <td>Outback</td>
-            <td>30 min</td>
-          </tr>
-          <tr>
-            <td>15/09/2017</td>
-            <td>Outback</td>
-            <td>1h 24 min</td>
-          </tr>
-          <tr>
-            <td>06/08/2017</td>
-            <td>Outback</td>
-            <td>15 min</td>
-          </tr>
-          <tr>
-            <td>03/08/2017</td>
-            <td>Outback</td>
-            <td>20 min</td>
-          </tr>
-          <tr>
-            <td>20/07/2017</td>
-            <td>Outback</td>
-            <td>1h 06 min</td>
-          </tr>
-          <tr>
-            <td>19/07/2017</td>
-            <td>Outback</td>
-            <td>47 min</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <button type="submit" class="button is-medium is-info"
+              v-on:click="voltar">
+        Voltar
+      </button>
     </div>
-
-    <button type="submit" class="button is-medium is-primary"
-            v-on:click="voltar">
-      Voltar
-    </button>
+    <div v-else>
+      <section class="hero">
+        <div class="hero-body">
+          <h2 class="title"><b>Não autorizado</b></h2>
+        </div>
+      </section>
+    </div>
   </section>
 </template>
 
 <script>
+  import { api } from '../../js/environment.js'
+  import Vue from 'vue'
+  import VueSession from 'vue-session'
+  Vue.use(VueSession)
+
+  var data = {
+    logs: [],
+  }
+
   export default {
     name: 'Historico',
+    data() {
+      return data
+    },
     methods: {
       voltar: function (event) {
         this.$router.push({path: '/usuario'})
       },
+      load_pagina() {
+        data.logs = []
+        const vm = this
+        const historico = this.$session.getAll().usuario.historico
+        let hora_entrada, hora_saida
+        let date_in, date_out, espera
+        for (let i = 0; i < historico.length; i++) {
+          if(historico[i].hora_entrada_atendimento !== null){
+            let log_temp = {nome: '', date: '', espera: ''}
+
+            log_temp.nome = historico[i].nome
+            log_temp.date = historico[i].hora_entrada_fila.slice(8,10)
+              + '/' + historico[0].hora_entrada_fila.slice(5,7)
+              + '/' + historico[0].hora_entrada_fila.slice(0,4)
+
+            hora_entrada = historico[i].hora_entrada_fila.replace(/-/g,'/').replace('T',' ').slice(0, -5)
+            hora_saida = historico[i].hora_entrada_atendimento.replace(/-/g,'/').replace('T',' ').slice(0, -5)
+            date_in = new Date(hora_entrada)
+            date_out = new Date(hora_saida)
+            espera = Math.round((Math.abs(date_in - date_out)/1000)/60)
+            log_temp.espera = espera + ' min'
+
+            data.logs.push(log_temp)
+          }
+        }
+      }
     },
+    mounted () {
+      this.load_pagina()
+    }
   }
 </script>
 

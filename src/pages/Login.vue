@@ -50,15 +50,16 @@
             senha: form.senha.value,
           })
           .then(response => {
-            console.log(`Response: ${JSON.stringify(response)}`)
             if (response.data.status === 'ok') {
               this.$session.start()
               this.$session.set('usuario', response.data.session.usuario)
               this.$session.set('token', response.data.session.token)
-              this.$router.push({name: 'Home'})
+              this.$bus.$emit('login', 'User logged')
+              this.$router.push({path: '/usuario'})
             }
           })
           .catch(err => {
+            alert('Email ou senha incorretos')
             console.log(`Error: ${err}`)
             return false
           })

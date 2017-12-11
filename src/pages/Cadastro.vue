@@ -73,6 +73,8 @@
 </template>
 
 <script>
+  import { api } from '../js/environment'
+
   function getRandomInt (min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
@@ -97,8 +99,20 @@
             senha: form.senha.value,
           })
           .then(response => {
-            console.log(`Response: ${response}`)
-            this.$router.push({name: 'Dashboard'})
+            this.$http
+              .post(api('/auth/login'), {
+                email: form.email.value,
+                senha: form.senha.value,
+              })
+              .then(response => {
+                if (response.data.status === 'ok') {
+                  this.$session.start()
+                  this.$session.set('usuario', response.data.session.usuario)
+                  this.$session.set('token', response.data.session.token)
+                  this.$bus.$emit('login', 'User logged')
+                  this.$router.push('/usuario')
+                }
+              })
           })
           .catch(err => {
             console.log(`Error: ${err}`)

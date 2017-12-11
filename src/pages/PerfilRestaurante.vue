@@ -1,86 +1,113 @@
 <template>
   <section>
-    <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image">
-            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <h2><strong>{{nome}}</strong></h2>
+    <div v-if="this.$session.exists()">
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image">
+              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+            </figure>
           </div>
-          <div class="level is-mobile">
-            <div class="level-left">
-
-              <a class="level-item">
-                <h3 class="subtitle"><i class="fa fa-star" aria-hidden="true"></i>
-                {{avaliacao}}
-              </h3>
-              </a>
+          <div class="media-content">
+            <div class="content">
+              <h2><strong>{{nome}}</strong></h2>
             </div>
+            <div class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item">
+                  <h3 class="subtitle"><i class="fa fa-star" aria-hidden="true"></i>
+                    {{avaliacao_average}}
+                  </h3>
+                  <h3  v-if="avaliacao_user_exists === true" class="subtitle" style="padding-left: 1rem"><b>Sua nota: </b>
+                    {{avaliacao_user}}
+                  </h3>
+                </a>
+              </div>
+            </div>
+            <!--<div class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item" style="padding-left: 1rem">
+                  <h3 class="subtitle"><b>Sua nota: </b>
+                    {{avaliacao_user}}
+                  </h3>
+                </a>
+              </div>
+            </div>-->
           </div>
+        </article>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Filas:</strong>
+        <p><small>
+          <span v-html="filas"></span>
+        </small></p>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Descrição:</strong>
+        <p style="text-align:justify "><small>
+          {{informacao_adicional}}
+        </small></p>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Endereço:</strong>
+        <p><small>
+          {{endereco}}
+        </small></p>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Contato:</strong>
+        <p><small>
+          <strong>Telefone:</strong> {{telefone}}
+        </small></p>
+        <p><small>
+          <strong>Site:</strong> <a v-bind:href="'http://' + site">{{site}}</a>
+        </small></p>
+      </div>
+
+      <div class="box has-text-left">
+        <strong>Horários de funcionamento:</strong>
+        <p><small>
+          <span v-html="hora_funcionamento"></span>
+        </small></p>
+        <div class="has-text-right">
+          <button class="button is-outlined" v-on:click="hora_func" >
+            <i :class="botao_icon" aria-hidden="true"></i>
+          </button>
         </div>
-      </article>
-    </div>
+      </div>
 
-    <div class="box has-text-left">
-      <strong>Filas:</strong>
-      <p><small>
-        <span v-html="filas"></span>
-      </small></p>
-    </div>
+      <div class="box has-text-left">
+        <strong>Formas de pagamento:</strong>
+        <p><small>
+          <span v-html="pagamento"></span>
+        </small></p>
+      </div>
 
-    <div class="box has-text-left">
-      <strong>Descrição:</strong>
-      <p style="text-align:justify "><small>
-        {{informacao_adicional}}
-      </small></p>
-    </div>
+      <div class="hero-body">
+        <button class="button is-medium is-primary is-outlined"
+                v-on:click="avaliar">Avalie esse restaurante!
+        </button>
+      </div>
 
-    <div class="box has-text-left">
-      <strong>Endereço:</strong>
-      <p><small>
-        {{endereco}}
-      </small></p>
-    </div>
-
-    <div class="box has-text-left">
-      <strong>Contato:</strong>
-      <p><small>
-        <strong>Telefone:</strong> {{telefone}}
-      </small></p>
-      <p><small>
-        <strong>Site:</strong> <a v-bind:href="'http://' + site">{{site}}</a>
-      </small></p>
-    </div>
-
-    <div class="box has-text-left">
-      <strong>Horários de funcionamento:</strong>
-      <p><small>
-        <span v-html="hora_funcionamento"></span>
-      </small></p>
-      <div class="has-text-right">
-        <button class="button is-outlined" v-on:click="hora_func" >
-          <i :class="botao_icon" aria-hidden="true"></i>
+      <div class="hero-body">
+        <button class="button is-large is-primary"
+                v-on:click="entrar_na_fila">ENTRAR NA FILA
         </button>
       </div>
     </div>
-
-    <div class="box has-text-left">
-      <strong>Formas de pagamento:</strong>
-      <p><small>
-        <span v-html="pagamento"></span>
-      </small></p>
+    <div v-else>
+      <div class="content">
+      <section class="hero">
+        <div class="hero-body">
+          <h2 class="title"><b>Não autorizado</b></h2>
+        </div>
+      </section>
+      </div>
     </div>
-
-    <div class="hero-body">
-      <button class="button is-large is-primary"
-              v-on:click="entrar_na_fila">ENTRAR NA FILA
-      </button>
-    </div>
-
   </section>
 </template>
 
@@ -91,7 +118,9 @@
 
   var data = {
     nome: '',
-    avaliacao: 'placeholder',
+    avaliacao_average: 'placeholder',
+    avaliacao_user: '',
+    avaliacao_user_exists: false,
     filas: '',
     informacao_adicional: '',
     endereco: '',
@@ -104,7 +133,10 @@
 
   import MaskedInput from 'vue-masked-input'
   import EntrarFila from '../components/EntrarFilaCadastrado.vue'
-  import api from '../js/environment.js'
+  import { api } from '../js/environment.js'
+  import Vue from 'vue'
+  import VueSession from 'vue-session'
+  Vue.use(VueSession)
 
   export default {
     name: 'PerfilRestaurantes',
@@ -115,6 +147,9 @@
       entrar_na_fila() {
         this.$router.push('/')
       },
+      avaliar() {
+        this.$router.push('/restaurantes/' + this.$route.params.r_id + '/avaliar')
+      },
       loadPagina() {
         hora_func_full = ''
         hora_func_short = ''
@@ -122,24 +157,19 @@
         var filas = ''
         data.filas = ''
         data.pagamento = ''
+        data.avaliacao_user_exists = false
         const vm = this
 
         vm.$http
           .get(api(`/restaurantes/${rest_id}`))
           .then(function (response) {
-            console.log('Respostas: ' + response.data.data)
             const dados = response.data.data;
-            console.log('Dados: ' + dados)
             data.nome = dados.nome
             data.informacao_adicional = dados.informacao_adicional
             data.endereco = dados.endereco
             data.telefone = dados.telefone
             data.site = dados.site
-            if(dados.forma_pagamento === null) {
-              //console.log('pagamento: 0')
-            }
-            else {
-              //console.log('pagamento: ' + dados.forma_pagamento.length)
+            if(dados.forma_pagamento !== null) {
               for (var i = 0; i < dados.forma_pagamento.length ; i++) {
                 data.pagamento = data.pagamento + dados.forma_pagamento[0] + '<br>'
               }
@@ -209,7 +239,6 @@
               default:
                 break
             }
-            console.log('hora func short: ' + hora_func_short)
 
             for (var i = 0; i < 7; i++) {
               switch(i) {
@@ -281,7 +310,6 @@
               }
             }
 
-            //console.log('hora func full: ' + hora_func_full)
             data.hora_funcionamento = hora_func_short
             data.botao_icon = 'fa fa-angle-down'
 
@@ -290,7 +318,6 @@
               vm.$http
                 .get(api(`/filas/${filas[i]}`))
                 .then(function (response) {
-                  //console.log(response.data.data)
                   data.filas = data.filas + '<strong>Fila ' + response.data.data.id + ':</strong>' + '&ensp;'
                   data.filas = data.filas + response.data.data.descricao + '&ensp;'
                   data.filas = data.filas + '<i class="fa fa-users" aria-hidden="true"></i> &nbsp;'
@@ -302,6 +329,18 @@
                   }
                 })
             }
+
+            const id_user = vm.$session.getAll().usuario.id
+            vm.$http
+              .get(api(`/restaurantes/${rest_id}/avaliacao/${id_user}`))
+              .then(function (response) {
+                if(response.data.data.avaliacao_usuario) {
+                  data.avaliacao_user_exists = true
+                  data.avaliacao_user = response.data.data.avaliacao_usuario.valor
+                }
+                data.avaliacao_average = parseFloat(response.data.data.avaliacao_media.avg).toFixed(1)
+
+              })
 
           })
           .catch(function (err) {
