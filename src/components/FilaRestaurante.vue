@@ -14,12 +14,12 @@
         <div class="column has-text-centered">
           <abbr title="Hora Entrada Fila">HEF</abbr>
         </div>
-        <div class="column has-text-centered">
+        <!--<div class="column has-text-centered">
           <abbr title="Hora Saida Fila">HSF</abbr>
         </div>
         <div class="column has-text-centered">
           <abbr title="Hora Prevista Atendimento">HPA</abbr>
-        </div>
+        </div>-->
         <div class="column has-text-centered">
           <abbr title="Quantidade Pessoas">Qtd Pessoas</abbr>
         </div>
@@ -39,7 +39,7 @@
 
       <div class="columns is-centered has-text-centered" v-for="usuario in usuarios" id="linha">
         <div class="column has-text-centered">
-          {{usuario.posicao}}
+          {{usuarios.indexOf(usuario)+1}}
         </div>
         <div class="column has-text-centered">
           {{usuario.nome}}
@@ -50,12 +50,12 @@
         <div class="column has-text-centered">
           {{usuario.hora_entrada_fila}}
         </div>
-        <div class="column has-text-centered">
+        <!--<div class="column has-text-centered">
           {{usuario.hora_entrada_atendimento}}
         </div>
         <div class="column has-text-centered">
           {{usuario.hora_saida_restaurante}}
-        </div>
+        </div>-->
         <div class="column has-text-centered">
           {{usuario.qtd_pessoas}}
         </div>
@@ -140,17 +140,9 @@
       return {
         usuarios: [],
 
-        restaurante: {nome: 'Outback'},
+        restaurante: {},
 
-        filas: [
-          {
-            id: 1,
-            nome: 'Local',
-          },
-          {
-            id: 2,
-            nome: 'Entrega',
-          }],
+        filas: [],
       }
     },
     mounted () {

@@ -35,24 +35,27 @@
 
   export default {
     name: 'InsercaoManual',
+    props: ['idfila', 'qtd_pessoas_fila'],
     methods: {
       insertmanual () {
         const [form] = document.getElementsByTagName('form')
 
         const id_user = Math.floor(Math.random() * 10000000)
-        const id_fila = 1
 
         const vm = this
 
+        console.log("Qtd pessoas na fila")
+        console.log(this.qtd_pessoas_fila)
         vm.$http.post(api('/auth/new/temp'), {
           id: id_user,
           nome: form.NameField.value,
           telefone: form.TelephoneField.value,
         })
           .then(response => {
-            vm.$http.put(api(`/filas/${id_fila}/enter`), {
+            vm.$http.put(api(`/filas/${vm.idfila}/enter`), {
               id_usuario: id_user,
-              qnt_pessoas: form.NumPeopleField.value,
+              qtd_pessoas: form.NumPeopleField.value,
+              posicao_qdo_entrou: vm.qtd_pessoas_fila
             })
               .then(response => {
                 console.log(`Response: ${response}`)
@@ -63,6 +66,7 @@
                 return false
               })
           })
+        this.$emit('idpassado', this.idfila);
       },
     },
     data () {

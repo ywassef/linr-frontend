@@ -1,13 +1,30 @@
 <template>
   <section class="section">
     <div class="box has-text-centered" style="background-color: #F44D41;">
-      <h2 class="title" style="color: #fff">Código da fila: {{
-        this.$route.params.id_fila }}</h2>
+      <h2 class="title" style="color: #fff">Código da fila: {{ this.$route.params.id_fila }}</h2>
     </div>
 
     <div class="box has-text-centered" style="background-color: #fff;">
       <h3 class="subtitle">Nome: {{ nome }}</h3>
     </div>
+
+    <div class="box has-text-centered" style="background-color: #fff;">
+      <h3 class="subtitle">Grupo de: {{ qtd_pessoas }}</h3>
+    </div>
+
+    <div class="box has-text-centered" style="background-color: #FFF;">
+      <h3 class="subtitle" style="color: #FF5722;"><i class="fa fa-clock-o" aria-hidden="true"></i>
+        {{ tempo_fila }} min</h3>
+    </div>
+
+    <div class="box has-text-centered" style="background-color: #FFF;">
+      <h3 class="subtitle" style="color: #FF5722;"><i class="fa fa-users" aria-hidden="true"></i>
+        {{ num_pessoas_fila }} grupos na fila</h3>
+    </div>
+
+      <button class="button is-large is-primary" v-on:click="desistir">
+        Desistir
+      </button>
 
     <div class="box has-text-centered" style="background-color: #fff;">
       <h3 class="subtitle">Grupo de: {{ qtd_pessoas }}</h3>
@@ -124,6 +141,7 @@
               id_usuario_fila: id_usuario_fila,
             })
             .then(function (response) {
+
               vm.$router.push({path: '/'})
             })
             .catch(function (err) {

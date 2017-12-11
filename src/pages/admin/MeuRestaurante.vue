@@ -40,7 +40,7 @@
         </div>
         <div class="column is-one-quarter">
           <h2 id="tituloFila2">Inserção Manual</h2>
-          <inserir></inserir>
+          <inserir :idfila="nfila" @idpassado="pegarIdPassado" :qtd_pessoas_fila="datahoje.quantidade_pessoas_fila"></inserir>
         </div>
       </div>
     </div>
@@ -116,11 +116,14 @@
         this.consultarRestautante()
         this.consultarFilas()
 
-        console.log(this.fila.tempo_medio_inicial)
         hora = new Date()
         hora.setMinutes(hora.getMinutes() + this.fila.tempo_medio_inicial)
         this.datahoje.hp = hora.getHours() + ':' + hora.getMinutes()
-      }
+      },
+      pegarIdPassado(id){
+        console.log("Id passado\n")
+        this.nfila = id
+      },
     },
     data () {
       return {
@@ -139,7 +142,6 @@
       this.consultarFila()
       this.consultarRestautante()
       this.consultarFilas()
-      console.log(this.nfila)
     }
   }
 </script>
