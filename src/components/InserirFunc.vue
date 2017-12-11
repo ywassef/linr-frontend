@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <form>
+    <form  onsubmit="return false">
       <div class="field">
         <label class="label">Permissão</label>
         <div class="control">

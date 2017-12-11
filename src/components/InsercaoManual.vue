@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <form>
+    <form onsubmit="return false">
       <div class="field">
         <label class="label">Nome</label>
         <div class="control">
@@ -66,7 +66,12 @@
                 return false
               })
           })
+        this.chamarPai
         this.$emit('idpassado', this.idfila);
+        this.$router.push({name: 'MeuRestaurante'}).$forceUpdate()
+      },
+      chamarPai() {
+        this.$emit('chamou');
       },
     },
     data () {

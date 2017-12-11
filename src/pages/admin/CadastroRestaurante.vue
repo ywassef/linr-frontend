@@ -9,7 +9,7 @@
         <div class="hero-body">
           <div class="columns is-mobile is-centered">
             <div class="column is-one-third has-text-centered">
-              <form>
+              <form  onsubmit="return false">
 
                 <div class="field">
                   <label class="label">Nome</label>

@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <form>
+    <form  onsubmit="return false">
 
       <label class="label">ID FILA</label>
       <div class="control">

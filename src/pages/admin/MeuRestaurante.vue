@@ -3,8 +3,8 @@
     <div class="content">
       <h1 align="center">{{restaurante.nome}}</h1>
       <div class="select" id="dropdown">
-        <select v-model="nfila" @change="atualizarFila">
-          <option v-for="f in filas" :value="f.id">{{f.id}} {{f.descricao}}</option>
+        <select v-model="fila" @change="atualizarFila">
+          <option v-for="f in filas" :value="f">{{f.id}} {{f.descricao}}</option>
         </select>
       </div>
       <nav class="level">
@@ -36,11 +36,11 @@
       <div class="columns">
         <div class="column is-three-quarters">
           <h2 id="tituloFila">Fila Restaurante</h2>
-          <fila :idfila="nfila"></fila>
+          <fila :idfila="fila.id"></fila>
         </div>
         <div class="column is-one-quarter">
           <h2 id="tituloFila2">Inserção Manual</h2>
-          <inserir :idfila="nfila" @idpassado="pegarIdPassado" :qtd_pessoas_fila="datahoje.quantidade_pessoas_fila"></inserir>
+          <inserir :idfila="fila.id" @idpassado="pegarIdPassado" :qtd_pessoas_fila="datahoje.quantidade_pessoas_fila"></inserir>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@
 
   let hora = new Date()
   hora.setMinutes(hora.getMinutes() + 15)
-  let str_prevAtendimento = hora.getHours() + ':' + hora.getMinutes()
+  let str_prevAtendimento = (hora.getHours()<10?'0':'') + hora.getHours() + ':' + (hora.getMinutes()<10?'0':'') + hora.getMinutes()
   const idr = 1
 
   export default {
@@ -70,7 +70,7 @@
     methods: {
       consultarFilas () {
         const vm = this
-        this.$http
+        vm.$http
           .get(api('/filas'))
           .then(response => {
             // TODO add session to cookies
@@ -86,8 +86,8 @@
       },
       consultarFila () {
         const vm = this
-        this.$http
-          .get(api('/filas/' + vm.nfila))
+        vm.$http
+          .get(api('/filas/' + vm.fila.id))
           .then(response => {
             // TODO add session to cookies
             vm.fila = response.data.data
@@ -101,7 +101,7 @@
       },
       consultarRestautante () {
         const vm = this
-        this.$http
+        vm.$http
           .get(api('/restaurantes/' + idr))
           .then(response => {
             vm.restaurante = response.data.data
@@ -116,18 +116,21 @@
         this.consultarRestautante()
         this.consultarFilas()
 
-        hora = new Date()
+        let hora = new Date()
         hora.setMinutes(hora.getMinutes() + this.fila.tempo_medio_inicial)
-        this.datahoje.hp = hora.getHours() + ':' + hora.getMinutes()
+        this.datahoje.hp = (hora.getHours()<10?'0':'') + hora.getHours() + ':' + (hora.getMinutes()<10?'0':'') + hora.getMinutes()
       },
       pegarIdPassado(id){
-        console.log("Id passado\n")
-        this.nfila = id
+        //console.log("Id passado\n")
+        this.fila.id = id
       },
     },
     data () {
       return {
-        fila: [],
+        fila: {
+          id: 1,
+          descricao: 'Pudim'
+        },
         filas: [],
         restaurante: [],
         datahoje: {
@@ -135,13 +138,12 @@
           hp: str_prevAtendimento,
           quantidade_pessoas_fila: {},
         },
-        nfila: 1,
       }
     },
-    mounted () {
-      this.consultarFila()
-      this.consultarRestautante()
-      this.consultarFilas()
+    created () {
+      this.consultarFilas ()
+      this.consultarFila ()
+      this.consultarRestautante ()
     }
   }
 </script>
