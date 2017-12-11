@@ -71,7 +71,7 @@
         </div>
         <div class="column has-text-centered">
           <a class="button is-success is-outlined"
-             v-on:click="usuario_atendido(usuario.id)">Entrou</a>
+             v-on:click="usuario_atendido(usuario.id_usuario)">Entrou</a>
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@
       usuario_desistiu (id) {
         console.log(id)
         this.$http
-          .put(api('/filas/' + this.idfila + '/remove'), {
+          .put(api('/filas/' + this.idfila + '/desistir'), {
             id_usuario_fila: id,
           })
           .then(response => {
@@ -103,7 +103,7 @@
       },
       usuario_atendido (id) {
         this.$http
-          .put(api('/filas/' + this.idfila + '/exit'), {
+          .put(api('/filas/' + this.idfila + '/sair'), {
             id_usuario_fila: id,
           })
           .then(response => {
