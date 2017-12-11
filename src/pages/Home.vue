@@ -12,7 +12,7 @@
                 <label class="label">Código da Fila</label>
                 <div class="control">
                   <input class="input" id="RestID" type="text"
-                         placeholder="Ex: outback12" value="1">
+                         placeholder="Ex: outback12">
                 </div>
               </div>
             </div>

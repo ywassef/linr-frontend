@@ -91,7 +91,7 @@
           return false
         }
         this.$http
-          .post('http://localhost:8080/auth/new', {
+          .post(api('/auth/new'), {
             id: getRandomInt(0, 10000000),
             nome: form.nome.value,
             telefone: form.telefone.value,
